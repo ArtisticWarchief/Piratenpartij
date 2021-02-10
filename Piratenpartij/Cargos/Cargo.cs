@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Piratenpartij.Cargo
+namespace Piratenpartij.Cargos
 {
     public class Cargo
     {
