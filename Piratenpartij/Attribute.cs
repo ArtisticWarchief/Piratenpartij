@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij
 {
-    class Attribute
+    public class Attribute
     {
         public int Intelligence { get; set; }
         public int Strength { get; set; }
