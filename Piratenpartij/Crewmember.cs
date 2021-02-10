@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij
 {
-    public class Crewmate
+    public class Crewmember
     {
         private string[] groupNames = {"Patrice", "Douwe", "Ilona", "Isabel", "Shani", "Sam", "Jordi", "Eyse", "Ivanildo", "Jan", "Omar", "Stan"};
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace Piratenpartij
 
         readonly Random random = new Random();
 
-        public Crewmate()
+        public Crewmember()
         {
             Name = groupNames[random.Next(0, 11)];
             Cost = random.Next(10,1000);

@@ -12,7 +12,7 @@ namespace Piratenpartij
 {
     public partial class Form1 : Form
     {
-        Crewmate Crewmate1 = new Crewmate();
+        Crewmember Crewmate1 = new Crewmember();
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace Piratenpartij
 
         private void btnGenName_Click(object sender, EventArgs e)
         {
-            lblName.Text = new Crewmate().Name;
+            lblName.Text = new Crewmember().Name;
         }
     }
 }
