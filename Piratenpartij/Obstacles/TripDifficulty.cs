@@ -10,7 +10,7 @@ namespace Piratenpartij.Obstacles
     public class TripDifficulty
     {
         // List of all trips that exist in the game
-        public readonly static List<KeyValuePair<Trip, int>> TRIPS = new List<KeyValuePair<Trip, int>>() 
+        private readonly static List<KeyValuePair<Trip, int>> TRIPS = new List<KeyValuePair<Trip, int>>() 
         {
             new KeyValuePair<Trip, int>(Trip.GetTrip(Location.AS, Location.EU), 10),
             new KeyValuePair<Trip, int>(Trip.GetTrip(Location.EU, Location.US), 5),
