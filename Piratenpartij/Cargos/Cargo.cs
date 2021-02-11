@@ -12,9 +12,11 @@ namespace Piratenpartij.Cargos
         public int Price { get; set; }
         public int LimitOnShip { get; set; }
 
-        public Cargo()
+        public Cargo(string name, int price, int limitOnShip)
         {
-
+            Name = name;
+            Price = price;
+            LimitOnShip = limitOnShip;
         }
     }
 }
