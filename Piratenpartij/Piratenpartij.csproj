@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attribute\Attribute.cs" />
-    <Compile Include="Attribute\AttributeNames.cs" />
+    <Compile Include="Attribute\Abilities.cs" />
+    <Compile Include="Attribute\AbilityNames.cs" />
     <Compile Include="Crewmember\Crewmember.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

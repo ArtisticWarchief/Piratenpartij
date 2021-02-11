@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Piratenpartij.Attribute
+namespace Piratenpartij.Abilities
 {
 
-    public enum AttributeNames
+    public enum AbilityNames
     {
         Intelligence,
         Strength,
