@@ -9,20 +9,33 @@ namespace Piratenpartij.Obstacles
 {
     public class TripDifficulty
     {
-        private static List<KeyValuePair<Trip, int>> DESTINATIONS_DIFFICULTY = new List<KeyValuePair<Trip, int>>() 
+        // List of all trips that exist in the game
+        public readonly static List<KeyValuePair<Trip, int>> TRIPS = new List<KeyValuePair<Trip, int>>() 
         {
-            new KeyValuePair<Trip, int>(Trip.EU_AS, 10),
-            new KeyValuePair<Trip, int>(Trip.US_AS, 5),
-            new KeyValuePair<Trip, int>(Trip.US_EU, 7)
+            new KeyValuePair<Trip, int>(Trip.GetTrip(Location.AS, Location.EU), 10),
+            new KeyValuePair<Trip, int>(Trip.GetTrip(Location.EU, Location.US), 5),
+            new KeyValuePair<Trip, int>(Trip.GetTrip(Location.US, Location.AS), 7)
         };
 
-        public static List<KeyValuePair<Trip, int>> GetDestinations()
+        public static List<KeyValuePair<Trip, int>> GetTrips()
         {
-            return DESTINATIONS_DIFFICULTY;
+            return TRIPS;
+        }
+        //Get trip difficulty of the trip between location a and b
+        public static int GetDifficulty(Location a,Location b)
+        {
+            if (a != b && a != Location.ON_BOARD && b != Location.ON_BOARD)
+            {
+                return TripDifficulty.GetTrips()
+                   .Where(trip => trip.Key.Start == a && trip.Key.End == b || trip.Key.End == a && trip.Key.Start == b)
+                   .First().Value;
+            }
+            else
+            {
+                return 0;
+            }
+
         }
     }
-
-    
-
     
 }
