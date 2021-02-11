@@ -4,32 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Attribute
+namespace Piratenpartij.Attribute
 {
     public class Attribute
     {
         readonly Random random = new Random();
 
-        public enum AttributeNames
-        {
-            Intelligence,
-            Strength,
-            Hunger,
-            Trading
-        }
-        int maxAttributes = 3;
+        int maxAttributeIndex = 3;
         public int PrimaryAttribute { get; private set; }
 
         Dictionary<int, int> Attributes = new Dictionary<int, int>();
 
-
-
         public Attribute()
         {
-            PrimaryAttribute = random.Next(maxAttributes);
+            PrimaryAttribute = random.Next(maxAttributeIndex);
             Attributes.Add(PrimaryAttribute, random.Next(75, 100));
 
-            for (int i = 0; i <= maxAttributes; i++)
+            for (int i = 0; i <= maxAttributeIndex; i++)
             {
                 if (i != PrimaryAttribute)
                 {
@@ -45,7 +36,7 @@ namespace Attribute
 
         public void PrintAttributes()
         {
-            for (int i = 0; i <= maxAttributes; i++)
+            for (int i = 0; i <= maxAttributeIndex; i++)
             {
                 Console.WriteLine("{0}: {1}", (AttributeNames)i, Attributes[i]);
             }

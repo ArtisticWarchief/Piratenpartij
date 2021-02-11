@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attribute\Attribute.cs" />
+    <Compile Include="Attribute\AttributeNames.cs" />
     <Compile Include="Crewmember\Crewmember.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
