@@ -10,7 +10,7 @@ namespace Piratenpartij.Abilities
     {
         readonly Random random = new Random();
 
-        int maxAbilityIndex = 3;
+        int maxAbilityIndex = 2;
         public int PrimaryAbility { get; private set; }
 
         Dictionary<int, int> AbilityDict = new Dictionary<int, int>();

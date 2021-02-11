@@ -11,7 +11,6 @@ namespace Piratenpartij.Abilities
     {
         Intelligence,
         Strength,
-        Hunger,
         Trading
     }
 
