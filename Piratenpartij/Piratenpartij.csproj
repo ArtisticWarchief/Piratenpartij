@@ -53,16 +53,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Harbor\Harbor.cs" />
-    <Compile Include="Harbor\HarborTestUI.cs">
+    <Compile Include="Harbors\Harbor.cs" />
+    <Compile Include="HarborTestUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Harbor\HarborTestUI.Designer.cs">
+    <Compile Include="HarborTestUI.Designer.cs">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Harbor\HarborTestUI.resx">
+    <EmbeddedResource Include="HarborTestUI.resx">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
