@@ -8,11 +8,16 @@ namespace Piratenpartij.Obstacles
 {
     public class Constante
     {
-        public List<KeyValuePair<Destination, int>> DESTINATIONS = new List<KeyValuePair<Destination, int>>() 
+        private static List<KeyValuePair<Destination, int>> DESTINATIONS = new List<KeyValuePair<Destination, int>>() 
         {
             new KeyValuePair<Destination, int>(Destination.EU_AS, 10),
             new KeyValuePair<Destination, int>(Destination.US_AS, 5),
         };
+
+        public static List<KeyValuePair<Destination, int>> GetDestinations()
+        {
+            return DESTINATIONS;
+        }
     }
 
     public enum Destination
