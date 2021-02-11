@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Piratenpartij.Cargos;
 
-namespace Piratenpartij.Harbor
+namespace Piratenpartij.Harbors
 {
-    class Harbor
+   public class Harbor
     {
         private Ship ship;
         readonly Random random = new Random();

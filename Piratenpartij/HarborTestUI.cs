@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Piratenpartij.Harbors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Piratenpartij.Harbor
+
+namespace Piratenpartij
 {
     public partial class HarborTestUI : Form
     {
         private Harbor harbor;
         public HarborTestUI(Ship ship)
         {
+
             InitializeComponent();
             harbor = new Harbor(ship);
         }

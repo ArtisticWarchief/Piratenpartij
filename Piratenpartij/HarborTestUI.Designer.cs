@@ -1,4 +1,4 @@
-﻿namespace Piratenpartij.Harbor
+﻿namespace Piratenpartij
 {
     partial class HarborTestUI
     {
