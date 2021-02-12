@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Piratenpartij.Obstacles.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace Piratenpartij.Obstacles
        
         readonly static Random random = new Random();
 
-        //Get a random Event with 
+        //Get a random Event according to its probability 
         public static Event GetRandomly()
         {
             EventType selectedEvent = EventType.PIRATES_SHIP;
@@ -38,7 +39,8 @@ namespace Piratenpartij.Obstacles
         //Get list of randomly events depend on Ship's current location and destination
         public static List<Event> GetEvents(Ship.Ship ship)
         {
-            int countOfEvent = TripDifficulty.GetDifficulty(ship.CurrentLocation, ship.Destination);
+            Trip tripOfShip = Trip.GetTrip(ship.CurrentLocation, ship.Destination);
+            int countOfEvent = TripDifficulty.GetDifficulty(tripOfShip);
             List<Event> events = new List<Event>(countOfEvent);
             Dictionary<EventType, int> counts = new Dictionary<EventType, int>();
             foreach (KeyValuePair<EventType, int> pair in EVENTS_PROBABILITY)
@@ -46,11 +48,13 @@ namespace Piratenpartij.Obstacles
                 int count = (int)Math.Round((double)(pair.Value * countOfEvent) / 100);
                 counts.Add(pair.Key, count);
             }
-            if(counts.Sum<KeyValuePair<EventType, int>>(e => e.Value) < events.Capacity)
+            int estimatedCount = counts.Sum<KeyValuePair<EventType, int>>(e => e.Value);
+            //According to probability inequality of estimated counts with exact size then checking the equality is mandatory
+            if (estimatedCount < countOfEvent)
             {
                 int last = counts.Last().Value;
                 counts.Remove(counts.Keys.Last());
-                counts.Add(EVENTS_PROBABILITY.Keys.Last(), ++last);
+                counts.Add(EVENTS_PROBABILITY.Keys.Last(), countOfEvent - estimatedCount);
             }
             foreach (KeyValuePair<EventType, int> count in counts)
             {
@@ -60,6 +64,7 @@ namespace Piratenpartij.Obstacles
                     events.Add(new Event(count.Key));
                 }
             }
+            //shuffle the events list
             Random rand = new Random();
             return events.OrderBy<Event, int>(e => rand.Next()).ToList();
         }
