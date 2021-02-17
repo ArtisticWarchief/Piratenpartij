@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij.Cargos
 {
-    public class Cargo
+    public abstract class Cargo
     {
         public string Name { get; set; }
         public int Price { get; set; }
         public int LimitOnShip { get; set; }
 
-        public Cargo(string name, int price, int limitOnShip)
+        public Cargo()
         {
-            Name = name;
-            Price = price;
-            LimitOnShip = limitOnShip;
+           
         }
     }
 }

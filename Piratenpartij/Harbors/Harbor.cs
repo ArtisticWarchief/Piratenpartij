@@ -8,8 +8,7 @@ using Piratenpartij.Cargos;
 namespace Piratenpartij.Harbors
 {
    public class Harbor
-    {
-        private Ship ship;
+    {      
         readonly Random random = new Random();
 
         public string Name { get; set; }
@@ -19,11 +18,10 @@ namespace Piratenpartij.Harbors
         public Dictionary<Cargo, int> CargoInStock { get; set; }
 
 
-        public Harbor(Ship ship)
+        public Harbor()
         {
             InitializeCargo();
-            InitializeCrewmembers();
-            this.ship = ship;
+            InitializeCrewmembers();           
             FoodPrice = random.Next(1, 10);
         }
 
@@ -42,7 +40,7 @@ namespace Piratenpartij.Harbors
             throw new NotImplementedException();
         }
 
-        public void BuyCrewmember(Crewmember member)
+        public void BuyCrewmember()
         {
 
         }
