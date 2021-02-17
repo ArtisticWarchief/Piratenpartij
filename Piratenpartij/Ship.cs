@@ -9,13 +9,24 @@ namespace Piratenpartij
     public class Ship
     {
         public List<Crewmember> Crewmembers { get; set; }
-        public Dictionary<string, int> Cargo { get; set; }
-        public string Destination { get; set; }
+        public Dictionary<Cargo, int> Cargo { get; set; }
+        public Trip Trip { get; set; }
         public int Food { get; set; }
         public int Fun { get; set; }
-        public string Status { get; set; }
         public int Money { get; set; }
-        public List<Obstacle> Obstacles { get; set; }
+        public string Destination { get; set; }
+        private static Ship ShipInstance;
+
+        public static Ship GetInstance()
+        {
+            if (ShipInstance != null) {
+                return ShipInstance;
+            }
+            else {
+                ShipInstance = new Ship(8);
+                return ShipInstance;
+            }
+        }
 
         readonly Random random = new Random();
 
@@ -39,29 +50,20 @@ namespace Piratenpartij
                 { "hunger", Hunger },
                 { "trading", Trading }
             };
-            //Console.WriteLine(CrewAtttributes);
             return CrewAtttributes;
         }
 
-        public Ship(int crewAmount)
+        private Ship(int crewAmount)
         {
             for (int i = 0; i < crewAmount; i++) {
                 Crewmembers.Add(new Crewmember.Crewmember());
             }
-
-            int obstacleAmount = random.Next(10, 1000);
-
-            for (int i = 0; i < obstacleAmount; i++) {
-                Obstacles.Add(new Obstacle.Obstacle());
-            }
-
             Cargo = new Cargo();
-            Destination = "";
+            Trip = new Trip();
             Food = 100;
             Fun = 100;
-            Status = "Start";
             Money = 0;
-            //Console.WriteLine(AtttributesTotal().Count);
+            Destination = "";
         }
     }
 
