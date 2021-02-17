@@ -34,7 +34,7 @@ namespace Piratenpartij.Abilities
             return AbilityDict;
         }
 
-        public void PrintAttributes()
+        public void PrintAbilities()
         {
             for (int i = 0; i <= maxAbilityIndex; i++)
             {
