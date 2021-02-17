@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Crewmembers;
 
-namespace Ship
+namespace Piratenpartij.Ship
 {
     public class Ship
     {
         public List<Crewmember> Crewmembers { get; set; }
-        public Dictionary<Cargo, int> Cargo { get; set; }
-        public Trip Trip { get; set; }
+        //public Dictionary<Cargo, int> Cargo { get; set; }
+        //public Trip Trip { get; set; }
         public int Food { get; set; }
         public int Fun { get; set; }
         public int Money { get; set; }
@@ -38,10 +39,10 @@ namespace Ship
             int Trading = 0;
 
             foreach (Crewmember Crew in Crewmembers) {
-                Intelligence += Crew.Attribute.GetAttributes()[0];
-                Strength += Crew.Attribute.GetAttributes()[1];
-                Hunger += Crew.Attribute.GetAttributes()[2];
-                Trading += Crew.Attribute.GetAttributes()[3];
+                Intelligence += Crew.Ability.GetAbilities()[0];
+                Strength += Crew.Ability.GetAbilities()[1];
+                Hunger += Crew.Ability.GetAbilities()[2];
+                Trading += Crew.Ability.GetAbilities()[3];
             }
 
             Dictionary<string, int> CrewAtttributes = new Dictionary<string, int> {
@@ -56,10 +57,10 @@ namespace Ship
         private Ship(int crewAmount)
         {
             for (int i = 0; i < crewAmount; i++) {
-                Crewmembers.Add(new Crewmember.Crewmember());
+                Crewmembers.Add(new Crewmember());
             }
-            Cargo = new Cargo();
-            Trip = new Trip();
+            //Cargo = new Cargo();
+            //Trip = new Trip();
             Food = 100;
             Fun = 100;
             Money = 0;
