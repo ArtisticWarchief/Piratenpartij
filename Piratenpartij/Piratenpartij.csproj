@@ -52,6 +52,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Obstacles\Concepts\Action.cs" />
+    <Compile Include="Obstacles\Concepts\IEvent.cs" />
+    <Compile Include="Obstacles\Enums\EventStatus.cs" />
+    <Compile Include="Obstacles\Trip.cs" />
+    <Compile Include="Obstacles\Enums\Location.cs" />
+    <Compile Include="Obstacles\EventMaker.cs" />
+    <Compile Include="Obstacles\Enums\EventType.cs" />
+    <Compile Include="Obstacles\Event.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -76,5 +84,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

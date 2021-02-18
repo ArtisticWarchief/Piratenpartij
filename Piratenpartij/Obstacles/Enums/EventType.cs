@@ -6,6 +6,5 @@
         MERCHANT_SHIP,
         ISLAND,
         HARBOR,
-        NONE
     }
 }

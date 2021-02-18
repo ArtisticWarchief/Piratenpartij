@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Piratenpartij.Obstacles.Enums
+namespace Piratenpartij.Obstacles.Concepts
 {
-    public enum Trip
+    interface IEvent
     {
-        US_EU,
-        US_AS,
-        EU_AS,
+        List<Event> Events { get; set; }
     }
 }
