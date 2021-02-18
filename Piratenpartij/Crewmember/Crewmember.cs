@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Piratenpartij.Abilities;
 
-namespace Crewmember
+namespace Crewmembers
 {
     public class Crewmember
     {

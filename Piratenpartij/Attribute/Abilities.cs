@@ -29,7 +29,7 @@ namespace Piratenpartij.Abilities
             }
         }
 
-        public Dictionary<int, int> GetAttributes()
+        public Dictionary<int, int> GetAbilities()
         {
             return AbilityDict;
         }
