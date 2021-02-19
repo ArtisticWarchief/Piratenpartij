@@ -46,16 +46,18 @@ namespace Piratenpartij.Obstacles
                     switch (count.Key)
                     {
                         case EventType.MERCHANT_SHIP:
-                            temp = new TradeEvent(EventType.MERCHANT_SHIP);
+                            temp = new TradeEvent();
                             break;
                         case EventType.PIRATES_SHIP:
-                            temp = new CombatEvent(EventType.PIRATES_SHIP);
+                            temp = new CombatEvent();
                             break;
                         case EventType.ISLAND:
-                            temp = new IslandEvent(EventType.ISLAND);
+                            temp = new IslandEvent();
                             break;
                         case EventType.HARBOR:
-                            temp = new HarborEvent(EventType.HARBOR);
+                            temp = new HarborEvent();
+                            break;
+                        default:
                             break;
                     }
 

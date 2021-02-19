@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij.Obstacles
 {
+    //IslandEvent could happen whenever an island appears along a trip
     public class IslandEvent : Event
     {
 
-        public IslandEvent(EventType type) : base(type)
+        public IslandEvent() : base(EventType.ISLAND)
         {
             Console.WriteLine("test");
         }

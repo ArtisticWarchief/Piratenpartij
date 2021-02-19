@@ -11,14 +11,15 @@ namespace Piratenpartij.Obstacles
 
         public EventStatus Status { get; set; }
 
-        readonly Random random = new Random();
+        //static is mandatory to make correctly a random difficulty per each instance of Event
+        static readonly Random random = new Random();
 
         public Event(){ }
         public Event(EventType eventType)
         {
             EventType = eventType;
             Status = EventStatus.AVALABLE;
-            Power = random.Next(30, 100);
+            Power = random.Next(20, 90);
         }
     }
 }

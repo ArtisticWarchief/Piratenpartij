@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij.Obstacles
 {
+    //Trade Event could happen whenever a harbor appears along a trip
     public class HarborEvent : Event
     {
-        public HarborEvent(EventType type) : base(type)
+        public HarborEvent() : base(EventType.HARBOR)
         {
 
         }

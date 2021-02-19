@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 namespace Piratenpartij.Obstacles
 {
 
-
+    //TradeEvent could happen against a Merchant ship along a trip
     public class TradeEvent : Event
     {
-        public TradeEvent(EventType type) : base(type)
-        {
-            
-        }
+        public TradeEvent() : base(EventType.MERCHANT_SHIP){}
+
+
     }
 }

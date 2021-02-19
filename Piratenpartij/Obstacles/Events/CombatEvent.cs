@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij.Obstacles
 {
+    //CombatEvent could happen against a Pirates ship along a trip
     public class CombatEvent : Event
     {
-        public CombatEvent(EventType type) : base(type){
+        public CombatEvent() : base(EventType.PIRATES_SHIP){
          
         }
     }
