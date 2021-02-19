@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij.Obstacles.Concepts
 {
-    interface IEvent
+    public class CombatEvent : Event
     {
-        List<Event> Events { get; set; }
+        public CombatEvent(){}
     }
 }
