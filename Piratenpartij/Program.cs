@@ -24,8 +24,8 @@ namespace Piratenpartij
             //List<Event> events = new List<Event>();
             //for (int i = 0; i < 100; i++)
             //{
-            //    Event e1 = EventMaker.GetRandomly();
-            //    events.Add(e1);
+            //    event e1 = eventmaker.getrandomly();
+            //    events.add(e1);
             //}
             //Console.WriteLine(events.Where(e => e.EventType == EventType.PIRATES_SHIP).Count());
             // Trip trip = Trip.GetInstance(Location.US, Location.EU);

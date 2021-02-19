@@ -52,9 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Obstacles\Events\HarborEvent.cs" />
     <Compile Include="Obstacles\Events\CombatEvent.cs" />
     <Compile Include="Obstacles\Enums\EventStatus.cs" />
     <Compile Include="Obstacles\Events\TradeEvent.cs" />
+    <Compile Include="Obstacles\Events\IslandEvent.cs" />
+    <Compile Include="Obstacles\Events\IslandAttributes.cs" />
     <Compile Include="Obstacles\Trip.cs" />
     <Compile Include="Obstacles\Enums\Location.cs" />
     <Compile Include="Obstacles\Events\EventMaker.cs" />

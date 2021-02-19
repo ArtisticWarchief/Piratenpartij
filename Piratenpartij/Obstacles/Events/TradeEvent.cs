@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij.Obstacles
 {
-    class TradeEvent : Event
-    {
 
+
+    public class TradeEvent : Event
+    {
+        public TradeEvent(EventType type) : base(type)
+        {
+            
+        }
     }
 }

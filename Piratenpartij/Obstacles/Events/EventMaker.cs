@@ -40,7 +40,26 @@ namespace Piratenpartij.Obstacles
                 for (int i = 0; i < count.Value; i++)
                 {
                     if (events.Count == events.Capacity) break;
-                    events.Add(new Event(count.Key));
+
+                    Event temp = null;
+
+                    switch (count.Key)
+                    {
+                        case EventType.MERCHANT_SHIP:
+                            temp = new TradeEvent(EventType.MERCHANT_SHIP);
+                            break;
+                        case EventType.PIRATES_SHIP:
+                            temp = new CombatEvent(EventType.PIRATES_SHIP);
+                            break;
+                        case EventType.ISLAND:
+                            temp = new IslandEvent(EventType.ISLAND);
+                            break;
+                        case EventType.HARBOR:
+                            temp = new HarborEvent(EventType.HARBOR);
+                            break;
+                    }
+
+                    events.Add(temp);
                 }
             }
             //shuffle the events list
