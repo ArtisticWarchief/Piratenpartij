@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Piratenpartij
+namespace Piratenpartij.Obstacles
 {
-    class Island
+    public class IslandEvent : Event
     {
+
+        public IslandEvent(EventType type) : base(type)
+        {
+            Console.WriteLine("test");
+        }
         private string[] islandNames = { "Hawaii", "Madagaskar", "Malediven", "Australië", "Palawan", "Santorini", "Maderira", "Gili" };
 
         private string[] goodOptions = { "banana", "gold", "cargo", "pork" };

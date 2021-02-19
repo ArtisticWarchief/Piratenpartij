@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij.Obstacles
 {
-    public class CombatEvent : Event
+    public class HarborEvent : Event
     {
-        public CombatEvent(EventType type) : base(type){
-         
+        public HarborEvent(EventType type) : base(type)
+        {
+
         }
     }
 }

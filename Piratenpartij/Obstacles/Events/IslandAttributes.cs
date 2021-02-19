@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Piratenpartij
+namespace Piratenpartij.Obstacles
 {
-    class IslandAttributes
+    public class IslandAttributes
     {
 
         private string[] options = { "good", "bad" };
-        private string[] goodOptions = { "banana", "gold", "cargo", "pork" };
+        private string[] goodOptions = { "gold", "cargo"};
         private string[] badOptions = { "disease", "lion attack", "earthquake" };
 
         public string option { get; set; }
