@@ -12,6 +12,8 @@ namespace Piratenpartij.Obstacles
         public EventStatus Status { get; set; }
 
         readonly Random random = new Random();
+
+        public Event(){ }
         public Event(EventType eventType)
         {
             EventType = eventType;

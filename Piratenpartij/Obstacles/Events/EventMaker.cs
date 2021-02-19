@@ -17,24 +17,6 @@ namespace Piratenpartij.Obstacles
 
         readonly Random random = new Random();
 
-        //Get a random Event according to its probability 
-        public Event GetRandomly()
-        {
-            EventType selectedEvent = EventType.PIRATES_SHIP;
-            int probability = 0;
-            int randomValue = random.Next(1, 101);
-            foreach (KeyValuePair<EventType, int> pair in EVENTS_PROBABILITY)
-            {
-                probability += pair.Value;
-                if (randomValue <= probability)
-                {
-                    selectedEvent = pair.Key;
-                    break;
-                }
-            }
-            return new Event(selectedEvent);
-        }
-      
         //Get list of randomly events depend on Ship's current location and destination
         public List<Event> GetEvents(Location start, Location end, int diff)
         {
