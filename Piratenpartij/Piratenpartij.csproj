@@ -46,27 +46,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\Abilities.cs" />
+    <Compile Include="Attribute\AbilityNames.cs" />
+    <Compile Include="Cargos\AMSPortfolio.cs" />
+    <Compile Include="Cargos\Cargo.cs" />
+    <Compile Include="Cargos\MountainHoliday.cs" />
+    <Compile Include="Cargos\Peugeot208.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Component1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component1.Designer.cs">
+      <DependentUpon>Component1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crewmember\Crewmember.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Obstacles\Events\HarborEvent.cs" />
-    <Compile Include="Obstacles\Events\CombatEvent.cs" />
-    <Compile Include="Obstacles\Enums\EventStatus.cs" />
-    <Compile Include="Obstacles\Events\TradeEvent.cs" />
-    <Compile Include="Obstacles\Events\IslandEvent.cs" />
-    <Compile Include="Obstacles\Events\IslandAttributes.cs" />
-    <Compile Include="Obstacles\Trip.cs" />
-    <Compile Include="Obstacles\Enums\Location.cs" />
-    <Compile Include="Obstacles\Events\EventMaker.cs" />
-    <Compile Include="Obstacles\Enums\EventType.cs" />
-    <Compile Include="Obstacles\Events\Event.cs" />
+    <Compile Include="Harbors\Harbor.cs" />
+    <Compile Include="HarborTestUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HarborTestUI.Designer.cs">
+      <DependentUpon>HarborTestUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Ship.cs" />
+    <EmbeddedResource Include="HarborTestUI.resx">
+      <DependentUpon>HarborTestUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,6 +101,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
