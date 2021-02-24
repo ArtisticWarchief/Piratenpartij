@@ -41,5 +41,14 @@ namespace Piratenpartij.Abilities
                 Console.WriteLine("{0}: {1}", (AbilityNames)i, AbilityDict[i]);
             }
         }
+
+        public override string ToString()
+        {
+            string tmp = "";
+            for (int i = 0; i <= maxAbilityIndex; i++) {
+                tmp += (AbilityNames)i + ": " + AbilityDict[i] + " ";
+            }
+            return tmp;
+        }
     }
 }

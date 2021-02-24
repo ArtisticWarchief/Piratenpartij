@@ -27,6 +27,10 @@ namespace Crewmembers
             Ability = new Abilities();
         }
 
+        public override string ToString()
+        {
+            return Name + " " + Ability.ToString() + "G " + Cost.ToString();
+        }
 
     }
 }
