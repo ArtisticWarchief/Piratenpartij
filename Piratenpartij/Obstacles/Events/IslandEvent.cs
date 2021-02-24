@@ -11,17 +11,14 @@ namespace Piratenpartij.Obstacles
     public class IslandEvent : Event
     {
         private string[] islandNames = { "Hawaii", "Madagaskar", "Malediven", "Australië", "Palawan", "Santorini", "Maderira", "Gili" };
-
         private string[] goodOptions = { "Peugeot208", "AMSPortfolio", "Gold"};
         private string[] badOptions = { "Disease", "Lion attack", "Earthquake" };
 
         readonly Random random = new Random();
+        public Ship.Ship ship;
 
         public string islandName { get; set; }
-
-        public IslandAttributes islandAttributes { get; set; }
-
-        //public Ship ship { get; set; }
+        public string option { get; set; }
         
         public IslandEvent() : base(EventType.ISLAND)
         {
@@ -31,11 +28,19 @@ namespace Piratenpartij.Obstacles
             Console.WriteLine(goodOption + " " + islandName);
 
             if (goodOption) {
-                Console.WriteLine("GenerateGoodOptions " + goodOptions[random.Next(0, 2)]);
+                option = goodOptions[random.Next(0, 2)];
+                
             }
             else {
-                Console.WriteLine("GenerateBadOptions " + badOptions[random.Next(0, 2)]);
+                option = badOptions[random.Next(0, 2)];
             }
+
+            setShipAttributes(goodOption, islandName, option);
+        }
+
+        public void setShipAttributes(Boolean goodOption, string islandName, string option)
+        {
+            
         }
     }
 }
