@@ -15,11 +15,11 @@ namespace Piratenpartij
     public partial class HarborTestUI : Form
     {
         private Harbor harbor;
-        public HarborTestUI(Ship ship)
+        public HarborTestUI(/**Ship ship*/)
         {
 
-            InitializeComponent();
-            harbor = new Harbor(ship);
+            /**InitializeComponent();
+            harbor = new Harbor(ship);*/
         }
 
         private void BtnBuyCargo_Click(object sender, EventArgs e)
