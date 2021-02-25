@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Piratenpartij.Cargos;
 using Crewmembers;
 using Piratenpartij.Cargos;
 
@@ -61,7 +62,7 @@ namespace Piratenpartij.Ship
             for (int i = 0; i < crewAmount; i++) {
                 Crewmembers.Add(new Crewmember());
             }
-            //Cargo = new Cargo();
+            Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), 100 }, {new Peugeot208(), 2 }, { new AMSPortfolio(), 10 } };
             //Trip = new Trip();
             Food = 100;
             Fun = 100;
