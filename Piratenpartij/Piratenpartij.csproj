@@ -80,7 +80,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ship.cs" />
+    <Compile Include="Ship\Ship.cs" />
     <EmbeddedResource Include="HarborCrewmateUI.resx">
       <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
     </EmbeddedResource>

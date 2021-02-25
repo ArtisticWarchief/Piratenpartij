@@ -22,8 +22,6 @@ namespace Piratenpartij
                 Crewmember crew = new Crewmember(random);
                 newCrewMembers.Add(crew);
                 listBoxHirableCrewmates.Items.Add(newCrewMembers[i].ToString());
-                Console.WriteLine(newCrewMembers[i].ToString());
-
             }
         }
 
@@ -34,21 +32,13 @@ namespace Piratenpartij
 
         private void btnHire_Click(object sender, EventArgs e)
         {
-            Crewmember newMember = new Crewmember(random);
-            string chosenMember = "";
-            try {
-                chosenMember = (string)listBoxHirableCrewmates.SelectedItem;
-            } catch(InvalidCastException) {
-                Console.WriteLine("Couldn't cast to string");
+            if (listBoxHirableCrewmates.SelectedItem == null) {
+                return;
             }
-
-            string[] subs = chosenMember.Split(' ');
-
-            foreach (var crew in newCrewMembers) {
-                if (crew.Name == subs[0]) {
-                    Ship.Ship.GetInstance().Crewmembers.Add(crew);
-                }
-            }
+            int chosenMemberIndex = listBoxHirableCrewmates.SelectedIndex;
+            Ship.Ship.GetInstance().Crewmembers.Add(newCrewMembers[chosenMemberIndex]);
+            listBoxHirableCrewmates.Items.RemoveAt(chosenMemberIndex);
+            newCrewMembers.RemoveAt(chosenMemberIndex);
         }
 
         private void btnCrewCheck_Click(object sender, EventArgs e)
@@ -56,6 +46,7 @@ namespace Piratenpartij
             foreach (var crew in Ship.Ship.GetInstance().Crewmembers) {
                 Console.WriteLine(crew.ToString());
             }
+            Console.WriteLine("----------------------------------------------------------");
         }
     }
 }
