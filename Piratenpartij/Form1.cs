@@ -20,7 +20,7 @@ namespace Piratenpartij
 
         private void btnGenName_Click(object sender, EventArgs e)
         {
-            Crewmembers.Crewmember crew1 = new Crewmembers.Crewmember();
+            Crewmembers.Crewmember crew1 = new Crewmembers.Crewmember(random);
             crew1.Ability.PrintAbilities();
             Console.WriteLine("Cost: {0}", crew1.Cost);
             Console.WriteLine("Name: {0}", crew1.Name);

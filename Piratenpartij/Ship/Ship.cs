@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Piratenpartij.Cargos;
 using Crewmembers;
-using Piratenpartij.Cargos;
 
-namespace Piratenpartij.Ship
+namespace Piratenpartij.Ships
 {
     public class Ship
     {
