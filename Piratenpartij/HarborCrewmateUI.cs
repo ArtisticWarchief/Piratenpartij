@@ -14,12 +14,16 @@ namespace Piratenpartij
     public partial class HarborCrewmateUI : Form
     {
         private List<Crewmember> newCrewMembers = new List<Crewmember>();
+        private Random random = new Random();
         public HarborCrewmateUI()
         {
             InitializeComponent();
             for (int i = 0; i < 3; i++) {
-                newCrewMembers.Add(new Crewmember());
+                Crewmember crew = new Crewmember(random);
+                newCrewMembers.Add(crew);
                 listBoxHirableCrewmates.Items.Add(newCrewMembers[i].ToString());
+                Console.WriteLine(newCrewMembers[i].ToString());
+
             }
         }
 
@@ -30,7 +34,7 @@ namespace Piratenpartij
 
         private void btnHire_Click(object sender, EventArgs e)
         {
-            Crewmember newMember = new Crewmember();
+            Crewmember newMember = new Crewmember(random);
             string chosenMember = "";
             try {
                 chosenMember = (string)listBoxHirableCrewmates.SelectedItem;

@@ -8,23 +8,21 @@ namespace Piratenpartij.Abilities
 {
     public class Abilities
     {
-        readonly Random random = new Random();
-
         int maxAbilityIndex = 2;
         public int PrimaryAbility { get; private set; }
 
         Dictionary<int, int> AbilityDict = new Dictionary<int, int>();
 
-        public Abilities()
+        public Abilities(Random r)
         {
-            PrimaryAbility = random.Next(maxAbilityIndex);
-            AbilityDict.Add(PrimaryAbility, random.Next(75, 100));
+            PrimaryAbility = r.Next(maxAbilityIndex);
+            AbilityDict.Add(PrimaryAbility, r.Next(75, 100));
 
             for (int i = 0; i <= maxAbilityIndex; i++)
             {
                 if (i != PrimaryAbility)
                 {
-                    AbilityDict.Add(i, random.Next(15, 74));
+                    AbilityDict.Add(i, r.Next(15, 74));
                 }
             }
         }
