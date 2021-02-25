@@ -47,6 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cargos\AMSPortfolio.cs" />
+    <Compile Include="Cargos\Cargo.cs" />
+    <Compile Include="Cargos\MountainHoliday.cs" />
+    <Compile Include="Cargos\Peugeot208.cs" />
+    <Compile Include="Harbors\Harbor.cs" />
+    <Compile Include="HarborTestUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HarborTestUI.Designer.cs">
+      <DependentUpon>HarborTestUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IetsLeuks.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IetsLeuks.resx</DependentUpon>
+    </Compile>
     <Compile Include="Screens\HarborScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +77,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="HarborTestUI.resx">
+      <DependentUpon>HarborTestUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IetsLeuks.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IetsLeuks.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\HarborScreen.resx">
+      <DependentUpon>HarborScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screens\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Bootje Cartoon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flag USA.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,12 +13,10 @@ namespace Piratenpartij
         private static Button choiceButtonOne, choiceButtonTwo, choiceButtonThree;
         private static PictureBox eventPictureBox;
         private static Bitmap[] bitmaps = new Bitmap[2];
-        private static Label moneyAmountLabel, cargoType1AmountLabel, cargoType2AmountLabel, cargoType3AmountLabel, happinessAmountLabel, crewMemberAmountLabel;
 
-        private void MoneyAmountText_Click(object sender, EventArgs e)
-        {
-
-        }
+        private static Label moneyAmountLabel;
+        private static Label cargoType1AmountLabel, cargoType2AmountLabel, cargoType3AmountLabel;
+        private static Label happinessAmountLabel, crewMemberAmountLabel;
 
         public delegate void ButtonPressEventHandler();
         public event ButtonPressEventHandler FirstButtonPress, SecondButtonPress, ThirdButtonPress;
@@ -50,6 +48,7 @@ namespace Piratenpartij
         {
             FirstButtonPress?.Invoke();
         }
+
         private void ChoiceTwoButton_Click(object sender, EventArgs e)
         {
             SecondButtonPress?.Invoke();
@@ -65,8 +64,33 @@ namespace Piratenpartij
             choiceButtonOne.Text = choiceOne;
             choiceButtonTwo.Text = choiceTwo;
             choiceButtonThree.Text = choiceThree;
-            
+
             eventPictureBox.Image = bitmaps[eventType];
+        }
+
+        public static void ChangeCargoAmountText(int cargoType, int amount)
+        {
+            if (cargoType == 1) cargoType1AmountLabel.Text = amount.ToString();
+            else if (cargoType == 2) cargoType1AmountLabel.Text = amount.ToString();
+            else if (cargoType == 3) cargoType1AmountLabel.Text = amount.ToString();
+        }
+
+        public static void ChangeCrewMemberAmountText(int amount)
+        {
+            //TODO: GET MAXIMUM FROM SHIP
+            int maxCrew = 10;
+
+            crewMemberAmountLabel.Text = amount.ToString() + " / " + maxCrew.ToString();
+        }
+
+        public static void ChangeMoneyAmountText(int amount)
+        {
+            moneyAmountLabel.Text = amount.ToString();
+        }
+
+        public static void ChangeHappinessText(int amount)
+        {
+            happinessAmountLabel.Text = amount.ToString();
         }
     }
 }

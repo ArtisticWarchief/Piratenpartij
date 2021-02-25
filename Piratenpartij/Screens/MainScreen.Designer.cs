@@ -218,7 +218,6 @@ namespace Piratenpartij
             this.MoneyAmountText.Size = new System.Drawing.Size(83, 25);
             this.MoneyAmountText.TabIndex = 20;
             this.MoneyAmountText.Text = "250";
-            this.MoneyAmountText.Click += new System.EventHandler(this.MoneyAmountText_Click);
             // 
             // HappinessText
             // 
