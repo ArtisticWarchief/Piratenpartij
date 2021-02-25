@@ -60,7 +60,7 @@ namespace Piratenpartij.Ship
         {
             Crewmembers = new List<Crewmember>();
             for (int i = 0; i < crewAmount; i++) {
-                Crewmembers.Add(new Crewmember());
+                Crewmembers.Add(new Crewmember(random));
             }
             Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), 100 }, {new Peugeot208(), 2 }, { new AMSPortfolio(), 10 } };
             //Trip = new Trip();
