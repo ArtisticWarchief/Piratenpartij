@@ -16,17 +16,20 @@ namespace Crewmembers
         public int Cost { get; set; }
         public Abilities Ability { get; set; }
 
-        readonly Random random = new Random();
 
-        public Crewmember()
+        public Crewmember(Random r)
         {
-            Name = groupNames[random.Next(0, 11)];
-            HungerUsage = random.Next(5, 20);
-            HappienessUsage = random.Next(5, 20);
-            Cost = random.Next(10,1000);
-            Ability = new Abilities();
+            Name = groupNames[r.Next(0, 11)];
+            HungerUsage = r.Next(5, 20);
+            HappienessUsage = r.Next(5, 20);
+            Cost = r.Next(10,1000);
+            Ability = new Abilities(r);
         }
 
+        public override string ToString()
+        {
+            return Name + " " + Ability.ToString() + "G " + Cost.ToString();
+        }
 
     }
 }

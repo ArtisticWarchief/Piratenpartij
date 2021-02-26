@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Piratenpartij.Cargos;
 using Crewmembers;
+using Piratenpartij.Cargos;
 
 namespace Piratenpartij.Ship
 {
@@ -32,7 +33,7 @@ namespace Piratenpartij.Ship
 
         readonly Random random = new Random();
 
-        public Dictionary<string, int> AtttributesTotal()
+        public Dictionary<string, int> AbilitiesTotal()
         {
             int Intelligence = 0;
             int Strength = 0;
@@ -46,20 +47,20 @@ namespace Piratenpartij.Ship
                 Trading += Crew.Ability.GetAbilities()[3];
             }
 
-            Dictionary<string, int> CrewAtttributes = new Dictionary<string, int> {
+            Dictionary<string, int> CrewAbilities = new Dictionary<string, int> {
                 { "intelligence", Intelligence },
                 { "strength", Strength },
                 { "hunger", Hunger },
                 { "trading", Trading }
             };
-            return CrewAtttributes;
+            return CrewAbilities;
         }
 
         private Ship(int crewAmount)
         {
             Crewmembers = new List<Crewmember>();
             for (int i = 0; i < crewAmount; i++) {
-                Crewmembers.Add(new Crewmember());
+                Crewmembers.Add(new Crewmember(random));
             }
             Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), 100 }, {new Peugeot208(), 2 }, { new AMSPortfolio(), 10 } };
             //Trip = new Trip();
