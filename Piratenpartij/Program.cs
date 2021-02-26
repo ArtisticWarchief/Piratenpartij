@@ -18,7 +18,7 @@ namespace Piratenpartij
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ShipTestUI());
+            Application.Run(new HarborTestUI());
         }
     }
 }

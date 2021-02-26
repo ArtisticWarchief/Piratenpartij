@@ -46,14 +46,14 @@ namespace Piratenpartij
 
             foreach (var crew in newCrewMembers) {
                 if (crew.Name == subs[0]) {
-                    Ship.Ship.GetInstance().Crewmembers.Add(crew);
+                    Ships.Ship.GetInstance().Crewmembers.Add(crew);
                 }
             }
         }
 
         private void btnCrewCheck_Click(object sender, EventArgs e)
         {
-            foreach (var crew in Ship.Ship.GetInstance().Crewmembers) {
+            foreach (var crew in Ships.Ship.GetInstance().Crewmembers) {
                 Console.WriteLine(crew.ToString());
             }
         }
