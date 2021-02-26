@@ -60,6 +60,16 @@
     </Compile>
     <Compile Include="Crewmember\Crewmember.cs" />
     <Compile Include="Harbors\Harbor.cs" />
+    <Compile Include="Obstacles\Enums\EventStatus.cs" />
+    <Compile Include="Obstacles\Enums\EventType.cs" />
+    <Compile Include="Obstacles\Enums\Location.cs" />
+    <Compile Include="Obstacles\Events\CombatEvent.cs" />
+    <Compile Include="Obstacles\Events\Event.cs" />
+    <Compile Include="Obstacles\Events\EventMaker.cs" />
+    <Compile Include="Obstacles\Events\HarborEvent.cs" />
+    <Compile Include="Obstacles\Events\IslandEvent.cs" />
+    <Compile Include="Obstacles\Events\TradeEvent.cs" />
+    <Compile Include="Obstacles\Trip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShipMakeUI.cs">

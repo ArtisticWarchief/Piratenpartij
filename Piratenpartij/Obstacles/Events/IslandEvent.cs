@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Piratenpartij.Ship;
+using Piratenpartij.Ships;
 using Piratenpartij.Cargos;
 using Crewmembers;
 
@@ -13,7 +13,7 @@ namespace Piratenpartij.Obstacles
     public class IslandEvent : Event
     {
         readonly Random random = new Random();
-        public Ship.Ship ship = Ship.Ship.GetInstance();
+        public Ships.Ship ship = Ships.Ship.GetInstance();
 
         public string islandName { get; set; }
         public List<Crewmember> Crewmembers { get; set; }
