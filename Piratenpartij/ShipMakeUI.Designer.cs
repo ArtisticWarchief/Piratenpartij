@@ -1,7 +1,7 @@
 ﻿
 namespace Piratenpartij
 {
-    partial class Form1
+    partial class ShipMakeUI
     {
         /// <summary>
         /// Required designer variable.
@@ -14,8 +14,7 @@ namespace Piratenpartij
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -29,21 +28,33 @@ namespace Piratenpartij
         /// </summary>
         private void InitializeComponent()
         {
+            this.shipContent = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
-            // Form1
+            // shipContent
+            // 
+            this.shipContent.HideSelection = false;
+            this.shipContent.Location = new System.Drawing.Point(12, 12);
+            this.shipContent.Name = "shipContent";
+            this.shipContent.Size = new System.Drawing.Size(121, 97);
+            this.shipContent.TabIndex = 0;
+            this.shipContent.UseCompatibleStateImageBehavior = false;
+            this.shipContent.SelectedIndexChanged += new System.EventHandler(this.shipContent_SelectedIndexChanged);
+            // 
+            // ShipMakeUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.shipContent);
+            this.Name = "ShipMakeUI";
+            this.Text = "ShipMakeUI";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ListView shipContent;
     }
 }
-
