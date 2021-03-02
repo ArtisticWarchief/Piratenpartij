@@ -59,19 +59,7 @@
       <DependentUpon>Component1.cs</DependentUpon>
     </Compile>
     <Compile Include="Crewmember\Crewmember.cs" />
-    <Compile Include="HarborCrewmateUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HarborCrewmateUI.Designer.cs">
-      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="Harbors\Harbor.cs" />
-    <Compile Include="HarborTestUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HarborTestUI.Designer.cs">
-      <DependentUpon>HarborTestUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="Obstacles\Enums\EventStatus.cs" />
     <Compile Include="Obstacles\Enums\EventType.cs" />
     <Compile Include="Obstacles\Enums\Location.cs" />
@@ -97,12 +85,6 @@
     <Compile Include="ShipTestUI.Designer.cs">
       <DependentUpon>ShipTestUI.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="HarborCrewmateUI.resx">
-      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HarborTestUI.resx">
-      <DependentUpon>HarborTestUI.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

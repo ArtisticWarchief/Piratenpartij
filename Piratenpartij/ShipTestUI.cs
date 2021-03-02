@@ -30,14 +30,14 @@ namespace Piratenpartij
                 case "plusTop":
                     Console.WriteLine("plusTop");
                     newValue = int.Parse(totalCargoTop.Text) + 1;
-                    if (newValue <= int.Parse(totalCargoTop.Text)) {
+                    if (newValue <= int.Parse(shipAmountCargoTopAmount.Text)) {
                         totalCargoTop.Text = newValue.ToString();
                     }
                     break;
                 case "plusMiddle":
                     Console.WriteLine("plusMiddle");
                     newValue = int.Parse(totalCargoMiddle.Text) + 1;
-                    if (newValue <= int.Parse(totalCargoMiddle.Text)) {
+                    if (newValue <= int.Parse(shipAmountCargoMiddleAmount.Text)) {
                         totalCargoMiddle.Text = newValue.ToString();
                     }
                     break;
@@ -45,28 +45,28 @@ namespace Piratenpartij
                     Console.WriteLine("plusBottom");
                     newValue = int.Parse(totalCargoBottom.Text) + 1;
                     totalCargoBottom.Text = newValue.ToString();
-                    if (newValue <= int.Parse(totalCargoMiddle.Text)) {
+                    if (newValue <= int.Parse(shipAmountCargoBottomAmount.Text)) {
                         totalCargoMiddle.Text = newValue.ToString();
                     }
                     break;
                 case "plusDoubleTop":
                     Console.WriteLine("plusDoubleTop");
                     newValue = int.Parse(totalCargoTop.Text) + 10;
-                    if (newValue <= int.Parse(totalCargoTop.Text)) {
+                    if (newValue <= int.Parse(shipAmountCargoTopAmount.Text)) {
                         totalCargoTop.Text = newValue.ToString();
                     }
                     break;
                 case "plusDoubleMiddle":
                     Console.WriteLine("plusDoubleMiddle");
                     newValue = int.Parse(totalCargoMiddle.Text) + 10;
-                    if (newValue <= int.Parse(totalCargoMiddle.Text)) {
+                    if (newValue <= int.Parse(shipAmountCargoMiddleAmount.Text)) {
                         totalCargoMiddle.Text = newValue.ToString();
                     }
                     break;
                 case "plusDoubleBottom":
                     Console.WriteLine("plusDoubleBottom");
                     newValue = int.Parse(totalCargoBottom.Text) + 10;
-                    if (newValue <= int.Parse(totalCargoBottom.Text)) {
+                    if (newValue <= int.Parse(shipAmountCargoBottomAmount.Text)) {
                         totalCargoBottom.Text = newValue.ToString();
                     }
                     break;
