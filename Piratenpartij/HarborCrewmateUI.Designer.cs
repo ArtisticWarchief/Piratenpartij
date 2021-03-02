@@ -38,7 +38,7 @@ namespace Piratenpartij
             // btnHire
             // 
             this.btnHire.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHire.Location = new System.Drawing.Point(133, 288);
+            this.btnHire.Location = new System.Drawing.Point(133, 548);
             this.btnHire.Name = "btnHire";
             this.btnHire.Size = new System.Drawing.Size(124, 49);
             this.btnHire.TabIndex = 1;
@@ -52,16 +52,16 @@ namespace Piratenpartij
             this.lvHirableCrewmates.HideSelection = false;
             this.lvHirableCrewmates.Location = new System.Drawing.Point(12, 70);
             this.lvHirableCrewmates.Name = "lvHirableCrewmates";
-            this.lvHirableCrewmates.Size = new System.Drawing.Size(404, 212);
+            this.lvHirableCrewmates.Size = new System.Drawing.Size(348, 434);
             this.lvHirableCrewmates.TabIndex = 3;
             this.lvHirableCrewmates.UseCompatibleStateImageBehavior = false;
             // 
             // lvShipCrew
             // 
             this.lvShipCrew.HideSelection = false;
-            this.lvShipCrew.Location = new System.Drawing.Point(423, 70);
+            this.lvShipCrew.Location = new System.Drawing.Point(366, 70);
             this.lvShipCrew.Name = "lvShipCrew";
-            this.lvShipCrew.Size = new System.Drawing.Size(365, 212);
+            this.lvShipCrew.Size = new System.Drawing.Size(350, 434);
             this.lvShipCrew.TabIndex = 4;
             this.lvShipCrew.UseCompatibleStateImageBehavior = false;
             // 
@@ -69,7 +69,7 @@ namespace Piratenpartij
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(128, 42);
+            this.label1.Location = new System.Drawing.Point(100, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 25);
             this.label1.TabIndex = 5;
@@ -79,7 +79,7 @@ namespace Piratenpartij
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(543, 42);
+            this.label2.Location = new System.Drawing.Point(475, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(158, 25);
             this.label2.TabIndex = 6;
@@ -89,7 +89,7 @@ namespace Piratenpartij
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(742, 609);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvShipCrew);
