@@ -39,7 +39,7 @@ namespace Piratenpartij
 
         private void BtnBuyCrewmembers_Click(object sender, EventArgs e)
         {
-
+            new HarborCrewmateUI().Show();
         }
 
         private void BtnDestination_Click(object sender, EventArgs e)

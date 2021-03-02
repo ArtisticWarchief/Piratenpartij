@@ -68,7 +68,7 @@ namespace Piratenpartij.Harbors
             }
 
             PlayerShip.Money -= crewmember.Cost;
-            PlayerShip.Crewmembers.Add(crewmember);
+            PlayerShip.Crew.Add(crewmember);
         }
 
         private bool PriceCheck(int cost)
