@@ -38,7 +38,7 @@ namespace Piratenpartij
             // btnHire
             // 
             this.btnHire.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHire.Location = new System.Drawing.Point(133, 548);
+            this.btnHire.Location = new System.Drawing.Point(124, 524);
             this.btnHire.Name = "btnHire";
             this.btnHire.Size = new System.Drawing.Size(124, 49);
             this.btnHire.TabIndex = 1;
@@ -69,7 +69,7 @@ namespace Piratenpartij
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(100, 42);
+            this.label1.Location = new System.Drawing.Point(108, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 25);
             this.label1.TabIndex = 5;
@@ -79,7 +79,7 @@ namespace Piratenpartij
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(475, 42);
+            this.label2.Location = new System.Drawing.Point(462, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(158, 25);
             this.label2.TabIndex = 6;
