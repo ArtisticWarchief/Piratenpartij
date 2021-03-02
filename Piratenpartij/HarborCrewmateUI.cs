@@ -49,7 +49,7 @@ namespace Piratenpartij
                 lvHirableCrewmates.Items.Add(placeHolder);
             }
 
-            updateShipCrew();
+            UpdateShipCrew();
         }
 
         private void btnHire_Click(object sender, EventArgs e)
@@ -67,10 +67,10 @@ namespace Piratenpartij
                 newCrewMembers.RemoveAt((int)index);
             }
 
-            updateShipCrew();
+            UpdateShipCrew();
         }
 
-        private void updateShipCrew()
+        private void UpdateShipCrew()
         {
             lvShipCrew.Clear();
 
