@@ -53,7 +53,6 @@
     <Compile Include="Cargos\MountainHoliday.cs" />
     <Compile Include="Cargos\Peugeot208.cs" />
     <Compile Include="Crewmember\Crewmember.cs" />
-    <Compile Include="Crewmember\Crewmember.cs" />
     <Compile Include="Harbors\Harbor.cs" />
     <Compile Include="Obstacles\Enums\EventStatus.cs" />
     <Compile Include="Obstacles\Enums\EventType.cs" />
