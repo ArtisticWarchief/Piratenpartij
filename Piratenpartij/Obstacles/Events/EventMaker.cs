@@ -49,10 +49,10 @@ namespace Piratenpartij.Obstacles
                             temp = new TradeEvent();
                             break;
                         case EventType.PIRATES_SHIP:
-                            temp = new CombatEvent();
+                            temp = new CombatEvent(random);
                             break;
                         case EventType.ISLAND:
-                            temp = new IslandEvent();
+                            temp = new IslandEvent(random);
                             break;
                         case EventType.HARBOR:
                             temp = new HarborEvent();

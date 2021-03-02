@@ -16,9 +16,11 @@ namespace Piratenpartij
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+            /**Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HarborTestUI());
+            Application.Run(new HarborTestUI());*/
+
+            new Trip(Location.AS, Location.US).Events.ForEach(e => Console.WriteLine($"{e.EventType}, {e.Power}, {e.Status}"));
         }
     }
 }
