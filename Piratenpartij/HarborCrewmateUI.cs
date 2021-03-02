@@ -18,44 +18,80 @@ namespace Piratenpartij
         public HarborCrewmateUI()
         {
             InitializeComponent();
+            lvHirableCrewmates.View = View.Details;
+            lvHirableCrewmates.FullRowSelect = true;
+            lvHirableCrewmates.GridLines = true;
+
+            lvHirableCrewmates.Columns.Add("Name", -2, HorizontalAlignment.Center);
+            foreach (var ability in Enum.GetValues(typeof(Abilities.AbilityNames))) {
+                lvHirableCrewmates.Columns.Add(ability.ToString(), -2, HorizontalAlignment.Center);
+            }
+            lvHirableCrewmates.Columns.Add("Price", -2, HorizontalAlignment.Center);
+
+            
+            lvShipCrew.FullRowSelect = true;
+            lvShipCrew.GridLines = true;
+
             for (int i = 0; i < 3; i++) {
                 Crewmember crew = new Crewmember(random);
+                
                 newCrewMembers.Add(crew);
-                listBoxHirableCrewmates.Items.Add(newCrewMembers[i].ToString());
-                Console.WriteLine(newCrewMembers[i].ToString());
 
+                ListViewItem placeHolder = new ListViewItem(newCrewMembers[i].Name);
+                for (int j = 0; j <= newCrewMembers[i].Ability.maxAbilityIndex; j++) {
+                 placeHolder.SubItems.Add(newCrewMembers[i].Ability.GetAbilities()[j].ToString()); 
+                }
+                placeHolder.SubItems.Add(newCrewMembers[i].Cost.ToString());
+
+                lvHirableCrewmates.Items.Add(placeHolder);
             }
-        }
 
-            private void listBoxHirableCrewmates_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            updateShipCrew();
         }
 
         private void btnHire_Click(object sender, EventArgs e)
         {
-            Crewmember newMember = new Crewmember(random);
-            string chosenMember = "";
-            try {
-                chosenMember = (string)listBoxHirableCrewmates.SelectedItem;
-            } catch(InvalidCastException) {
-                Console.WriteLine("Couldn't cast to string");
+            if (lvHirableCrewmates.SelectedItems == null || lvHirableCrewmates.SelectedItems.Count > 1) {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show("Please chose one crewmember to hire.", "To many crewmembers", buttons, MessageBoxIcon.Warning);
+                return;
+            }
+            ListView.SelectedIndexCollection chosenMemberIndex = lvHirableCrewmates.SelectedIndices;
+
+            foreach (var index in chosenMemberIndex) {
+                Ship.Ship.GetInstance().Crewmembers.Add(newCrewMembers[(int)index]);
+                lvHirableCrewmates.Items.RemoveAt((int)index);
+                newCrewMembers.RemoveAt((int)index);
             }
 
-            string[] subs = chosenMember.Split(' ');
-
-            foreach (var crew in newCrewMembers) {
-                if (crew.Name == subs[0]) {
-                    Ships.Ship.GetInstance().Crewmembers.Add(crew);
-                }
-            }
+            updateShipCrew();
         }
 
-        private void btnCrewCheck_Click(object sender, EventArgs e)
+        private void updateShipCrew()
         {
-            foreach (var crew in Ships.Ship.GetInstance().Crewmembers) {
-                Console.WriteLine(crew.ToString());
+            lvShipCrew.Clear();
+
+            lvShipCrew.View = View.Details;
+
+            lvShipCrew.Columns.Add("Name",-2, HorizontalAlignment.Center);
+            foreach (var ability in Enum.GetValues(typeof(Abilities.AbilityNames))) {
+                lvShipCrew.Columns.Add(ability.ToString(), -2, HorizontalAlignment.Center);
             }
+            lvShipCrew.Columns.Add("Price", -2, HorizontalAlignment.Center);
+
+            foreach (var crew in Ship.Ship.GetInstance().Crewmembers) {
+                //Console.WriteLine(crew.ToString());
+                ListViewItem placeHolder = new ListViewItem(crew.Name);
+                for (int j = 0; j <= crew.Ability.maxAbilityIndex; j++) {
+                    placeHolder.SubItems.Add(crew.Ability.GetAbilities()[j].ToString());
+                }
+                placeHolder.SubItems.Add(crew.Cost.ToString());
+
+                lvShipCrew.Items.Add(placeHolder);
+            }
+
+
+            lvShipCrew.Columns[0].Width = -2;
         }
     }
 }

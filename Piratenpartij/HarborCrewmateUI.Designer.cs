@@ -28,60 +28,85 @@ namespace Piratenpartij
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxHirableCrewmates = new System.Windows.Forms.ListBox();
             this.btnHire = new System.Windows.Forms.Button();
-            this.btnCrewCheck = new System.Windows.Forms.Button();
+            this.lvHirableCrewmates = new System.Windows.Forms.ListView();
+            this.lvShipCrew = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // listBoxHirableCrewmates
-            // 
-            this.listBoxHirableCrewmates.AccessibleName = "listBoxHirableCrewmates";
-            this.listBoxHirableCrewmates.BackColor = System.Drawing.Color.White;
-            this.listBoxHirableCrewmates.FormattingEnabled = true;
-            this.listBoxHirableCrewmates.Location = new System.Drawing.Point(260, 28);
-            this.listBoxHirableCrewmates.Name = "listBoxHirableCrewmates";
-            this.listBoxHirableCrewmates.Size = new System.Drawing.Size(491, 173);
-            this.listBoxHirableCrewmates.TabIndex = 0;
-            this.listBoxHirableCrewmates.SelectedIndexChanged += new System.EventHandler(this.listBoxHirableCrewmates_SelectedIndexChanged);
             // 
             // btnHire
             // 
-            this.btnHire.Location = new System.Drawing.Point(467, 223);
+            this.btnHire.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHire.Location = new System.Drawing.Point(133, 288);
             this.btnHire.Name = "btnHire";
-            this.btnHire.Size = new System.Drawing.Size(75, 23);
+            this.btnHire.Size = new System.Drawing.Size(124, 49);
             this.btnHire.TabIndex = 1;
             this.btnHire.Text = "Hire";
             this.btnHire.UseVisualStyleBackColor = true;
             this.btnHire.Click += new System.EventHandler(this.btnHire_Click);
             // 
-            // btnCrewCheck
+            // lvHirableCrewmates
             // 
-            this.btnCrewCheck.Location = new System.Drawing.Point(541, 318);
-            this.btnCrewCheck.Name = "btnCrewCheck";
-            this.btnCrewCheck.Size = new System.Drawing.Size(75, 23);
-            this.btnCrewCheck.TabIndex = 2;
-            this.btnCrewCheck.Text = "button1";
-            this.btnCrewCheck.UseVisualStyleBackColor = true;
-            this.btnCrewCheck.Click += new System.EventHandler(this.btnCrewCheck_Click);
+            this.lvHirableCrewmates.GridLines = true;
+            this.lvHirableCrewmates.HideSelection = false;
+            this.lvHirableCrewmates.Location = new System.Drawing.Point(12, 70);
+            this.lvHirableCrewmates.Name = "lvHirableCrewmates";
+            this.lvHirableCrewmates.Size = new System.Drawing.Size(404, 212);
+            this.lvHirableCrewmates.TabIndex = 3;
+            this.lvHirableCrewmates.UseCompatibleStateImageBehavior = false;
+            // 
+            // lvShipCrew
+            // 
+            this.lvShipCrew.HideSelection = false;
+            this.lvShipCrew.Location = new System.Drawing.Point(423, 70);
+            this.lvShipCrew.Name = "lvShipCrew";
+            this.lvShipCrew.Size = new System.Drawing.Size(365, 212);
+            this.lvShipCrew.TabIndex = 4;
+            this.lvShipCrew.UseCompatibleStateImageBehavior = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(128, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 25);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Crew For Hire";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(543, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(158, 25);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Crew onboard";
             // 
             // HarborCrewmateUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnCrewCheck);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lvShipCrew);
+            this.Controls.Add(this.lvHirableCrewmates);
             this.Controls.Add(this.btnHire);
-            this.Controls.Add(this.listBoxHirableCrewmates);
             this.Name = "HarborCrewmateUI";
             this.Text = "HarborCrewmateUI";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBoxHirableCrewmates;
         private System.Windows.Forms.Button btnHire;
-        private System.Windows.Forms.Button btnCrewCheck;
+        private System.Windows.Forms.ListView lvHirableCrewmates;
+        private System.Windows.Forms.ListView lvShipCrew;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
