@@ -62,7 +62,7 @@ namespace Piratenpartij
             this.plusTop.TabIndex = 0;
             this.plusTop.Text = "+";
             this.plusTop.UseVisualStyleBackColor = true;
-            this.plusTop.Click += new System.EventHandler(this.plus_Click);
+            this.plusTop.Click += new System.EventHandler(this.Plus_Click);
             // 
             // plusMiddle
             // 
@@ -72,7 +72,7 @@ namespace Piratenpartij
             this.plusMiddle.TabIndex = 1;
             this.plusMiddle.Text = "+";
             this.plusMiddle.UseVisualStyleBackColor = true;
-            this.plusMiddle.Click += new System.EventHandler(this.plus_Click);
+            this.plusMiddle.Click += new System.EventHandler(this.Plus_Click);
             // 
             // plusBottom
             // 
@@ -82,7 +82,7 @@ namespace Piratenpartij
             this.plusBottom.TabIndex = 2;
             this.plusBottom.Text = "+";
             this.plusBottom.UseVisualStyleBackColor = true;
-            this.plusBottom.Click += new System.EventHandler(this.plus_Click);
+            this.plusBottom.Click += new System.EventHandler(this.Plus_Click);
             // 
             // plusDoubleTop
             // 
@@ -92,7 +92,7 @@ namespace Piratenpartij
             this.plusDoubleTop.TabIndex = 3;
             this.plusDoubleTop.Text = "++";
             this.plusDoubleTop.UseVisualStyleBackColor = true;
-            this.plusDoubleTop.Click += new System.EventHandler(this.plus_Click);
+            this.plusDoubleTop.Click += new System.EventHandler(this.Plus_Click);
             // 
             // plusDoubleMiddle
             // 
@@ -102,7 +102,7 @@ namespace Piratenpartij
             this.plusDoubleMiddle.TabIndex = 4;
             this.plusDoubleMiddle.Text = "++";
             this.plusDoubleMiddle.UseVisualStyleBackColor = true;
-            this.plusDoubleMiddle.Click += new System.EventHandler(this.plus_Click);
+            this.plusDoubleMiddle.Click += new System.EventHandler(this.Plus_Click);
             // 
             // plusDoubleBottom
             // 
@@ -112,7 +112,7 @@ namespace Piratenpartij
             this.plusDoubleBottom.TabIndex = 5;
             this.plusDoubleBottom.Text = "++";
             this.plusDoubleBottom.UseVisualStyleBackColor = true;
-            this.plusDoubleBottom.Click += new System.EventHandler(this.plus_Click);
+            this.plusDoubleBottom.Click += new System.EventHandler(this.Plus_Click);
             // 
             // minusTop
             // 
@@ -122,7 +122,7 @@ namespace Piratenpartij
             this.minusTop.TabIndex = 6;
             this.minusTop.Text = "-";
             this.minusTop.UseVisualStyleBackColor = true;
-            this.minusTop.Click += new System.EventHandler(this.minus_Click);
+            this.minusTop.Click += new System.EventHandler(this.Minus_Click);
             // 
             // minusDoubleTop
             // 
@@ -132,7 +132,7 @@ namespace Piratenpartij
             this.minusDoubleTop.TabIndex = 7;
             this.minusDoubleTop.Text = "--";
             this.minusDoubleTop.UseVisualStyleBackColor = true;
-            this.minusDoubleTop.Click += new System.EventHandler(this.minus_Click);
+            this.minusDoubleTop.Click += new System.EventHandler(this.Minus_Click);
             // 
             // minusMiddle
             // 
@@ -142,7 +142,7 @@ namespace Piratenpartij
             this.minusMiddle.TabIndex = 8;
             this.minusMiddle.Text = "-";
             this.minusMiddle.UseVisualStyleBackColor = true;
-            this.minusMiddle.Click += new System.EventHandler(this.minus_Click);
+            this.minusMiddle.Click += new System.EventHandler(this.Minus_Click);
             // 
             // minusDoubleMiddle
             // 
@@ -152,7 +152,7 @@ namespace Piratenpartij
             this.minusDoubleMiddle.TabIndex = 9;
             this.minusDoubleMiddle.Text = "--";
             this.minusDoubleMiddle.UseVisualStyleBackColor = true;
-            this.minusDoubleMiddle.Click += new System.EventHandler(this.minus_Click);
+            this.minusDoubleMiddle.Click += new System.EventHandler(this.Minus_Click);
             // 
             // minusBottom
             // 
@@ -162,7 +162,7 @@ namespace Piratenpartij
             this.minusBottom.TabIndex = 10;
             this.minusBottom.Text = "--";
             this.minusBottom.UseVisualStyleBackColor = true;
-            this.minusBottom.Click += new System.EventHandler(this.minus_Click);
+            this.minusBottom.Click += new System.EventHandler(this.Minus_Click);
             // 
             // minusDoubleBottom
             // 
@@ -172,7 +172,7 @@ namespace Piratenpartij
             this.minusDoubleBottom.TabIndex = 11;
             this.minusDoubleBottom.Text = "--";
             this.minusDoubleBottom.UseVisualStyleBackColor = true;
-            this.minusDoubleBottom.Click += new System.EventHandler(this.minus_Click);
+            this.minusDoubleBottom.Click += new System.EventHandler(this.Minus_Click);
             // 
             // totalCargoTop
             // 
@@ -191,7 +191,7 @@ namespace Piratenpartij
             this.sellCargo.TabIndex = 14;
             this.sellCargo.Text = "SELL";
             this.sellCargo.UseVisualStyleBackColor = true;
-            this.sellCargo.Click += new System.EventHandler(this.sellCargo_Click);
+            this.sellCargo.Click += new System.EventHandler(this.SellCargo_Click);
             // 
             // totalCargoMiddle
             // 

@@ -52,32 +52,8 @@
     <Compile Include="Cargos\Cargo.cs" />
     <Compile Include="Cargos\MountainHoliday.cs" />
     <Compile Include="Cargos\Peugeot208.cs" />
-    <Compile Include="Component1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Component1.Designer.cs">
-      <DependentUpon>Component1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Crewmember\Crewmember.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HarborCrewmateUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HarborCrewmateUI.Designer.cs">
-      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="Harbors\Harbor.cs" />
-    <Compile Include="HarborTestUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HarborTestUI.Designer.cs">
-      <DependentUpon>HarborTestUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="Obstacles\Enums\EventStatus.cs" />
     <Compile Include="Obstacles\Enums\EventType.cs" />
     <Compile Include="Obstacles\Enums\Location.cs" />
@@ -90,13 +66,19 @@
     <Compile Include="Obstacles\Trip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\HarborScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\HarborScreen.Designer.cs">
+      <DependentUpon>HarborScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\MainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\MainScreen.Designer.cs">
+      <DependentUpon>MainScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ship\Ship.cs" />
-    <EmbeddedResource Include="HarborCrewmateUI.resx">
-      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HarborTestUI.resx">
-      <DependentUpon>HarborTestUI.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -106,6 +88,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Screens\HarborScreen.resx">
+      <DependentUpon>HarborScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\MainScreen.resx">
+      <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include=".editorconfig" />
     <None Include=".editorconfig.inferred" />
     <None Include="Properties\Settings.settings">
@@ -121,6 +109,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Bootje Cartoon.gif" />
+    <Content Include="Resources\Flag USA.png" />
+    <Content Include="Resources\harbor cartoon.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
