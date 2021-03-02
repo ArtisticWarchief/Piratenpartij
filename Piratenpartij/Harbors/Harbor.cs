@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Crewmembers;
 using Piratenpartij.Cargos;
-using Piratenpartij.Ship;
+using Piratenpartij.Ships;
 
 namespace Piratenpartij.Harbors
 {
@@ -18,14 +18,14 @@ namespace Piratenpartij.Harbors
         public List<string> Destinations { get; set; }
         public List<string> Crewmembers { get; set; }
         public Dictionary<Cargo, int> CargoInStock { get; set; }
-        public Ship.Ship PlayerShip { get; private set; }
+        public Ship PlayerShip { get; private set; }
 
         public Harbor()
         {
             InitializeCargo();
             InitializeCrewmembers();           
             FoodPrice = random.Next(1, 10);
-            PlayerShip = Ship.Ship.GetInstance();
+            PlayerShip = Ship.GetInstance();
         }
 
         public void BuyFood(int amount, int price)
@@ -38,11 +38,18 @@ namespace Piratenpartij.Harbors
            
         }
 
-        public void BuyCargo(Cargo cargo)
+        public void BuyCargo(Cargo cargo, int amount)
         {
             if (!PriceCheck(cargo.Price)) {
                 return;
             }
+
+            foreach (Cargo cargoOnShip in PlayerShip.Cargo.Keys) {
+                if (cargo.GetType() == cargoOnShip.GetType()) {
+                    PlayerShip.Cargo[cargoOnShip] += amount;
+                    break;
+                }
+            }           
             // dunno how this list gets represented in the UI, assuming its just a list of generic Cargo
             CargoInStock.FirstOrDefault(e => e.Key == cargo);
 
