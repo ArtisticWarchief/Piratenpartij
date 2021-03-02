@@ -60,11 +60,15 @@
     </Compile>
     <Compile Include="Crewmember\Crewmember.cs" />
     <Compile Include="HarborCrewmateUI.cs">
-    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HarborCrewmateUI.Designer.cs">
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HarborCrewmateUI.Designer.cs" />
     <Compile Include="Harbors\Harbor.cs" />
     <Compile Include="HarborTestUI.cs">
       <SubType>Form</SubType>
@@ -82,7 +86,6 @@
     <Compile Include="Obstacles\Events\IslandEvent.cs" />
     <Compile Include="Obstacles\Events\TradeEvent.cs" />
     <Compile Include="Obstacles\Trip.cs" />
-=========
     <Compile Include="Harbors\Harbor.cs" />
     <Compile Include="ShipMakeUI.cs">
       <SubType>Form</SubType>
@@ -97,15 +100,13 @@
     <Compile Include="ShipTestUI.Designer.cs">
       <DependentUpon>ShipTestUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ship\Ship.cs" />
     <EmbeddedResource Include="HarborCrewmateUI.resx">
       <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HarborTestUI.resx">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Ship.cs" />
->>>>>>>>> Temporary merge branch 2
->>>>>>>>> Temporary merge branch 2
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
