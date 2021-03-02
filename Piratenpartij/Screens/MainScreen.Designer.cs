@@ -30,8 +30,6 @@ namespace Piratenpartij
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
-            this.ShipPictureBox = new System.Windows.Forms.PictureBox();
-            this.EventPictureBox = new System.Windows.Forms.PictureBox();
             this.ChoiceOneButton = new System.Windows.Forms.Button();
             this.ChoiceTwoButton = new System.Windows.Forms.Button();
             this.ChoiceThreeButton = new System.Windows.Forms.Button();
@@ -48,31 +46,13 @@ namespace Piratenpartij
             this.HappinessText = new System.Windows.Forms.Label();
             this.TravelProgressBar = new System.Windows.Forms.ProgressBar();
             this.HappinessAmountText = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.ShipPictureBox)).BeginInit();
+            this.EventPictureBox = new System.Windows.Forms.PictureBox();
+            this.ShipPictureBox = new System.Windows.Forms.PictureBox();
+            this.FoodText = new System.Windows.Forms.Label();
+            this.FoodAmountText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EventPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShipPictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ShipPictureBox
-            // 
-            this.ShipPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("ShipPictureBox.Image")));
-            this.ShipPictureBox.Location = new System.Drawing.Point(12, 12);
-            this.ShipPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ShipPictureBox.Name = "ShipPictureBox";
-            this.ShipPictureBox.Size = new System.Drawing.Size(224, 135);
-            this.ShipPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ShipPictureBox.TabIndex = 0;
-            this.ShipPictureBox.TabStop = false;
-            // 
-            // EventPictureBox
-            // 
-            this.EventPictureBox.Image = global::Piratenpartij.Properties.Resources.harbor_cartoon;
-            this.EventPictureBox.Location = new System.Drawing.Point(243, 12);
-            this.EventPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.EventPictureBox.Name = "EventPictureBox";
-            this.EventPictureBox.Size = new System.Drawing.Size(417, 276);
-            this.EventPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.EventPictureBox.TabIndex = 1;
-            this.EventPictureBox.TabStop = false;
             // 
             // ChoiceOneButton
             // 
@@ -247,11 +227,57 @@ namespace Piratenpartij
             this.HappinessAmountText.Text = "250";
             this.HappinessAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // EventPictureBox
+            // 
+            this.EventPictureBox.Image = global::Piratenpartij.Properties.Resources.piraten_plaatje;
+            this.EventPictureBox.Location = new System.Drawing.Point(243, 12);
+            this.EventPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EventPictureBox.Name = "EventPictureBox";
+            this.EventPictureBox.Size = new System.Drawing.Size(417, 276);
+            this.EventPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.EventPictureBox.TabIndex = 1;
+            this.EventPictureBox.TabStop = false;
+            // 
+            // ShipPictureBox
+            // 
+            this.ShipPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("ShipPictureBox.Image")));
+            this.ShipPictureBox.Location = new System.Drawing.Point(12, 12);
+            this.ShipPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShipPictureBox.Name = "ShipPictureBox";
+            this.ShipPictureBox.Size = new System.Drawing.Size(224, 135);
+            this.ShipPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ShipPictureBox.TabIndex = 0;
+            this.ShipPictureBox.TabStop = false;
+            // 
+            // FoodText
+            // 
+            this.FoodText.AutoSize = true;
+            this.FoodText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FoodText.Location = new System.Drawing.Point(8, 323);
+            this.FoodText.Name = "FoodText";
+            this.FoodText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.FoodText.Size = new System.Drawing.Size(56, 26);
+            this.FoodText.TabIndex = 24;
+            this.FoodText.Text = "Food :";
+            // 
+            // FoodAmountText
+            // 
+            this.FoodAmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FoodAmountText.Location = new System.Drawing.Point(176, 321);
+            this.FoodAmountText.Margin = new System.Windows.Forms.Padding(0);
+            this.FoodAmountText.Name = "FoodAmountText";
+            this.FoodAmountText.Size = new System.Drawing.Size(56, 25);
+            this.FoodAmountText.TabIndex = 25;
+            this.FoodAmountText.Text = "25";
+            this.FoodAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 433);
+            this.Controls.Add(this.FoodAmountText);
+            this.Controls.Add(this.FoodText);
             this.Controls.Add(this.HappinessAmountText);
             this.Controls.Add(this.TravelProgressBar);
             this.Controls.Add(this.HappinessText);
@@ -273,9 +299,8 @@ namespace Piratenpartij
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainScreen";
             this.Text = "Game time!";
-            this.Load += new System.EventHandler(this.MainScreen_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ShipPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShipPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,5 +326,7 @@ namespace Piratenpartij
         private System.Windows.Forms.Label HappinessText;
         private System.Windows.Forms.ProgressBar TravelProgressBar;
         private System.Windows.Forms.Label HappinessAmountText;
+        private System.Windows.Forms.Label FoodText;
+        private System.Windows.Forms.Label FoodAmountText;
     }
 }
