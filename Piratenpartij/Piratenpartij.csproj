@@ -52,7 +52,6 @@
     <Compile Include="Cargos\Cargo.cs" />
     <Compile Include="Cargos\MountainHoliday.cs" />
     <Compile Include="Cargos\Peugeot208.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Component1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -73,9 +72,20 @@
     <Compile Include="HarborTestUI.Designer.cs">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Obstacles\Enums\EventStatus.cs" />
+    <Compile Include="Obstacles\Enums\EventType.cs" />
+    <Compile Include="Obstacles\Enums\Location.cs" />
+    <Compile Include="Obstacles\Events\CombatEvent.cs" />
+    <Compile Include="Obstacles\Events\Event.cs" />
+    <Compile Include="Obstacles\Events\EventMaker.cs" />
+    <Compile Include="Obstacles\Events\HarborEvent.cs" />
+    <Compile Include="Obstacles\Events\IslandAttributes.cs" />
+    <Compile Include="Obstacles\Events\IslandEvent.cs" />
+    <Compile Include="Obstacles\Events\TradeEvent.cs" />
+    <Compile Include="Obstacles\Trip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ship.cs" />
+    <Compile Include="Ship\Ship.cs" />
     <EmbeddedResource Include="HarborTestUI.resx">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </EmbeddedResource>
