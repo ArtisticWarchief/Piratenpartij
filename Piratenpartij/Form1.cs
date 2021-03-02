@@ -12,7 +12,7 @@ namespace Piratenpartij
 {
     public partial class Form1 : Form
     {
-        
+        HarborCrewmateUI crwmateUI = new HarborCrewmateUI();
         public Form1()
         {
             InitializeComponent();
@@ -20,10 +20,16 @@ namespace Piratenpartij
 
         private void btnGenName_Click(object sender, EventArgs e)
         {
-            Crewmember.Crewmember crew1 = new Crewmember.Crewmember();
+            Crewmembers.Crewmember crew1 = new Crewmembers.Crewmember(random);
             crew1.Ability.PrintAbilities();
             Console.WriteLine("Cost: {0}", crew1.Cost);
             Console.WriteLine("Name: {0}", crew1.Name);
+            this.Hide();
+            crwmateUI.ShowDialog();
+            ////Crewmember.Crewmember crew1 = new Crewmember.Crewmember();
+            //crew1.Ability.PrintAbilities();
+            //Console.WriteLine("Cost: {0}", crew1.Cost);
+            //Console.WriteLine("Name: {0}", crew1.Name);
         }
     }
 }
