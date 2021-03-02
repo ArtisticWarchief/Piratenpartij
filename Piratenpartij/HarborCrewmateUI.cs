@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Crewmembers;
+using Piratenpartij.Ships;
 
 namespace Piratenpartij
 {
@@ -59,7 +60,7 @@ namespace Piratenpartij
             ListView.SelectedIndexCollection chosenMemberIndex = lvHirableCrewmates.SelectedIndices;
 
             foreach (var index in chosenMemberIndex) {
-                Ship.Ship.GetInstance().Crewmembers.Add(newCrewMembers[(int)index]);
+                Ship.GetInstance().Crewmembers.Add(newCrewMembers[(int)index]);
                 lvHirableCrewmates.Items.RemoveAt((int)index);
                 newCrewMembers.RemoveAt((int)index);
             }
@@ -79,8 +80,7 @@ namespace Piratenpartij
             }
             lvShipCrew.Columns.Add("Price", -2, HorizontalAlignment.Center);
 
-            foreach (var crew in Ship.Ship.GetInstance().Crewmembers) {
-                //Console.WriteLine(crew.ToString());
+            foreach (var crew in Ship.GetInstance().Crewmembers) {
                 ListViewItem placeHolder = new ListViewItem(crew.Name);
                 for (int j = 0; j <= crew.Ability.maxAbilityIndex; j++) {
                     placeHolder.SubItems.Add(crew.Ability.GetAbilities()[j].ToString());
@@ -90,6 +90,11 @@ namespace Piratenpartij
                 lvShipCrew.Items.Add(placeHolder);
             }
 
+            ListViewItem totalAbilities = new ListViewItem("Total");
+            foreach (Abilities.AbilityNames abilityNames in Enum.GetValues(typeof(Abilities.AbilityNames))) {
+                totalAbilities.SubItems.Add(Ship.GetInstance().CrewAbilities[abilityNames].ToString());
+            }
+            lvShipCrew.Items.Add(totalAbilities);
 
             lvShipCrew.Columns[0].Width = -2;
         }
