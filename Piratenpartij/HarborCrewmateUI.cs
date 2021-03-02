@@ -96,7 +96,7 @@ namespace Piratenpartij
                 lvShipCrew.Items.Add(placeHolder);
             }
 
-            Ship.GetInstance().CrewAbilitiesDict();
+            Ship.GetInstance().CrewAbilitiesUpdate();
 
             ListViewItem totalAbilities = new ListViewItem("Total");
             foreach (Abilities.AbilityNames abilityNames in Enum.GetValues(typeof(Abilities.AbilityNames))) {
@@ -106,6 +106,11 @@ namespace Piratenpartij
             lvShipCrew.Items.Add(totalAbilities);
 
             lvShipCrew.Columns[0].Width = -2;
+        }
+
+        private void HarborCrewmateUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
