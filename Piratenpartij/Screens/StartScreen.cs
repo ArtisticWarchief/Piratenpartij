@@ -93,11 +93,10 @@ namespace Piratenpartij.Screens
             }
 
             UpdateShipCrew();
-            if (Ship.GetInstance().Crew.Count != 5) {
-                return;
+            if (Ship.GetInstance().Crew.Count == 5) {
+                Hide();
+                new MainScreen().Show();
             }
-            Hide();
-            new MainScreen().Show();
         }
 
         private void StartScreen_Load(object sender, EventArgs e)
