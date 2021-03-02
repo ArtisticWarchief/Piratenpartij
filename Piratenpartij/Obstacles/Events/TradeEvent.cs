@@ -12,9 +12,11 @@ namespace Piratenpartij.Obstacles
     //TradeEvent could happen against a Merchant ship along a trip
     public class TradeEvent : Event
     {
-        static readonly Random random = new Random();
+        private readonly Random random = new Random();
 
-        private Dictionary<Cargo, int> EventCargos { get; set; }
+        public Dictionary<Cargo, int> EventCargos { get; set; }
+        Dictionary<Cargo, int> shipCargos = Ship.GetInstance().Cargo;
+
         public TradeEvent() : base(EventType.MERCHANT_SHIP)
         {
 
@@ -26,18 +28,27 @@ namespace Piratenpartij.Obstacles
 
 
         }
-        public void Trade()
+        public void Trade(Cargo cargo, int amount)
         {
+            if (EventCargos.Where(ec => ec.Key.GetType() == cargo.GetType() && ec.Value >= amount).Any()) {
+                KeyValuePair<Cargo, int> matchedPair = EventCargos.Where(c => c.Key.GetType() == cargo.GetType()).First();
+                EventCargos[matchedPair.Key] -= amount;
+                if (shipCargos.Where(sc => sc.Key.GetType() == cargo.GetType()).Any()) {
+                    KeyValuePair<Cargo, int> temp = shipCargos.Where(c => c.Key.GetType() == cargo.GetType()).First();
+                    shipCargos[temp.Key] += amount;
+                }
+            }
 
             Status = Enums.EventStatus.FINISHED;
         }
 
         public void Overtake()
         {
-            Dictionary<Cargo, int> shipCargos = Ship.GetInstance().Cargo;
-            foreach(KeyValuePair<Cargo, int> cargo in EventCargos) {
-                if (shipCargos.ContainsKey(cargo.Key)) {
-                    shipCargos[cargo.Key] += EventCargos[cargo.Key];
+            foreach (KeyValuePair<Cargo, int> cargo in EventCargos) {
+
+                if (shipCargos.Where(c => c.Key.GetType() == cargo.Key.GetType()).Any()) {
+                    KeyValuePair<Cargo, int> temp = shipCargos.Where(c => c.Key.GetType() == cargo.Key.GetType()).First();
+                    shipCargos[temp.Key] += cargo.Value;
                 }
             }
             Status = Enums.EventStatus.FINISHED;
