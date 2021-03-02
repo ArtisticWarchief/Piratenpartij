@@ -35,7 +35,6 @@ namespace Piratenpartij
             this.ChoiceOneButton = new System.Windows.Forms.Button();
             this.ChoiceTwoButton = new System.Windows.Forms.Button();
             this.ChoiceThreeButton = new System.Windows.Forms.Button();
-            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.CrewMemberText = new System.Windows.Forms.Label();
             this.CargoType1Text = new System.Windows.Forms.Label();
             this.CargoType1AmountText = new System.Windows.Forms.Label();
@@ -107,12 +106,6 @@ namespace Piratenpartij
             this.ChoiceThreeButton.Text = "ChoiceThree";
             this.ChoiceThreeButton.UseVisualStyleBackColor = true;
             this.ChoiceThreeButton.Click += new System.EventHandler(this.ChoiceThreeButton_Click);
-            // 
-            // directorySearcher1
-            // 
-            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
             // CrewMemberText
             // 
@@ -276,7 +269,6 @@ namespace Piratenpartij
         private System.Windows.Forms.Button ChoiceOneButton;
         private System.Windows.Forms.Button ChoiceTwoButton;
         private System.Windows.Forms.Button ChoiceThreeButton;
-        private System.DirectoryServices.DirectorySearcher directorySearcher1;
         private System.Windows.Forms.Label CrewMemberText;
         private System.Windows.Forms.Label CargoType1Text;
         private System.Windows.Forms.Label CargoType1AmountText;

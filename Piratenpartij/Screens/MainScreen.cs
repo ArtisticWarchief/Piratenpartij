@@ -4,6 +4,7 @@ using System.IO;
 using System.Media;
 using System.Reflection;
 using System.Windows.Forms;
+using Piratenpartij.Obstacles;
 
 namespace Piratenpartij
 {
@@ -41,6 +42,13 @@ namespace Piratenpartij
             cargoType3AmountLabel = CargoType3AmountText;
             //happinessAmountLabel = 
             crewMemberAmountLabel = CrewMemberAmountText;
+
+            LoadScreenFirstTime();
+        }
+
+        private void LoadScreenFirstTime()
+        {
+            ShowNewEvent(EventType.HARBOR, "1", "2", "3");
         }
 
         #region ButtonPresses
@@ -59,13 +67,13 @@ namespace Piratenpartij
         }
         #endregion
 
-        public static void ShowNewEvent(int eventType, string choiceOne, string choiceTwo, string choiceThree)
+        public static void ShowNewEvent(EventType eventType, string choiceOne, string choiceTwo, string choiceThree)
         {
             choiceButtonOne.Text = choiceOne;
             choiceButtonTwo.Text = choiceTwo;
             choiceButtonThree.Text = choiceThree;
 
-            eventPictureBox.Image = bitmaps[eventType];
+            eventPictureBox.Image = bitmaps[(int)eventType];
         }
 
         public static void ChangeCargoAmountText(int cargoType, int amount)
