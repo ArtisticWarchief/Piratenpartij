@@ -34,7 +34,7 @@ namespace Piratenpartij.Ships
                 return ShipInstance;
             }
             else {
-                ShipInstance = new Ship(8);
+                ShipInstance = new Ship();
                 return ShipInstance;
             }
         }
@@ -50,18 +50,17 @@ namespace Piratenpartij.Ships
             return CrewString;
         }
 
-        public Dictionary<AbilityNames, int> CrewAbilitiesDict()
+        public void CrewAbilitiesUpdate()
         {
+            CrewAbilities[(AbilityNames)0] = 0;
+            CrewAbilities[(AbilityNames)1] = 0;
+            CrewAbilities[(AbilityNames)2] = 0;
+
             foreach (Crewmember Crewmate in Crew) {
-                AbilityNames ability1 = CrewAbilities.ElementAt(0).Key;
-                CrewAbilities[ability1] += Crewmate.Ability.GetAbilities()[0];
-                AbilityNames ability2 = CrewAbilities.ElementAt(1).Key;
-                CrewAbilities[ability2] += Crewmate.Ability.GetAbilities()[1];
-                AbilityNames ability3 = CrewAbilities.ElementAt(2).Key;
-                CrewAbilities[ability3] += Crewmate.Ability.GetAbilities()[2];
+                CrewAbilities[(AbilityNames)0] += Crewmate.Ability.GetAbilities()[0];
+                CrewAbilities[(AbilityNames)1] += Crewmate.Ability.GetAbilities()[1];
+                CrewAbilities[(AbilityNames)2] += Crewmate.Ability.GetAbilities()[2];
             }
-            
-            return CrewAbilities;
         }
         public string CrewAbilitiesString()
         {
@@ -92,14 +91,10 @@ namespace Piratenpartij.Ships
             return total;
         }
 
-        private Ship(int crewAmount)
+        private Ship()
         {
             Crew = new List<Crewmember>();
-            for (int i = 0; i < crewAmount; i++) {
-                Crewmember Crewmate = new Crewmember(random);
-                Crew.Add(Crewmate);
-            };
-            CrewAbilitiesDict();
+            //CrewAbilitiesUpdate();
             Console.WriteLine("You have the following crew: " + ShowCrew());
             Console.WriteLine("The combined stats of your crew are as follows: " + CrewAbilitiesString());
             int Hunger = TotalHungerUsage();

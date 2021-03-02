@@ -24,5 +24,10 @@ namespace Piratenpartij
         {
 
         }
+
+        private void ShipMakeUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -79,6 +79,24 @@
     <Compile Include="Screens\MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\StartScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\StartScreen.Designer.cs">
+      <DependentUpon>StartScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipMakeUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipMakeUI.Designer.cs">
+      <DependentUpon>ShipMakeUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipTestUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipTestUI.Designer.cs">
+      <DependentUpon>ShipTestUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ship\Ship.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +112,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\StartScreen.resx">
+      <DependentUpon>StartScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipMakeUI.resx">
+      <DependentUpon>ShipMakeUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipTestUI.resx">
+      <DependentUpon>ShipTestUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".editorconfig" />
     <None Include=".editorconfig.inferred" />
