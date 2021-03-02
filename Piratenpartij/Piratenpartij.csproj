@@ -35,7 +35,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,10 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\Abilities.cs" />
+    <Compile Include="Attribute\AbilityNames.cs" />
     <Compile Include="Cargos\AMSPortfolio.cs" />
     <Compile Include="Cargos\Cargo.cs" />
     <Compile Include="Cargos\MountainHoliday.cs" />
     <Compile Include="Cargos\Peugeot208.cs" />
+    <Compile Include="Component1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component1.Designer.cs">
+      <DependentUpon>Component1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crewmember\Crewmember.cs" />
+    <Compile Include="HarborCrewmateUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HarborCrewmateUI.Designer.cs">
+      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Harbors\Harbor.cs" />
     <Compile Include="HarborTestUI.cs">
       <SubType>Form</SubType>
@@ -58,37 +72,36 @@
     <Compile Include="HarborTestUI.Designer.cs">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="IetsLeuks.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IetsLeuks.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Screens\HarborScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Screens\HarborScreen.Designer.cs">
-      <DependentUpon>HarborScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Screens\MainScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Screens\MainScreen.Designer.cs">
-      <DependentUpon>MainScreen.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Obstacles\Enums\EventStatus.cs" />
+    <Compile Include="Obstacles\Enums\EventType.cs" />
+    <Compile Include="Obstacles\Enums\Location.cs" />
+    <Compile Include="Obstacles\Events\CombatEvent.cs" />
+    <Compile Include="Obstacles\Events\Event.cs" />
+    <Compile Include="Obstacles\Events\EventMaker.cs" />
+    <Compile Include="Obstacles\Events\HarborEvent.cs" />
+    <Compile Include="Obstacles\Events\IslandEvent.cs" />
+    <Compile Include="Obstacles\Events\TradeEvent.cs" />
+    <Compile Include="Obstacles\Trip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipMakeUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipMakeUI.Designer.cs">
+      <DependentUpon>ShipMakeUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Ship.cs" />
+    <Compile Include="ShipTestUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipTestUI.Designer.cs">
+      <DependentUpon>ShipTestUI.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="HarborCrewmateUI.resx">
+      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HarborTestUI.resx">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IetsLeuks.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>IetsLeuks.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Screens\HarborScreen.resx">
-      <DependentUpon>HarborScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Screens\MainScreen.resx">
-      <DependentUpon>MainScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,8 +111,15 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ShipMakeUI.resx">
+      <DependentUpon>ShipMakeUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipTestUI.resx">
+      <DependentUpon>ShipTestUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include=".editorconfig" />
+    <None Include=".editorconfig.inferred" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,14 +133,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\harbor cartoon.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Bootje Cartoon.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Flag USA.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
