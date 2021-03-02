@@ -67,7 +67,7 @@ namespace Piratenpartij
             ShowNewEvent(EventType.HARBOR, "1", "2", "3");
             UpdateAllCargos(Ships.Ship.GetInstance().Cargo);
             ChangeMoneyAmountText(Ships.Ship.GetInstance().Money);
-            ChangeCrewMemberAmountText(Ships.Ship.GetInstance().Crewmembers.Count);
+            ChangeCrewMemberAmountText(Ships.Ship.GetInstance().Crew.Count);
             ChangeHappinessText(Ships.Ship.GetInstance().Fun);
         }
 
@@ -85,6 +85,11 @@ namespace Piratenpartij
             if (cargo.GetType() == typeof(Cargos.Peugeot208)) cargoPeugotAmountLabel.Text = amount.ToString();
             else if (cargo.GetType() == typeof(Cargos.MountainHoliday)) cargoMountainAmountLabel.Text = amount.ToString();
             else if (cargo.GetType() == typeof(Cargos.AMSPortfolio)) cargoPortofolioAmountLabel.Text = amount.ToString();
+        }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+
         }
 
         public static void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
