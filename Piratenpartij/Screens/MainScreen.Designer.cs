@@ -299,6 +299,7 @@ namespace Piratenpartij
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainScreen";
             this.Text = "Game time!";
+            this.Load += new System.EventHandler(this.MainScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EventPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShipPictureBox)).EndInit();
             this.ResumeLayout(false);

@@ -46,7 +46,7 @@ namespace Piratenpartij
         {
             UpdateAllCargos(ship.Cargo);
             ChangeMoneyAmountText(ship.Money);
-            ChangeCrewMemberAmountText(ship.Crewmembers.Count);
+            ChangeCrewMemberAmountText(ship.Crew.Count);
             ChangeHappinessText(ship.Fun);
             ChangeFoodText(ship.Food);
         }
@@ -86,6 +86,12 @@ namespace Piratenpartij
         {
             FirstButtonPress?.Invoke();
         }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void ChoiceTwoButton_Click(object sender, EventArgs e)
         {
             SecondButtonPress?.Invoke();
