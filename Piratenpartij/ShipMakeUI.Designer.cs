@@ -49,6 +49,7 @@ namespace Piratenpartij
             this.Controls.Add(this.shipContent);
             this.Name = "ShipMakeUI";
             this.Text = "ShipMakeUI";
+            this.Load += new System.EventHandler(this.ShipMakeUI_Load);
             this.ResumeLayout(false);
 
         }

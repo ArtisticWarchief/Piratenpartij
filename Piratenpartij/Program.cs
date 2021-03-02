@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Piratenpartij.Obstacles;
 using Piratenpartij.Obstacles.Enums;
+using Piratenpartij.Screens;
 
 namespace Piratenpartij
 {
@@ -18,7 +19,7 @@ namespace Piratenpartij
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainScreen());
+            Application.Run(new StartScreen());
         }
     }
 }
