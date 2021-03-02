@@ -59,14 +59,50 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HarborCrewmateUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HarborCrewmateUI.Designer.cs">
+      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Harbors\Harbor.cs" />
-    <Compile Include="HarborTestUI.cs" />
+    <Compile Include="HarborTestUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HarborTestUI.Designer.cs">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Obstacles\Enums\EventStatus.cs" />
+    <Compile Include="Obstacles\Enums\EventType.cs" />
+    <Compile Include="Obstacles\Enums\Location.cs" />
+    <Compile Include="Obstacles\Events\CombatEvent.cs" />
+    <Compile Include="Obstacles\Events\Event.cs" />
+    <Compile Include="Obstacles\Events\EventMaker.cs" />
+    <Compile Include="Obstacles\Events\HarborEvent.cs" />
+    <Compile Include="Obstacles\Events\IslandEvent.cs" />
+    <Compile Include="Obstacles\Events\TradeEvent.cs" />
+    <Compile Include="Obstacles\Trip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipMakeUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipMakeUI.Designer.cs">
+      <DependentUpon>ShipMakeUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipTestUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipTestUI.Designer.cs">
+      <DependentUpon>ShipTestUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ship\Ship.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HarborCrewmateUI.resx">
+      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HarborTestUI.resx">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +115,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShipMakeUI.resx">
+      <DependentUpon>ShipMakeUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipTestUI.resx">
+      <DependentUpon>ShipTestUI.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
