@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Piratenpartij.Cargos;
+using Piratenpartij.Ships;
 
 namespace Piratenpartij.Obstacles
 {
@@ -11,11 +12,20 @@ namespace Piratenpartij.Obstacles
     //TradeEvent could happen against a Merchant ship along a trip
     public class TradeEvent : Event
     {
-        public TradeEvent() : base(EventType.MERCHANT_SHIP){}
-        private List<Cargo> Cargos { get; set; }
-
         static readonly Random random = new Random();
 
+        private Dictionary<Cargo, int> EventCargos { get; set; }
+        public TradeEvent() : base(EventType.MERCHANT_SHIP)
+        {
+
+            EventCargos = new Dictionary<Cargo, int> {
+                { new MountainHoliday(), random.Next(10, 100) },
+                { new Peugeot208(), random.Next(10, 100) },
+                {new AMSPortfolio(), random.Next(10, 100) },
+            };
+
+
+        }
         public void Trade()
         {
 
@@ -24,7 +34,12 @@ namespace Piratenpartij.Obstacles
 
         public void Overtake()
         {
-            Ship.Ship.GetInstance();
+            Dictionary<Cargo, int> shipCargos = Ship.GetInstance().Cargo;
+            foreach(KeyValuePair<Cargo, int> cargo in EventCargos) {
+                if (shipCargos.ContainsKey(cargo.Key)) {
+                    shipCargos[cargo.Key] += EventCargos[cargo.Key];
+                }
+            }
             Status = Enums.EventStatus.FINISHED;
         }
 
