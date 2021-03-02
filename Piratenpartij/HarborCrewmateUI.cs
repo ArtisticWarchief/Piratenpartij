@@ -41,7 +41,7 @@ namespace Piratenpartij
 
                 ListViewItem placeHolder = new ListViewItem(newCrewMembers[i].Name);
                 for (int j = 0; j <= newCrewMembers[i].Ability.maxAbilityIndex; j++) {
-                 placeHolder.SubItems.Add(newCrewMembers[i].Ability.GetAbilities()[j].ToString()); 
+                    placeHolder.SubItems.Add(newCrewMembers[i].Ability.GetAbilities()[j].ToString()); 
                 }
                 placeHolder.SubItems.Add(newCrewMembers[i].HungerUsage.ToString());
                 placeHolder.SubItems.Add(newCrewMembers[i].Cost.ToString());
