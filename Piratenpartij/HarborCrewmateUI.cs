@@ -90,8 +90,8 @@ namespace Piratenpartij
                 lvShipCrew.Items.Add(placeHolder);
             }
 
+
             lvShipCrew.Columns[0].Width = -2;
-            //Console.WriteLine("----------------------------------------------------------");
         }
     }
 }
