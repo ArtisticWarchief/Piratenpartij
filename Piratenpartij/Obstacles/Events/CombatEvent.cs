@@ -10,7 +10,7 @@ namespace Piratenpartij.Obstacles
     public class CombatEvent : Event
     {
         public CombatEvent() : base(EventType.PIRATES_SHIP){
-         
+            
         }
     }
 }

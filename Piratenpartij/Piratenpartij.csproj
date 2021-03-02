@@ -59,12 +59,12 @@
       <DependentUpon>Component1.cs</DependentUpon>
     </Compile>
     <Compile Include="Crewmember\Crewmember.cs" />
+    <Compile Include="HarborCrewmateUI.cs">
+    <Compile Include="Form1.cs">
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="HarborCrewmateUI.Designer.cs">
     <Compile Include="Harbors\Harbor.cs" />
     <Compile Include="HarborTestUI.cs">
       <SubType>Form</SubType>
@@ -79,16 +79,33 @@
     <Compile Include="Obstacles\Events\Event.cs" />
     <Compile Include="Obstacles\Events\EventMaker.cs" />
     <Compile Include="Obstacles\Events\HarborEvent.cs" />
-    <Compile Include="Obstacles\Events\IslandAttributes.cs" />
     <Compile Include="Obstacles\Events\IslandEvent.cs" />
     <Compile Include="Obstacles\Events\TradeEvent.cs" />
     <Compile Include="Obstacles\Trip.cs" />
+=========
+    <Compile Include="Harbors\Harbor.cs" />
+    <Compile Include="ShipMakeUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipMakeUI.Designer.cs">
+      <DependentUpon>ShipMakeUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ship\Ship.cs" />
+    <Compile Include="ShipTestUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipTestUI.Designer.cs">
+      <DependentUpon>ShipTestUI.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="HarborCrewmateUI.resx">
+      <DependentUpon>HarborCrewmateUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HarborTestUI.resx">
       <DependentUpon>HarborTestUI.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Ship.cs" />
+>>>>>>>>> Temporary merge branch 2
+>>>>>>>>> Temporary merge branch 2
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,6 +115,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShipMakeUI.resx">
+      <DependentUpon>ShipMakeUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipTestUI.resx">
+      <DependentUpon>ShipTestUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include=".editorconfig" />
+    <None Include=".editorconfig.inferred" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -111,5 +136,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
