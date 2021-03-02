@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Piratenpartij.Abilities
 {
-
     public enum AbilityNames
     {
         Intelligence,
         Strength,
         Trading
     }
-
 }
