@@ -73,6 +73,16 @@ namespace Piratenpartij.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eiland_plaatje {
+            get {
+                object obj = ResourceManager.GetObject("eiland plaatje", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Flag_USA {
             get {
                 object obj = ResourceManager.GetObject("Flag USA", resourceCulture);
@@ -86,6 +96,16 @@ namespace Piratenpartij.Properties {
         internal static System.Drawing.Bitmap harbor_cartoon {
             get {
                 object obj = ResourceManager.GetObject("harbor cartoon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap piraten_plaatje {
+            get {
+                object obj = ResourceManager.GetObject("piraten plaatje", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

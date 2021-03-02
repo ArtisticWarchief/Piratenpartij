@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Media;
-using System.Reflection;
 using System.Windows.Forms;
 using Piratenpartij.Obstacles;
 
@@ -11,111 +8,84 @@ namespace Piratenpartij
 {
     public partial class MainScreen : Form
     {
-
-        private static Button choiceButtonOne, choiceButtonTwo, choiceButtonThree;
-        private static PictureBox eventPictureBox;
         private static Bitmap[] bitmaps = new Bitmap[4];
 
-        private static Label moneyAmountLabel;
-        private static Label cargoPeugotAmountLabel, cargoMountainAmountLabel, cargoPortofolioAmountLabel;
-        private static Label happinessAmountLabel, crewMemberAmountLabel;
+        private Ships.Ship ship;
 
-        public delegate void ButtonPressEventHandler();
-        public event ButtonPressEventHandler FirstButtonPress, SecondButtonPress, ThirdButtonPress;
+        public delegate void ButtonPress();
+        public event ButtonPress FirstButtonPress, SecondButtonPress, ThirdButtonPress;
 
         public MainScreen()
         {
             InitializeComponent();
 
-            InitializeButtons();
+            ship = Ships.Ship.GetInstance();
+
+            FirstButtonPress += UpdateScreen;
+            SecondButtonPress += UpdateScreen;
+            ThirdButtonPress += UpdateScreen;
+
             InitializePictures();
-            InitializeTexts();
 
             LoadScreenFirstTime();
         }
 
         #region initalization
 
-        private void InitializeButtons()
-        {
-            choiceButtonOne = ChoiceOneButton;
-            choiceButtonTwo = ChoiceTwoButton;
-            choiceButtonThree = ChoiceThreeButton;
-        }
-
         private void InitializePictures()
         {
-            eventPictureBox = EventPictureBox;
-
+            bitmaps[0] = Properties.Resources.piraten_plaatje;
             bitmaps[1] = Properties.Resources.Bootje_Cartoon;
+            bitmaps[2] = Properties.Resources.eiland_plaatje;
             bitmaps[3] = Properties.Resources.harbor_cartoon;
         }
 
-        private void InitializeTexts()
-        {
-            moneyAmountLabel = MoneyAmountText;
-            cargoPeugotAmountLabel = CargoPeugotAmountText;
-            cargoMountainAmountLabel = CargoMountainAmountText;
-            cargoPortofolioAmountLabel = CargoPortofolioAmountText;
-            happinessAmountLabel = HappinessAmountText;
-            crewMemberAmountLabel = CrewMemberAmountText;
-        }
         #endregion
+
+        private void UpdateScreen()
+        {
+            UpdateAllCargos(ship.Cargo);
+            ChangeMoneyAmountText(ship.Money);
+            ChangeCrewMemberAmountText(ship.Crewmembers.Count);
+            ChangeHappinessText(ship.Fun);
+            ChangeFoodText(ship.Food);
+        }
 
         private void LoadScreenFirstTime()
         {
-            ShowNewEvent(EventType.HARBOR, "1", "2", "3");
-            UpdateAllCargos(Ships.Ship.GetInstance().Cargo);
-            ChangeMoneyAmountText(Ships.Ship.GetInstance().Money);
-            ChangeCrewMemberAmountText(Ships.Ship.GetInstance().Crewmembers.Count);
-            ChangeHappinessText(Ships.Ship.GetInstance().Fun);
+            ShowNewEvent(EventType.HARBOR, "Je eerste keuze", "WOW nog een!", "Wat veel keuzes!");
+            UpdateScreen();
         }
 
-        public static void ShowNewEvent(EventType eventType, string choiceOne, string choiceTwo, string choiceThree)
+        public void ShowNewEvent(EventType eventType, string choiceOne, string choiceTwo, string choiceThree)
         {
-            choiceButtonOne.Text = choiceOne;
-            choiceButtonTwo.Text = choiceTwo;
-            choiceButtonThree.Text = choiceThree;
+            ChoiceOneButton.Text = choiceOne;
+            ChoiceTwoButton.Text = choiceTwo;
+            ChoiceThreeButton.Text = choiceThree;
 
-            eventPictureBox.Image = bitmaps[(int)eventType];
+            EventPictureBox.Image = bitmaps[(int)eventType];
         }
 
-        public static void ChangeCargoAmountText(Cargos.Cargo cargo, int amount)
-        {
-            if (cargo.GetType() == typeof(Cargos.Peugeot208)) cargoPeugotAmountLabel.Text = amount.ToString();
-            else if (cargo.GetType() == typeof(Cargos.MountainHoliday)) cargoMountainAmountLabel.Text = amount.ToString();
-            else if (cargo.GetType() == typeof(Cargos.AMSPortfolio)) cargoPortofolioAmountLabel.Text = amount.ToString();
-        }
-
-        public static void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
+        public void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
         {
             foreach (KeyValuePair<Cargos.Cargo, int> item in cargos) 
             {
-                ChangeCargoAmountText(item.Key, item.Value);
+                if (item.Key.GetType() == typeof(Cargos.Peugeot208)) CargoPeugotAmountText.Text = item.Value.ToString();
+                else if (item.Key.GetType() == typeof(Cargos.MountainHoliday)) CargoMountainAmountText.Text = item.Value.ToString();
+                else if (item.Key.GetType() == typeof(Cargos.AMSPortfolio)) CargoPortofolioAmountText.Text = item.Value.ToString();
             }
         }
 
-        public static void ChangeCrewMemberAmountText(int amount)
-        {
-            crewMemberAmountLabel.Text = amount.ToString();
-        }
-
-        public static void ChangeMoneyAmountText(int amount)
-        {
-            moneyAmountLabel.Text = amount.ToString();
-        }
-
-        public static void ChangeHappinessText(int amount)
-        {
-            happinessAmountLabel.Text = amount.ToString();
-        }
+        private void ChangeCrewMemberAmountText(int amount) => CrewMemberAmountText.Text = amount.ToString();
+        private void ChangeMoneyAmountText(int amount) => MoneyAmountText.Text = amount.ToString();
+        private void ChangeHappinessText(int amount) => HappinessAmountText.Text = amount.ToString();
+        private void ChangeFoodText(int amount) => FoodAmountText.Text = amount.ToString();
 
         #region ButtonPresses
         private void ChoiceOneButton_Click(object sender, EventArgs e)
         {
             FirstButtonPress?.Invoke();
         }
-
         private void ChoiceTwoButton_Click(object sender, EventArgs e)
         {
             SecondButtonPress?.Invoke();
