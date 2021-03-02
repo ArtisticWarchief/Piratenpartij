@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Piratenpartij.Cargos;
 using Piratenpartij.Obstacles;
 using Piratenpartij.Obstacles.Enums;
+using System.Linq;
+using Piratenpartij.Screens;
 
 namespace Piratenpartij
 {
@@ -15,6 +18,10 @@ namespace Piratenpartij
 
         public delegate void ButtonPress();
         public event ButtonPress FirstButtonPress, SecondButtonPress, ThirdButtonPress;
+        Event currentEvent;
+        int eventCounter = 0;
+        Trip currentTrip = new Trip();
+        List<Event> events;
 
         public MainScreen()
         {
@@ -22,28 +29,25 @@ namespace Piratenpartij
 
             ship = Ships.Ship.GetInstance();
 
+
+            FirstButtonPress += FirstButton;
+            SecondButtonPress += SecondButton;
+            ThirdButtonPress += ThirdButton;
             FirstButtonPress += UpdateScreen;
             SecondButtonPress += UpdateScreen;
             ThirdButtonPress += UpdateScreen;
-
+            
             InitializePictures();
 
             LoadScreenFirstTime();
 
-            Trip currentTrip = new Trip();
-            List<Event> events = currentTrip.Events;
+            
+            events = currentTrip.Events;
             foreach (Event e in events) {
-                if (e.EventType == EventType.MERCHANT_SHIP) {
-                    ShowNewEvent(e.EventType, "Trade","Overtake","Ignore");
-                }
-                if (e.EventType == EventType.ISLAND) {
-                    ShowNewEvent(e.EventType, "Trade", "Overtake", "Ignore");
-                }
-                if (e.EventType == EventType.HARBOR) {
-                    return;
-                }
-
+                Console.WriteLine(e.EventType);
             }
+            
+            currentEvent = events[eventCounter];
         }
 
         #region initalization
@@ -60,6 +64,7 @@ namespace Piratenpartij
 
         private void UpdateScreen()
         {
+            Console.WriteLine("Update screen");
             UpdateAllCargos(ship.Cargo);
             ChangeMoneyAmountText(ship.Money);
             ChangeCrewMemberAmountText(ship.Crew.Count);
@@ -67,9 +72,90 @@ namespace Piratenpartij
             ChangeFoodText(ship.Food);
         }
 
+        private void nextEvent()
+        {
+            eventCounter++;
+            if (eventCounter >= events.Count()) {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show("You have reached the end of the game. Congratulations! We hope you had fun :)", "THE END", buttons, MessageBoxIcon.Warning);
+                this.Close();
+                ship.ShipReset();
+                new StartScreen().Show();
+            }
+            else {
+                currentEvent = events[eventCounter];
+                Console.WriteLine(currentEvent.EventType);
+                if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
+                    ShowNewEvent(currentEvent.EventType, "Trade", "Overtake", "Ignore");
+                    return;
+                }
+                if (currentEvent.EventType == EventType.ISLAND) {
+                    ShowNewEvent(currentEvent.EventType, "Take a chance", "Take a chance", "Take a chance");
+                    return;
+                }
+                if (currentEvent.EventType == EventType.HARBOR) {
+                    return;
+                }
+            }
+            
+        }
+
+        private void FirstButton()
+        {
+            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
+                TradeEvent trade = (TradeEvent)currentEvent;
+                trade.Trade(new MountainHoliday(),20);
+            }
+            if (currentEvent.EventType == EventType.ISLAND) {
+                IslandEvent trade = (IslandEvent)currentEvent;
+                trade.CallIslandEvent();
+            }
+            if (currentEvent.EventType == EventType.HARBOR) {
+                new HarborCrewmateUI().Show();
+            }
+            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            }
+            nextEvent();
+        }
+
+        private void SecondButton()
+        {
+            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
+                TradeEvent trade = (TradeEvent)currentEvent;
+                trade.Overtake();
+            }
+            if (currentEvent.EventType == EventType.ISLAND) {
+                IslandEvent trade = (IslandEvent)currentEvent;
+                trade.CallIslandEvent();
+            }
+            if (currentEvent.EventType == EventType.HARBOR) {
+                new HarborCrewmateUI().Show();
+            }
+            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            }
+            nextEvent();
+        }
+
+        private void ThirdButton()
+        {
+            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
+                TradeEvent trade = (TradeEvent)currentEvent;
+                trade.Ignore();
+            }
+            if (currentEvent.EventType == EventType.ISLAND) {
+                IslandEvent trade = (IslandEvent)currentEvent;
+                trade.CallIslandEvent();
+            }
+            if (currentEvent.EventType == EventType.HARBOR) {
+                new HarborCrewmateUI().Show();
+            }
+            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            }
+            nextEvent();
+        }
         private void LoadScreenFirstTime()
         {
-            ShowNewEvent(EventType.HARBOR, "Je eerste keuze", "WOW nog een!", "Wat veel keuzes!");
+            //ShowNewEvent(EventType.HARBOR, "Je eerste keuze", "WOW nog een!", "Wat veel keuzes!");
             UpdateScreen();
         }
 
