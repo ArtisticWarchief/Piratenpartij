@@ -60,10 +60,16 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Harbors\Harbor.cs" />
+    <Compile Include="HarborTestUI.cs" />
+    <Compile Include="HarborTestUI.Designer.cs">
+      <DependentUpon>HarborTestUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ship.cs" />
     <Compile Include="Ship\Ship.cs" />
+    <EmbeddedResource Include="HarborTestUI.resx">
+      <DependentUpon>HarborTestUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

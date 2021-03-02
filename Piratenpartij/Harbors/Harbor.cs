@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Crewmembers;
 using Piratenpartij.Cargos;
+using Piratenpartij.Ship;
 
 namespace Piratenpartij.Harbors
 {
@@ -16,23 +18,35 @@ namespace Piratenpartij.Harbors
         public List<string> Destinations { get; set; }
         public List<string> Crewmembers { get; set; }
         public Dictionary<Cargo, int> CargoInStock { get; set; }
-
+        public Ship.Ship PlayerShip { get; private set; }
 
         public Harbor()
         {
             InitializeCargo();
             InitializeCrewmembers();           
             FoodPrice = random.Next(1, 10);
+            PlayerShip = Ship.Ship.GetInstance();
         }
 
-        public void BuyFood()
+        public void BuyFood(int amount, int price)
         {
-            throw new NotImplementedException();
+            if (!PriceCheck(price)) {
+                return;
+            }
+
+            PlayerShip.Food += amount;
+           
         }
 
         public void BuyCargo(Cargo cargo)
         {
-            throw new NotImplementedException();
+            if (!PriceCheck(cargo.Price)) {
+                return;
+            }
+            // dunno how this list gets represented in the UI, assuming its just a list of generic Cargo
+            CargoInStock.FirstOrDefault(e => e.Key == cargo);
+
+            CargoInStock.FirstOrDefault(e => e.Key.GetType() == typeof(Cargo));
         }
 
         public void SellCargo(Cargo cargo)
@@ -40,19 +54,32 @@ namespace Piratenpartij.Harbors
             throw new NotImplementedException();
         }
 
-        public void BuyCrewmember()
+        public void BuyCrewmember(Crewmember crewmember)
         {
+            if (!PriceCheck(crewmember.Cost)){
+                return;
+            }
 
+            PlayerShip.Money -= crewmember.Cost;
+            PlayerShip.Crewmembers.Add(crewmember);
         }
 
+        private bool PriceCheck(int cost)
+        {
+            if (PlayerShip.Money - cost < 0) {
+                return false;
+            }
+
+            return true;
+        }
         private void InitializeCargo()
         {
-
+            // take cargo out of a text file or something idk
         }
 
         private void InitializeCrewmembers()
         {
-
+            // take crew out of a text file or something idk
         }
     }
 }
