@@ -36,17 +36,18 @@ namespace Piratenpartij
             this.ChoiceTwoButton = new System.Windows.Forms.Button();
             this.ChoiceThreeButton = new System.Windows.Forms.Button();
             this.CrewMemberText = new System.Windows.Forms.Label();
-            this.CargoType1Text = new System.Windows.Forms.Label();
-            this.CargoType1AmountText = new System.Windows.Forms.Label();
-            this.CargoType2Text = new System.Windows.Forms.Label();
-            this.CargoType3Text = new System.Windows.Forms.Label();
+            this.CargoPeugotText = new System.Windows.Forms.Label();
+            this.CargoPeugotAmountText = new System.Windows.Forms.Label();
+            this.CargoMountainText = new System.Windows.Forms.Label();
+            this.CargoPortofolioText = new System.Windows.Forms.Label();
             this.CrewMemberAmountText = new System.Windows.Forms.Label();
-            this.CargoType2AmountText = new System.Windows.Forms.Label();
-            this.CargoType3AmountText = new System.Windows.Forms.Label();
+            this.CargoMountainAmountText = new System.Windows.Forms.Label();
+            this.CargoPortofolioAmountText = new System.Windows.Forms.Label();
             this.MoneyText = new System.Windows.Forms.Label();
             this.MoneyAmountText = new System.Windows.Forms.Label();
             this.HappinessText = new System.Windows.Forms.Label();
             this.TravelProgressBar = new System.Windows.Forms.ProgressBar();
+            this.HappinessAmountText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ShipPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -118,78 +119,82 @@ namespace Piratenpartij
             this.CrewMemberText.TabIndex = 8;
             this.CrewMemberText.Text = "Crewmembers :";
             // 
-            // CargoType1Text
+            // CargoPeugotText
             // 
-            this.CargoType1Text.AutoSize = true;
-            this.CargoType1Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CargoType1Text.Location = new System.Drawing.Point(8, 222);
-            this.CargoType1Text.Name = "CargoType1Text";
-            this.CargoType1Text.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.CargoType1Text.Size = new System.Drawing.Size(114, 26);
-            this.CargoType1Text.TabIndex = 10;
-            this.CargoType1Text.Text = "Cargo type 1 :";
+            this.CargoPeugotText.AutoSize = true;
+            this.CargoPeugotText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CargoPeugotText.Location = new System.Drawing.Point(8, 222);
+            this.CargoPeugotText.Name = "CargoPeugotText";
+            this.CargoPeugotText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.CargoPeugotText.Size = new System.Drawing.Size(103, 26);
+            this.CargoPeugotText.TabIndex = 10;
+            this.CargoPeugotText.Text = "Peugot 208 :";
             // 
-            // CargoType1AmountText
+            // CargoPeugotAmountText
             // 
-            this.CargoType1AmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CargoType1AmountText.Location = new System.Drawing.Point(153, 222);
-            this.CargoType1AmountText.Name = "CargoType1AmountText";
-            this.CargoType1AmountText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.CargoType1AmountText.Size = new System.Drawing.Size(83, 25);
-            this.CargoType1AmountText.TabIndex = 11;
-            this.CargoType1AmountText.Text = "250";
+            this.CargoPeugotAmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CargoPeugotAmountText.Location = new System.Drawing.Point(176, 220);
+            this.CargoPeugotAmountText.Margin = new System.Windows.Forms.Padding(0);
+            this.CargoPeugotAmountText.Name = "CargoPeugotAmountText";
+            this.CargoPeugotAmountText.Size = new System.Drawing.Size(56, 25);
+            this.CargoPeugotAmountText.TabIndex = 11;
+            this.CargoPeugotAmountText.Text = "250";
+            this.CargoPeugotAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CargoType2Text
+            // CargoMountainText
             // 
-            this.CargoType2Text.AutoSize = true;
-            this.CargoType2Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CargoType2Text.Location = new System.Drawing.Point(8, 249);
-            this.CargoType2Text.Name = "CargoType2Text";
-            this.CargoType2Text.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.CargoType2Text.Size = new System.Drawing.Size(114, 26);
-            this.CargoType2Text.TabIndex = 12;
-            this.CargoType2Text.Text = "Cargo type 2 :";
+            this.CargoMountainText.AutoSize = true;
+            this.CargoMountainText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CargoMountainText.Location = new System.Drawing.Point(8, 249);
+            this.CargoMountainText.Name = "CargoMountainText";
+            this.CargoMountainText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.CargoMountainText.Size = new System.Drawing.Size(157, 26);
+            this.CargoMountainText.TabIndex = 12;
+            this.CargoMountainText.Text = "Mountain Holidays :";
             // 
-            // CargoType3Text
+            // CargoPortofolioText
             // 
-            this.CargoType3Text.AutoSize = true;
-            this.CargoType3Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CargoType3Text.Location = new System.Drawing.Point(8, 276);
-            this.CargoType3Text.Name = "CargoType3Text";
-            this.CargoType3Text.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.CargoType3Text.Size = new System.Drawing.Size(114, 26);
-            this.CargoType3Text.TabIndex = 15;
-            this.CargoType3Text.Text = "Cargo type 3 :";
+            this.CargoPortofolioText.AutoSize = true;
+            this.CargoPortofolioText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CargoPortofolioText.Location = new System.Drawing.Point(8, 276);
+            this.CargoPortofolioText.Name = "CargoPortofolioText";
+            this.CargoPortofolioText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.CargoPortofolioText.Size = new System.Drawing.Size(135, 26);
+            this.CargoPortofolioText.TabIndex = 15;
+            this.CargoPortofolioText.Text = "AMSPortofolios :";
             // 
             // CrewMemberAmountText
             // 
             this.CrewMemberAmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CrewMemberAmountText.Location = new System.Drawing.Point(153, 399);
+            this.CrewMemberAmountText.Location = new System.Drawing.Point(176, 396);
+            this.CrewMemberAmountText.Margin = new System.Windows.Forms.Padding(0);
             this.CrewMemberAmountText.Name = "CrewMemberAmountText";
-            this.CrewMemberAmountText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.CrewMemberAmountText.Size = new System.Drawing.Size(83, 25);
+            this.CrewMemberAmountText.Size = new System.Drawing.Size(52, 25);
             this.CrewMemberAmountText.TabIndex = 16;
-            this.CrewMemberAmountText.Text = "10 / 10";
+            this.CrewMemberAmountText.Text = "10";
+            this.CrewMemberAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CargoType2AmountText
+            // CargoMountainAmountText
             // 
-            this.CargoType2AmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CargoType2AmountText.Location = new System.Drawing.Point(153, 247);
-            this.CargoType2AmountText.Name = "CargoType2AmountText";
-            this.CargoType2AmountText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.CargoType2AmountText.Size = new System.Drawing.Size(83, 25);
-            this.CargoType2AmountText.TabIndex = 17;
-            this.CargoType2AmountText.Text = "250";
+            this.CargoMountainAmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CargoMountainAmountText.Location = new System.Drawing.Point(176, 247);
+            this.CargoMountainAmountText.Margin = new System.Windows.Forms.Padding(0);
+            this.CargoMountainAmountText.Name = "CargoMountainAmountText";
+            this.CargoMountainAmountText.Size = new System.Drawing.Size(60, 25);
+            this.CargoMountainAmountText.TabIndex = 17;
+            this.CargoMountainAmountText.Text = "250";
+            this.CargoMountainAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CargoType3AmountText
+            // CargoPortofolioAmountText
             // 
-            this.CargoType3AmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CargoType3AmountText.Location = new System.Drawing.Point(153, 276);
-            this.CargoType3AmountText.Name = "CargoType3AmountText";
-            this.CargoType3AmountText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.CargoType3AmountText.Size = new System.Drawing.Size(83, 25);
-            this.CargoType3AmountText.TabIndex = 18;
-            this.CargoType3AmountText.Text = "250";
+            this.CargoPortofolioAmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CargoPortofolioAmountText.Location = new System.Drawing.Point(176, 274);
+            this.CargoPortofolioAmountText.Margin = new System.Windows.Forms.Padding(0);
+            this.CargoPortofolioAmountText.Name = "CargoPortofolioAmountText";
+            this.CargoPortofolioAmountText.Size = new System.Drawing.Size(56, 25);
+            this.CargoPortofolioAmountText.TabIndex = 18;
+            this.CargoPortofolioAmountText.Text = "250";
+            this.CargoPortofolioAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MoneyText
             // 
@@ -205,12 +210,13 @@ namespace Piratenpartij
             // MoneyAmountText
             // 
             this.MoneyAmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoneyAmountText.Location = new System.Drawing.Point(153, 183);
+            this.MoneyAmountText.Location = new System.Drawing.Point(176, 180);
+            this.MoneyAmountText.Margin = new System.Windows.Forms.Padding(0);
             this.MoneyAmountText.Name = "MoneyAmountText";
-            this.MoneyAmountText.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.MoneyAmountText.Size = new System.Drawing.Size(83, 25);
+            this.MoneyAmountText.Size = new System.Drawing.Size(56, 25);
             this.MoneyAmountText.TabIndex = 20;
             this.MoneyAmountText.Text = "250";
+            this.MoneyAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // HappinessText
             // 
@@ -230,22 +236,34 @@ namespace Piratenpartij
             this.TravelProgressBar.Size = new System.Drawing.Size(224, 23);
             this.TravelProgressBar.TabIndex = 22;
             // 
+            // HappinessAmountText
+            // 
+            this.HappinessAmountText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HappinessAmountText.Location = new System.Drawing.Point(176, 370);
+            this.HappinessAmountText.Margin = new System.Windows.Forms.Padding(0);
+            this.HappinessAmountText.Name = "HappinessAmountText";
+            this.HappinessAmountText.Size = new System.Drawing.Size(56, 25);
+            this.HappinessAmountText.TabIndex = 23;
+            this.HappinessAmountText.Text = "250";
+            this.HappinessAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 433);
+            this.Controls.Add(this.HappinessAmountText);
             this.Controls.Add(this.TravelProgressBar);
             this.Controls.Add(this.HappinessText);
             this.Controls.Add(this.MoneyAmountText);
             this.Controls.Add(this.MoneyText);
-            this.Controls.Add(this.CargoType3AmountText);
-            this.Controls.Add(this.CargoType2AmountText);
+            this.Controls.Add(this.CargoPortofolioAmountText);
+            this.Controls.Add(this.CargoMountainAmountText);
             this.Controls.Add(this.CrewMemberAmountText);
-            this.Controls.Add(this.CargoType3Text);
-            this.Controls.Add(this.CargoType2Text);
-            this.Controls.Add(this.CargoType1AmountText);
-            this.Controls.Add(this.CargoType1Text);
+            this.Controls.Add(this.CargoPortofolioText);
+            this.Controls.Add(this.CargoMountainText);
+            this.Controls.Add(this.CargoPeugotAmountText);
+            this.Controls.Add(this.CargoPeugotText);
             this.Controls.Add(this.CrewMemberText);
             this.Controls.Add(this.ChoiceThreeButton);
             this.Controls.Add(this.ChoiceTwoButton);
@@ -270,16 +288,17 @@ namespace Piratenpartij
         private System.Windows.Forms.Button ChoiceTwoButton;
         private System.Windows.Forms.Button ChoiceThreeButton;
         private System.Windows.Forms.Label CrewMemberText;
-        private System.Windows.Forms.Label CargoType1Text;
-        private System.Windows.Forms.Label CargoType1AmountText;
-        private System.Windows.Forms.Label CargoType2Text;
-        private System.Windows.Forms.Label CargoType3Text;
+        private System.Windows.Forms.Label CargoPeugotText;
+        private System.Windows.Forms.Label CargoPeugotAmountText;
+        private System.Windows.Forms.Label CargoMountainText;
+        private System.Windows.Forms.Label CargoPortofolioText;
         private System.Windows.Forms.Label CrewMemberAmountText;
-        private System.Windows.Forms.Label CargoType2AmountText;
-        private System.Windows.Forms.Label CargoType3AmountText;
+        private System.Windows.Forms.Label CargoMountainAmountText;
+        private System.Windows.Forms.Label CargoPortofolioAmountText;
         private System.Windows.Forms.Label MoneyText;
         private System.Windows.Forms.Label MoneyAmountText;
         private System.Windows.Forms.Label HappinessText;
         private System.Windows.Forms.ProgressBar TravelProgressBar;
+        private System.Windows.Forms.Label HappinessAmountText;
     }
 }

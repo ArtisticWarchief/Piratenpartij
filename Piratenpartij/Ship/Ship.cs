@@ -61,8 +61,7 @@ namespace Piratenpartij.Ships
         }
 
         private Ship(int crewAmount)
-        {
-            
+        {          
 
             Crewmembers = new List<Crewmember>();
             for (int i = 0; i < crewAmount; i++) {

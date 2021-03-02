@@ -52,12 +52,6 @@
     <Compile Include="Cargos\Cargo.cs" />
     <Compile Include="Cargos\MountainHoliday.cs" />
     <Compile Include="Cargos\Peugeot208.cs" />
-    <Compile Include="Component1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Component1.Designer.cs">
-      <DependentUpon>Component1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Crewmember\Crewmember.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

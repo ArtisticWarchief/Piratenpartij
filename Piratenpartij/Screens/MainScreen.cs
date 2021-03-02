@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Media;
@@ -13,10 +14,10 @@ namespace Piratenpartij
 
         private static Button choiceButtonOne, choiceButtonTwo, choiceButtonThree;
         private static PictureBox eventPictureBox;
-        private static Bitmap[] bitmaps = new Bitmap[2];
+        private static Bitmap[] bitmaps = new Bitmap[4];
 
         private static Label moneyAmountLabel;
-        private static Label cargoType1AmountLabel, cargoType2AmountLabel, cargoType3AmountLabel;
+        private static Label cargoPeugotAmountLabel, cargoMountainAmountLabel, cargoPortofolioAmountLabel;
         private static Label happinessAmountLabel, crewMemberAmountLabel;
 
         public delegate void ButtonPressEventHandler();
@@ -26,29 +27,87 @@ namespace Piratenpartij
         {
             InitializeComponent();
 
-            //Initalize Buttons
-            choiceButtonOne = ChoiceOneButton;
-            choiceButtonTwo = ChoiceTwoButton;
-            choiceButtonThree = ChoiceThreeButton;
-
-            eventPictureBox = EventPictureBox;
-
-            bitmaps[0] = Properties.Resources.harbor_cartoon;
-            bitmaps[1] = Properties.Resources.Bootje_Cartoon;
-
-            moneyAmountLabel = MoneyAmountText;
-            cargoType1AmountLabel = CargoType1AmountText;
-            cargoType2AmountLabel = CargoType2AmountText;
-            cargoType3AmountLabel = CargoType3AmountText;
-            //happinessAmountLabel = 
-            crewMemberAmountLabel = CrewMemberAmountText;
+            InitializeButtons();
+            InitializePictures();
+            InitializeTexts();
 
             LoadScreenFirstTime();
         }
 
+        #region initalization
+
+        private void InitializeButtons()
+        {
+            choiceButtonOne = ChoiceOneButton;
+            choiceButtonTwo = ChoiceTwoButton;
+            choiceButtonThree = ChoiceThreeButton;
+        }
+
+        private void InitializePictures()
+        {
+            eventPictureBox = EventPictureBox;
+
+            bitmaps[1] = Properties.Resources.Bootje_Cartoon;
+            bitmaps[3] = Properties.Resources.harbor_cartoon;
+        }
+
+        private void InitializeTexts()
+        {
+            moneyAmountLabel = MoneyAmountText;
+            cargoPeugotAmountLabel = CargoPeugotAmountText;
+            cargoMountainAmountLabel = CargoMountainAmountText;
+            cargoPortofolioAmountLabel = CargoPortofolioAmountText;
+            happinessAmountLabel = HappinessAmountText;
+            crewMemberAmountLabel = CrewMemberAmountText;
+        }
+        #endregion
+
         private void LoadScreenFirstTime()
         {
             ShowNewEvent(EventType.HARBOR, "1", "2", "3");
+            UpdateAllCargos(Ships.Ship.GetInstance().Cargo);
+            ChangeMoneyAmountText(Ships.Ship.GetInstance().Money);
+            ChangeCrewMemberAmountText(Ships.Ship.GetInstance().Crewmembers.Count);
+            ChangeHappinessText(Ships.Ship.GetInstance().Fun);
+        }
+
+        public static void ShowNewEvent(EventType eventType, string choiceOne, string choiceTwo, string choiceThree)
+        {
+            choiceButtonOne.Text = choiceOne;
+            choiceButtonTwo.Text = choiceTwo;
+            choiceButtonThree.Text = choiceThree;
+
+            eventPictureBox.Image = bitmaps[(int)eventType];
+        }
+
+        public static void ChangeCargoAmountText(Cargos.Cargo cargo, int amount)
+        {
+            if (cargo.GetType() == typeof(Cargos.Peugeot208)) cargoPeugotAmountLabel.Text = amount.ToString();
+            else if (cargo.GetType() == typeof(Cargos.MountainHoliday)) cargoMountainAmountLabel.Text = amount.ToString();
+            else if (cargo.GetType() == typeof(Cargos.AMSPortfolio)) cargoPortofolioAmountLabel.Text = amount.ToString();
+        }
+
+        public static void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
+        {
+            foreach (KeyValuePair<Cargos.Cargo, int> item in cargos) 
+            {
+                ChangeCargoAmountText(item.Key, item.Value);
+            }
+        }
+
+        public static void ChangeCrewMemberAmountText(int amount)
+        {
+            crewMemberAmountLabel.Text = amount.ToString();
+        }
+
+        public static void ChangeMoneyAmountText(int amount)
+        {
+            moneyAmountLabel.Text = amount.ToString();
+        }
+
+        public static void ChangeHappinessText(int amount)
+        {
+            happinessAmountLabel.Text = amount.ToString();
         }
 
         #region ButtonPresses
@@ -66,39 +125,5 @@ namespace Piratenpartij
             ThirdButtonPress?.Invoke();
         }
         #endregion
-
-        public static void ShowNewEvent(EventType eventType, string choiceOne, string choiceTwo, string choiceThree)
-        {
-            choiceButtonOne.Text = choiceOne;
-            choiceButtonTwo.Text = choiceTwo;
-            choiceButtonThree.Text = choiceThree;
-
-            eventPictureBox.Image = bitmaps[(int)eventType];
-        }
-
-        public static void ChangeCargoAmountText(int cargoType, int amount)
-        {
-            if (cargoType == 1) cargoType1AmountLabel.Text = amount.ToString();
-            else if (cargoType == 2) cargoType1AmountLabel.Text = amount.ToString();
-            else if (cargoType == 3) cargoType1AmountLabel.Text = amount.ToString();
-        }
-
-        public static void ChangeCrewMemberAmountText(int amount)
-        {
-            //TODO: GET MAXIMUM FROM SHIP
-            int maxCrew = 10;
-
-            crewMemberAmountLabel.Text = amount.ToString() + " / " + maxCrew.ToString();
-        }
-
-        public static void ChangeMoneyAmountText(int amount)
-        {
-            moneyAmountLabel.Text = amount.ToString();
-        }
-
-        public static void ChangeHappinessText(int amount)
-        {
-            happinessAmountLabel.Text = amount.ToString();
-        }
     }
 }
