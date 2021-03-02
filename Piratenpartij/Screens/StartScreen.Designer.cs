@@ -102,7 +102,6 @@ namespace Piratenpartij.Screens
             this.MoneyAmountText.Name = "MoneyAmountText";
             this.MoneyAmountText.Size = new System.Drawing.Size(56, 25);
             this.MoneyAmountText.TabIndex = 24;
-            this.MoneyAmountText.Text = "250";
             this.MoneyAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CargoPeugotAmountText
@@ -113,7 +112,6 @@ namespace Piratenpartij.Screens
             this.CargoPeugotAmountText.Name = "CargoPeugotAmountText";
             this.CargoPeugotAmountText.Size = new System.Drawing.Size(56, 25);
             this.CargoPeugotAmountText.TabIndex = 25;
-            this.CargoPeugotAmountText.Text = "250";
             this.CargoPeugotAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CargoMountainAmountText
@@ -124,7 +122,6 @@ namespace Piratenpartij.Screens
             this.CargoMountainAmountText.Name = "CargoMountainAmountText";
             this.CargoMountainAmountText.Size = new System.Drawing.Size(60, 25);
             this.CargoMountainAmountText.TabIndex = 26;
-            this.CargoMountainAmountText.Text = "250";
             this.CargoMountainAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CargoPortofolioAmountText
@@ -135,7 +132,6 @@ namespace Piratenpartij.Screens
             this.CargoPortofolioAmountText.Name = "CargoPortofolioAmountText";
             this.CargoPortofolioAmountText.Size = new System.Drawing.Size(56, 25);
             this.CargoPortofolioAmountText.TabIndex = 27;
-            this.CargoPortofolioAmountText.Text = "250";
             this.CargoPortofolioAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // HappinessText
@@ -168,7 +164,6 @@ namespace Piratenpartij.Screens
             this.HappinessAmountText.Name = "HappinessAmountText";
             this.HappinessAmountText.Size = new System.Drawing.Size(56, 25);
             this.HappinessAmountText.TabIndex = 30;
-            this.HappinessAmountText.Text = "250";
             this.HappinessAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CrewMemberAmountText
@@ -179,7 +174,6 @@ namespace Piratenpartij.Screens
             this.CrewMemberAmountText.Name = "CrewMemberAmountText";
             this.CrewMemberAmountText.Size = new System.Drawing.Size(52, 25);
             this.CrewMemberAmountText.TabIndex = 31;
-            this.CrewMemberAmountText.Text = "10";
             this.CrewMemberAmountText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ShipPictureBox

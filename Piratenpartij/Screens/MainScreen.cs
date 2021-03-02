@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Piratenpartij.Obstacles;
+using Piratenpartij.Obstacles.Enums;
 
 namespace Piratenpartij
 {
@@ -28,6 +29,21 @@ namespace Piratenpartij
             InitializePictures();
 
             LoadScreenFirstTime();
+
+            Trip currentTrip = new Trip();
+            List<Event> events = currentTrip.Events;
+            foreach (Event e in events) {
+                if (e.EventType == EventType.MERCHANT_SHIP) {
+                    ShowNewEvent(e.EventType, "Trade","Overtake","Ignore");
+                }
+                if (e.EventType == EventType.ISLAND) {
+                    ShowNewEvent(e.EventType, "Trade", "Overtake", "Ignore");
+                }
+                if (e.EventType == EventType.HARBOR) {
+                    return;
+                }
+
+            }
         }
 
         #region initalization
