@@ -163,6 +163,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Bootje Cartoon.gif" />
+    <Content Include="Resources\eiland plaatje.jpg" />
+    <Content Include="Resources\Flag USA.png" />
+    <Content Include="Resources\harbor cartoon.jpg" />
+    <Content Include="Resources\piraten plaatje.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

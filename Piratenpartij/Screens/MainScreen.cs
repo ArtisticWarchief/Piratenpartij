@@ -120,7 +120,7 @@ namespace Piratenpartij
                     islandEvent.CallIslandEvent();
                     break;
                 case EventType.HARBOR:
-                    new HarborCrewmateUI().Show();
+                    new HarborEvent();
                     break;
                 default:
                     break;

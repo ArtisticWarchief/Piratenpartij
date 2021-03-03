@@ -10,7 +10,13 @@ namespace Piratenpartij.Cargos
     {
         public Peugeot208() : base()
         {
+            cargoType = CargoTypes.Peugeot208;
 
+            maximumBuyPrice = 3000;
+            minimumBuyPrice = 100;
+
+            maximumSellPrice = 2000;
+            minimumSellPrice = 50;
         }
     }
 }
