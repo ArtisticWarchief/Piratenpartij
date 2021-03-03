@@ -81,9 +81,6 @@ namespace Piratenpartij.Obstacles
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 System.Windows.Forms.MessageBox.Show(randomCrewmember.Name + " is killed by pirtes", "Continue", buttons, MessageBoxIcon.Warning);
             }
-            else {
-                Console.WriteLine("Won run");
-            }
         }
     }
 }
