@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using Piratenpartij.Ships;
 using Piratenpartij.Cargos;
 using Crewmembers;
+using System.Windows.Forms;
 
 namespace Piratenpartij.Obstacles
 {
     //IslandEvent could happen whenever an island appears along a trip
     public class IslandEvent : Event
     {
-        readonly Random random = new Random();
+        readonly Random random;
         public Ships.Ship ship = Ships.Ship.GetInstance();
 
         public string islandName { get; set; }
@@ -21,12 +22,13 @@ namespace Piratenpartij.Obstacles
 
         private string[] islandNames = { "Hawaii", "Madagaskar", "Malediven", "Australië", "Palawan", "Santorini", "Maderira", "Gili" };
         private string[] goodOptions = { "Peugeot208", "AMSPortfolio", "MountainHoliday" };
-        private string[] badOptions = { "Disease", "Lion attack", "Earthquake" };
-
+        private string[] badOptions = { "disease", "lion attack", "earthquake" };
         
-        public IslandEvent() : base(EventType.ISLAND)
+
+
+        public IslandEvent(Random random) : base(EventType.ISLAND)
         {
-            
+            this.random = random;
         }
 
         public bool CallIslandEvent()
@@ -53,6 +55,9 @@ namespace Piratenpartij.Obstacles
 
                 ship.Cargo[cargo] += goodOptionValue;
 
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show("You got some " + option, "Continue", buttons, MessageBoxIcon.Warning);
+
                 return true;
             }
             else {
@@ -63,6 +68,9 @@ namespace Piratenpartij.Obstacles
                 Crewmember randomCrewmember = Crewmembers[random.Next(0, Crewmembers.Count())];
 
                 ship.Crew.Remove(randomCrewmember);
+
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show(randomCrewmember.Name  + " is killed by a(n) " + option, "Continue", buttons, MessageBoxIcon.Warning);
 
                 return false;
             }

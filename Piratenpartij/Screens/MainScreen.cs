@@ -96,6 +96,10 @@ namespace Piratenpartij
                 if (currentEvent.EventType == EventType.HARBOR) {
                     return;
                 }
+                if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+                    ShowNewEvent(currentEvent.EventType, "Fight", "Intimidate", "Cry and run");
+                    return;
+                }
             }
 
         }
@@ -104,11 +108,12 @@ namespace Piratenpartij
         {
             switch (currentEvent.EventType) {
                 case EventType.PIRATES_SHIP:
-                    //TODO
+                    CombatEvent combatEvent = (CombatEvent)currentEvent;
+                    combatEvent.fight();
                     break;
                 case EventType.MERCHANT_SHIP:
                     TradeEvent tradeEvent = (TradeEvent)currentEvent;
-                    tradeEvent.Trade(new MountainHoliday(), 20);
+                    tradeEvent.Trade();
                     break;
                 case EventType.ISLAND:
                     IslandEvent islandEvent = (IslandEvent)currentEvent;
@@ -127,7 +132,8 @@ namespace Piratenpartij
         {
             switch (currentEvent.EventType) {
                 case EventType.PIRATES_SHIP:
-                    //TODO
+                    CombatEvent combatEvent = (CombatEvent)currentEvent;
+                    combatEvent.intimidate();
                     break;
                 case EventType.MERCHANT_SHIP:
                     TradeEvent tradeEvent = (TradeEvent)currentEvent;
@@ -150,7 +156,8 @@ namespace Piratenpartij
         {
             switch (currentEvent.EventType) {
                 case EventType.PIRATES_SHIP:
-                    //TODO
+                    CombatEvent combatEvent = (CombatEvent)currentEvent;
+                    combatEvent.run();
                     break;
                 case EventType.MERCHANT_SHIP:
                     TradeEvent tradeEvent = (TradeEvent)currentEvent;
