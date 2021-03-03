@@ -57,24 +57,39 @@ namespace Piratenpartij.Obstacles
                 Crewmembers = ship.Crew;
                 ship.Crew.Remove(Crewmembers[random.Next(0, Crewmembers.Count())]);
 
+                ship.Money = ship.Money - 100;
+
                 Console.WriteLine("Lost battle");
             } else {
                 Console.WriteLine("Won battle");
+                Crewmembers = ship.Crew;
+                ship.Crew.Add(Crewmembers[random.Next(0, Crewmembers.Count())]);
+
+                ship.Money = ship.Money + 100;
             }
         }
 
         public void intimidate()
         {
             if (randomIntForEvent > avgTrading) {
-                Console.WriteLine("Lost trade");
-            } else {
-                Console.WriteLine("Won trade");
+
+                ship.Money = ship.Money - 100;
+
+                Console.WriteLine("Lost intimidate");
+            }
+            else {
+
+                ship.Money = ship.Money + 100;
+
+                Console.WriteLine("Won initmidate");
             }
         }
 
         public void run()
         {
             if (randomIntForEvent > avgIntelligence) {
+                ship.Money = ship.Money - 100;
+
                 Console.WriteLine("Lost run");
             } else {
                 Console.WriteLine("Won run");
