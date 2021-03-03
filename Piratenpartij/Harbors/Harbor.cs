@@ -29,10 +29,10 @@ namespace Piratenpartij.Harbors
 
             InitializeCargo();
 
-            FoodAmount = random.Next(10, 250);
+            FoodAmount = random.Next(10, 400);
             FoodPrice = random.Next(1, 10);
 
-            new HarborScreen(this).Show();
+            //new HarborScreen(this).Show();
         }
 
         public bool BuyFood(int amount)
@@ -56,8 +56,9 @@ namespace Piratenpartij.Harbors
             if (IsCargoInStock(cargo, amount)) 
             {
                 int buyPrice = CargoInStock[cargo].buyPrice * amount;
-                if (PriceCheck(buyPrice * amount)) 
+                if (PriceCheck(buyPrice)) 
                 {
+                    Console.WriteLine("Sold Cargo");
                     PlayerShip.Cargo[cargo] += amount;
                     PlayerShip.Money -= buyPrice;
                     RemoveStock(cargo, amount);
@@ -72,7 +73,7 @@ namespace Piratenpartij.Harbors
         {
             if (PlayerShip.Cargo[cargo] - amount >= 0) {
                 PlayerShip.Cargo[cargo] -= amount;
-                PlayerShip.Money += cargo.GetSellPrice() * amount;
+                PlayerShip.Money += CargoInStock[cargo].sellPrice * amount;
                 GainStock(cargo, amount);
                 return true;
             }

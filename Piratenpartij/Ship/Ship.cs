@@ -16,6 +16,7 @@ namespace Piratenpartij.Ships
         public int Food { get; set; }
         public int Fun { get; set; }
         public int Money { get; set; }
+        public int Hunger { get; set; }
         public string Destination { get; set; }
 
         public Dictionary<AbilityNames, int> CrewAbilities = new Dictionary<AbilityNames, int> {
@@ -40,11 +41,10 @@ namespace Piratenpartij.Ships
         {
             Crew = new List<Crewmember>();
             CrewAbilitiesUpdate();
-            int Hunger = TotalHungerUsage();
+            UpdateTotalHungerUsage();
             int Happiness = TotalHappinessUsage();
             Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), random.Next(0,500) }, { new Peugeot208(), random.Next(0, 500) }, { new AMSPortfolio(), random.Next(0, 500) } };
-            Food = 100;
-            Fun = 100;
+            Food = 300;
             Money = 0;
             Destination = "";
         }
@@ -83,13 +83,12 @@ namespace Piratenpartij.Ships
             return total;
         }
 
-        public int TotalHungerUsage()
+        public void UpdateTotalHungerUsage()
         {
-            int total = 0;
+            Hunger = 0;
             foreach(Crewmember C in Crew) {
-                total += C.HungerUsage;
+                Hunger += C.HungerUsage;
             }
-            return total;
         }
 
         public int TotalHappinessUsage()
@@ -101,19 +100,23 @@ namespace Piratenpartij.Ships
             return total;
         }
 
+        public void UseFood()
+        {
+            Food = Food - Hunger;
+        }
+
         private Ship()
         {
             Crew = new List<Crewmember>();
             CrewAbilitiesUpdate();
             Console.WriteLine("You have the following crew: " + ShowCrew());
             Console.WriteLine("The combined stats of your crew are as follows: " + CrewAbilitiesString());
-            int Hunger = TotalHungerUsage();
+            UpdateTotalHungerUsage();
             Console.WriteLine("The combined hunger usage of your crew is " + Hunger.ToString());
             int Happiness = TotalHappinessUsage();
             Console.WriteLine("The combined happiness usage of your crew is " + Happiness.ToString());
             Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), random.Next(0, 500) }, { new Peugeot208(), random.Next(0, 500) }, { new AMSPortfolio(), random.Next(0, 500) } };
-            Food = 100;
-            Fun = 100;
+            Food = 300;
             Money = 0;
             Destination = "";
         }

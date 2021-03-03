@@ -19,8 +19,8 @@ namespace Crewmembers
 
         public Crewmember(Random r)
         {
-            Name = groupNames[r.Next(0, 11)];
-            HungerUsage = r.Next(5, 20);
+            Name = groupNames[r.Next(0, 12)];
+            HungerUsage = r.Next(5, 10);
             HappinessUsage = r.Next(5, 20);
             Cost = r.Next(10,1000);
             Ability = new Abilities(r);

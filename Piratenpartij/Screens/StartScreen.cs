@@ -114,6 +114,7 @@ namespace Piratenpartij.Screens
                 System.Windows.Forms.MessageBox.Show("Please select at least one crewmember to join your crew.", "NOT ENOUGH CREWMEMBERS", buttons, MessageBoxIcon.Warning);
                 return;
             }
+            ship.UpdateTotalHungerUsage();
             this.Hide();
             new MainScreen().Show();
         }
@@ -123,7 +124,6 @@ namespace Piratenpartij.Screens
             UpdateAllCargos(ship.Cargo);
             ChangeMoneyAmountText(ship.Money);
             ChangeCrewMemberAmountText(ship.Crew.Count);
-            ChangeHappinessText(ship.Fun);
         }
 
         public void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
@@ -137,6 +137,5 @@ namespace Piratenpartij.Screens
 
         private void ChangeCrewMemberAmountText(int amount) => CrewMemberAmountText.Text = amount.ToString();
         private void ChangeMoneyAmountText(int amount) => MoneyAmountText.Text = amount.ToString();
-        private void ChangeHappinessText(int amount) => HappinessAmountText.Text = amount.ToString();
     }
 }

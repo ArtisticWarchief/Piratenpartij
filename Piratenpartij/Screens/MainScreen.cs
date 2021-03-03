@@ -16,7 +16,7 @@ namespace Piratenpartij
 
         private Ships.Ship ship;
 
-        HarborCrewmateUI harborUI = new HarborCrewmateUI();
+        HarborScreen harborUI = new HarborScreen();
 
         public delegate void ButtonPress();
         public event ButtonPress FirstButtonPress, SecondButtonPress, ThirdButtonPress;
@@ -55,7 +55,7 @@ namespace Piratenpartij
 
             InitializePictures();
 
-            LoadScreenFirstTime();
+            UpdateScreen();
 
             NextEvent();
         }
@@ -74,11 +74,10 @@ namespace Piratenpartij
 
         private void UpdateScreen()
         {
-            Console.WriteLine("Update screen");
+            //Console.WriteLine("Update screen");
             UpdateAllCargos(ship.Cargo);
             ChangeMoneyAmountText(ship.Money);
             ChangeCrewMemberAmountText(ship.Crew.Count);
-            ChangeHappinessText(ship.Fun);
             ChangeFoodText(ship.Food);
         }
 
@@ -91,7 +90,7 @@ namespace Piratenpartij
                 this.Close();
                 ship.ShipReset();
                 new StartScreen().Show();
-            } else if (ship.Crew.Count <= 0) {
+            } else if (ship.Crew.Count <= 0 || ship.Food <= 0) {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 System.Windows.Forms.MessageBox.Show("All your crewmates are dead, you are just an empty ship. :)", "THE END", buttons, MessageBoxIcon.Error);
                 this.Close();
@@ -103,23 +102,30 @@ namespace Piratenpartij
                 Console.WriteLine(currentEvent.EventType);
                 if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
                     ShowNewEvent(currentEvent.EventType, "Trade", "Overtake", "Ignore");
+                    ship.UseFood();
                 }
                  else if (currentEvent.EventType == EventType.ISLAND) {
                     ShowNewEvent(currentEvent.EventType, "Take a chance", "Take a chance", "Take a chance");
+                    ship.UseFood();
                 }
                  else if (currentEvent.EventType == EventType.HARBOR) {
                     ShowNewEvent(currentEvent.EventType, "You are in a Harbor", "You are in a Harbor", "You are in a Harbor");
+                    HarborEvent harborEvent = (HarborEvent)currentEvent;
+                    harborUI.ReloadHarbor(harborEvent.Harbor);
                     harborUI.SetNewHirableCrew();
                     harborUI.BringToFront();
                     harborUI.Show();
+                    this.Hide();
                 }
                 else if (currentEvent.EventType == EventType.PIRATES_SHIP) {
                     ShowNewEvent(currentEvent.EventType, "Fight", "Intimidate", "Cry and run");
+                    ship.UseFood();
                 }
             }
             TravelProgressBar.PerformStep();
             Console.WriteLine("Advanced progress bar");
             eventCounter++;
+            UpdateScreen();
 
         }
 
@@ -201,13 +207,9 @@ namespace Piratenpartij
                 NextEvent();
                 e.Cancel = true;
                 harborUI.Hide();
+                Show();
+                UpdateScreen();
             }
-        }
-
-        private void LoadScreenFirstTime()
-        {
-            //ShowNewEvent(EventType.HARBOR, "Je eerste keuze", "WOW nog een!", "Wat veel keuzes!");
-            UpdateScreen();
         }
 
         public void ShowNewEvent(EventType eventType, string choiceOne, string choiceTwo, string choiceThree)
@@ -230,7 +232,6 @@ namespace Piratenpartij
 
         private void ChangeCrewMemberAmountText(int amount) => CrewMemberAmountText.Text = amount.ToString();
         private void ChangeMoneyAmountText(int amount) => MoneyAmountText.Text = amount.ToString();
-        private void ChangeHappinessText(int amount) => HappinessAmountText.Text = amount.ToString();
         private void ChangeFoodText(int amount) => FoodAmountText.Text = amount.ToString();
 
         #region ButtonPresses
