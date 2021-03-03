@@ -33,22 +33,7 @@ namespace Piratenpartij.Obstacles
             avgTrading = ship.CrewAbilities.ElementAt(2).Value / amountOfCrewMembers;
 
             randomIntForEvent = random.Next(0, 100);
-            chooseCombatEventType();
-        }
-        
-        public void chooseCombatEventType()
-        {
-            int chosenNumber = random.Next(0, 3);
-
-            if (chosenNumber == 0) {
-                fight();
-            }
-            else if (chosenNumber == 1) {
-                intimidate();
-            }
-            else {
-                run();
-            }
+            
         }
 
         public void fight()

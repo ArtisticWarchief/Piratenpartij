@@ -70,7 +70,7 @@ namespace Piratenpartij.Obstacles
                 ship.Crew.Remove(randomCrewmember);
 
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                System.Windows.Forms.MessageBox.Show("A crew member is killed by a(n) " + option, "Continue", buttons, MessageBoxIcon.Warning);
+                System.Windows.Forms.MessageBox.Show(randomCrewmember.Name  + " is killed by a(n) " + option, "Continue", buttons, MessageBoxIcon.Warning);
 
                 return false;
             }
