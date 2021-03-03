@@ -29,10 +29,22 @@ namespace Piratenpartij
 
             ship = Ships.Ship.GetInstance();
 
+            events = currentTrip.Events;
+            foreach (Event e in events) {
+                Console.WriteLine(e.EventType);
+            }
+
+            currentEvent = events[eventCounter];
+
+            TravelProgressBar.Maximum = events.Count;
+            TravelProgressBar.Value = 0;
+            TravelProgressBar.Step = 1;
+
 
             FirstButtonPress += FirstButton;
             SecondButtonPress += SecondButton;
             ThirdButtonPress += ThirdButton;
+
             FirstButtonPress += UpdateScreen;
             SecondButtonPress += UpdateScreen;
             ThirdButtonPress += UpdateScreen;
@@ -41,13 +53,7 @@ namespace Piratenpartij
 
             LoadScreenFirstTime();
 
-
-            events = currentTrip.Events;
-            foreach (Event e in events) {
-                Console.WriteLine(e.EventType);
-            }
-
-            currentEvent = events[eventCounter];
+            NextEvent();
         }
 
         #region initalization
@@ -72,9 +78,9 @@ namespace Piratenpartij
             ChangeFoodText(ship.Food);
         }
 
-        private void nextEvent()
+        private void NextEvent()
         {
-            eventCounter++;
+            
             if (eventCounter >= events.Count()) {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 System.Windows.Forms.MessageBox.Show("You have reached the end of the game. Congratulations! We hope you had fun :)", "THE END", buttons, MessageBoxIcon.Warning);
@@ -87,20 +93,25 @@ namespace Piratenpartij
                 Console.WriteLine(currentEvent.EventType);
                 if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
                     ShowNewEvent(currentEvent.EventType, "Trade", "Overtake", "Ignore");
-                    return;
+                    //return;
                 }
-                if (currentEvent.EventType == EventType.ISLAND) {
+                 else if (currentEvent.EventType == EventType.ISLAND) {
                     ShowNewEvent(currentEvent.EventType, "Take a chance", "Take a chance", "Take a chance");
-                    return;
+                    //return;
                 }
-                if (currentEvent.EventType == EventType.HARBOR) {
-                    return;
+                 else if (currentEvent.EventType == EventType.HARBOR) {
+                    ShowNewEvent(currentEvent.EventType, "You are in a Harbor", "You are in a Harbor", "You are in a Harbor");
+                    new HarborCrewmateUI().Show();
+                    //return;
                 }
-                if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+                else if (currentEvent.EventType == EventType.PIRATES_SHIP) {
                     ShowNewEvent(currentEvent.EventType, "Fight", "Intimidate", "Cry and run");
-                    return;
+                    //return;
                 }
             }
+            TravelProgressBar.PerformStep();
+            Console.WriteLine("Advanced progress bar");
+            eventCounter++;
 
         }
 
@@ -120,12 +131,12 @@ namespace Piratenpartij
                     islandEvent.CallIslandEvent();
                     break;
                 case EventType.HARBOR:
-                    new HarborCrewmateUI().Show();
+                    //new HarborCrewmateUI().Show();
                     break;
                 default:
                     break;
             }
-            nextEvent();
+            NextEvent();
         }
 
         private void SecondButton()
@@ -144,12 +155,12 @@ namespace Piratenpartij
                     islandEvent.CallIslandEvent();
                     break;
                 case EventType.HARBOR:
-                    new HarborCrewmateUI().Show();
+                    //new HarborCrewmateUI().Show();
                     break;
                 default:
                     break;
             }
-            nextEvent();
+            NextEvent();
         }
 
         private void ThirdButton()
@@ -168,12 +179,12 @@ namespace Piratenpartij
                     islandEvent.CallIslandEvent();
                     break;
                 case EventType.HARBOR:
-                    new HarborCrewmateUI().Show();
+                    //new HarborCrewmateUI().Show();
                     break;
                 default:
                     break;
             }
-            nextEvent();
+            NextEvent();
         }
 
         private void LoadScreenFirstTime()
