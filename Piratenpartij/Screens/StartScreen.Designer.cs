@@ -197,7 +197,7 @@ namespace Piratenpartij.Screens
             this.lvHirableCrewmates.Size = new System.Drawing.Size(369, 129);
             this.lvHirableCrewmates.TabIndex = 32;
             this.lvHirableCrewmates.UseCompatibleStateImageBehavior = false;
-            this.lvHirableCrewmates.SelectedIndexChanged += new System.EventHandler(this.btnHire_Click);
+            this.lvHirableCrewmates.Click += new System.EventHandler(this.btnHire_Click);
             // 
             // label1
             // 

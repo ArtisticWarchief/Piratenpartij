@@ -79,8 +79,10 @@ namespace Piratenpartij.Screens
 
         private void btnHire_Click(object sender, EventArgs e)
         {
-
+            
             if (Ship.GetInstance().Crew.Count == 5) {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show("You cannot start with more than five crewmembers. Please press START.", "ENOUGH CREWMEMBERS", buttons, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -98,8 +100,6 @@ namespace Piratenpartij.Screens
             }
             UpdateShipCrew();
             UpdateScreen();
-
-
         }
 
         private void StartScreen_Load(object sender, EventArgs e)
@@ -109,6 +109,11 @@ namespace Piratenpartij.Screens
         }
         private void Start_Click(object sender, EventArgs e)
         {
+            if (ship.Crew.Count == 0) {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show("Please select at least one crewmember to join your crew.", "NOT ENOUGH CREWMEMBERS", buttons, MessageBoxIcon.Warning);
+                return;
+            }
             this.Hide();
             new MainScreen().Show();
         }
