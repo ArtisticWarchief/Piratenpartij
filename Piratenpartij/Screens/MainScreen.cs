@@ -16,6 +16,8 @@ namespace Piratenpartij
 
         private Ships.Ship ship;
 
+        HarborCrewmateUI harborUI = new HarborCrewmateUI();
+
         public delegate void ButtonPress();
         public event ButtonPress FirstButtonPress, SecondButtonPress, ThirdButtonPress;
         Event currentEvent;
@@ -48,6 +50,8 @@ namespace Piratenpartij
             FirstButtonPress += UpdateScreen;
             SecondButtonPress += UpdateScreen;
             ThirdButtonPress += UpdateScreen;
+
+            harborUI.FormClosing += HarborUI_FormClosed;
 
             InitializePictures();
 
@@ -83,7 +87,13 @@ namespace Piratenpartij
             
             if (eventCounter >= events.Count()) {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                System.Windows.Forms.MessageBox.Show("You have reached the end of the game. Congratulations! We hope you had fun :)", "THE END", buttons, MessageBoxIcon.Warning);
+                System.Windows.Forms.MessageBox.Show("You have reached the end of the game. Congratulations! We hope you had fun :)", "THE END", buttons, MessageBoxIcon.Information);
+                this.Close();
+                ship.ShipReset();
+                new StartScreen().Show();
+            } else if (ship.Crew.Count <= 0) {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show("All your crewmates are dead, you are just an empty ship. :)", "THE END", buttons, MessageBoxIcon.Error);
                 this.Close();
                 ship.ShipReset();
                 new StartScreen().Show();
@@ -93,20 +103,18 @@ namespace Piratenpartij
                 Console.WriteLine(currentEvent.EventType);
                 if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
                     ShowNewEvent(currentEvent.EventType, "Trade", "Overtake", "Ignore");
-                    //return;
                 }
                  else if (currentEvent.EventType == EventType.ISLAND) {
                     ShowNewEvent(currentEvent.EventType, "Take a chance", "Take a chance", "Take a chance");
-                    //return;
                 }
                  else if (currentEvent.EventType == EventType.HARBOR) {
                     ShowNewEvent(currentEvent.EventType, "You are in a Harbor", "You are in a Harbor", "You are in a Harbor");
-                    new HarborCrewmateUI().Show();
-                    //return;
+                    harborUI.SetNewHirableCrew();
+                    harborUI.BringToFront();
+                    harborUI.Show();
                 }
                 else if (currentEvent.EventType == EventType.PIRATES_SHIP) {
                     ShowNewEvent(currentEvent.EventType, "Fight", "Intimidate", "Cry and run");
-                    //return;
                 }
             }
             TravelProgressBar.PerformStep();
@@ -185,6 +193,15 @@ namespace Piratenpartij
                     break;
             }
             NextEvent();
+        }
+
+        private void HarborUI_FormClosed(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing) {
+                NextEvent();
+                e.Cancel = true;
+                harborUI.Hide();
+            }
         }
 
         private void LoadScreenFirstTime()
