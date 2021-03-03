@@ -64,11 +64,11 @@ namespace Piratenpartij.Obstacles
         {
             option = badOptions[random.Next(0, 2)];
 
-            Crewmembers = ship.Crewmembers;
+            Crewmembers = ship.Crew;
 
             Crewmember randomCrewmember = Crewmembers[random.Next(0, Crewmembers.Count())];
 
-            ship.Crewmembers.Remove(randomCrewmember);
+            ship.Crew.Remove(randomCrewmember);
         }
     }
 }

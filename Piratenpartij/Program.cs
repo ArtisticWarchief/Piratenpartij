@@ -20,7 +20,7 @@ namespace Piratenpartij
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new HarborTestUI());*/
 
-            new Trip(Location.AS, Location.US).Events.ForEach(e => Console.WriteLine($"{e.EventType}, {e.Power}, {e.Status}"));
+            //new Trip(Location.AS, Location.US).Events.ForEach(e => Console.WriteLine($"{e.EventType}, {e.Power}, {e.Status}"));
         }
     }
 }

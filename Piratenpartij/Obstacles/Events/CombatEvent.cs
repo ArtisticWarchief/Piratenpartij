@@ -25,7 +25,7 @@ namespace Piratenpartij.Obstacles
         public CombatEvent(Random random) : base(EventType.PIRATES_SHIP)
         {
             this.random = random;
-            Crewmembers = ship.Crewmembers;
+            Crewmembers = ship.Crew;
             amountOfCrewMembers = Crewmembers.Count();
 
             avgIntelligence = ship.CrewAbilities.ElementAt(0).Value / amountOfCrewMembers;
@@ -54,6 +54,9 @@ namespace Piratenpartij.Obstacles
         public void fight()
         {
             if (randomIntForEvent > avgStrength) {
+                Crewmembers = ship.Crew;
+                ship.Crew.Remove(Crewmembers[random.Next(0, Crewmembers.Count())]);
+
                 Console.WriteLine("Lost battle");
             } else {
                 Console.WriteLine("Won battle");
