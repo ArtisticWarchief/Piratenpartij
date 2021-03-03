@@ -42,7 +42,7 @@ namespace Piratenpartij.Ships
             CrewAbilitiesUpdate();
             int Hunger = TotalHungerUsage();
             int Happiness = TotalHappinessUsage();
-            Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), 100 }, { new Peugeot208(), 2 }, { new AMSPortfolio(), 10 } };
+            Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), random.Next(0,500) }, { new Peugeot208(), random.Next(0, 500) }, { new AMSPortfolio(), random.Next(0, 500) } };
             Food = 100;
             Fun = 100;
             Money = 0;
@@ -111,7 +111,7 @@ namespace Piratenpartij.Ships
             Console.WriteLine("The combined hunger usage of your crew is " + Hunger.ToString());
             int Happiness = TotalHappinessUsage();
             Console.WriteLine("The combined happiness usage of your crew is " + Happiness.ToString());
-            Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), 100 }, { new Peugeot208(), 2 }, { new AMSPortfolio(), 10 } };
+            Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), random.Next(0, 500) }, { new Peugeot208(), random.Next(0, 500) }, { new AMSPortfolio(), random.Next(0, 500) } };
             Food = 100;
             Fun = 100;
             Money = 0;
