@@ -16,12 +16,24 @@ namespace Piratenpartij
     {
         private List<Crewmember> newCrewMembers = new List<Crewmember>();
         private Random random = new Random();
+
         public HarborCrewmateUI()
         {
             InitializeComponent();
             lvHirableCrewmates.View = View.Details;
             lvHirableCrewmates.FullRowSelect = true;
             lvHirableCrewmates.GridLines = true;
+
+            lvShipCrew.FullRowSelect = true;
+            lvShipCrew.GridLines = true;
+
+            UpdateShipCrew();
+        }
+
+        public void SetNewHirableCrew()
+        {
+            lvHirableCrewmates.Clear();
+            newCrewMembers.Clear();
 
             lvHirableCrewmates.Columns.Add("Name", -2, HorizontalAlignment.Center);
             foreach (var ability in Enum.GetValues(typeof(Abilities.AbilityNames))) {
@@ -30,18 +42,14 @@ namespace Piratenpartij
             lvHirableCrewmates.Columns.Add("Hunger", -2, HorizontalAlignment.Center);
             lvHirableCrewmates.Columns.Add("Price", -2, HorizontalAlignment.Center);
 
-            
-            lvShipCrew.FullRowSelect = true;
-            lvShipCrew.GridLines = true;
-
             for (int i = 0; i < 3; i++) {
                 Crewmember crew = new Crewmember(random);
-                
+
                 newCrewMembers.Add(crew);
 
                 ListViewItem placeHolder = new ListViewItem(newCrewMembers[i].Name);
                 for (int j = 0; j <= newCrewMembers[i].Ability.maxAbilityIndex; j++) {
-                    placeHolder.SubItems.Add(newCrewMembers[i].Ability.GetAbilities()[j].ToString()); 
+                    placeHolder.SubItems.Add(newCrewMembers[i].Ability.GetAbilities()[j].ToString());
                 }
                 placeHolder.SubItems.Add(newCrewMembers[i].HungerUsage.ToString());
                 placeHolder.SubItems.Add(newCrewMembers[i].Cost.ToString());
@@ -49,7 +57,7 @@ namespace Piratenpartij
                 lvHirableCrewmates.Items.Add(placeHolder);
             }
 
-            UpdateShipCrew();
+            lvHirableCrewmates.Columns[0].Width = -2;
         }
 
         private void btnHire_Click(object sender, EventArgs e)
@@ -106,11 +114,6 @@ namespace Piratenpartij
             lvShipCrew.Items.Add(totalAbilities);
 
             lvShipCrew.Columns[0].Width = -2;
-        }
-
-        private void HarborCrewmateUI_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
