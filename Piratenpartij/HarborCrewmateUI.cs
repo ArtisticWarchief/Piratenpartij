@@ -27,6 +27,7 @@ namespace Piratenpartij
             foreach (var ability in Enum.GetValues(typeof(Abilities.AbilityNames))) {
                 lvHirableCrewmates.Columns.Add(ability.ToString(), -2, HorizontalAlignment.Center);
             }
+            lvHirableCrewmates.Columns.Add("Hunger", -2, HorizontalAlignment.Center);
             lvHirableCrewmates.Columns.Add("Price", -2, HorizontalAlignment.Center);
 
             
@@ -40,14 +41,15 @@ namespace Piratenpartij
 
                 ListViewItem placeHolder = new ListViewItem(newCrewMembers[i].Name);
                 for (int j = 0; j <= newCrewMembers[i].Ability.maxAbilityIndex; j++) {
-                 placeHolder.SubItems.Add(newCrewMembers[i].Ability.GetAbilities()[j].ToString()); 
+                    placeHolder.SubItems.Add(newCrewMembers[i].Ability.GetAbilities()[j].ToString()); 
                 }
+                placeHolder.SubItems.Add(newCrewMembers[i].HungerUsage.ToString());
                 placeHolder.SubItems.Add(newCrewMembers[i].Cost.ToString());
 
                 lvHirableCrewmates.Items.Add(placeHolder);
             }
 
-            updateShipCrew();
+            UpdateShipCrew();
         }
 
         private void btnHire_Click(object sender, EventArgs e)
@@ -60,43 +62,55 @@ namespace Piratenpartij
             ListView.SelectedIndexCollection chosenMemberIndex = lvHirableCrewmates.SelectedIndices;
 
             foreach (var index in chosenMemberIndex) {
-                Ship.GetInstance().Crewmembers.Add(newCrewMembers[(int)index]);
+                Ship.GetInstance().Crew.Add(newCrewMembers[(int)index]);
                 lvHirableCrewmates.Items.RemoveAt((int)index);
                 newCrewMembers.RemoveAt((int)index);
             }
 
-            updateShipCrew();
+            UpdateShipCrew();
         }
 
-        private void updateShipCrew()
+        private void UpdateShipCrew()
         {
             lvShipCrew.Clear();
 
             lvShipCrew.View = View.Details;
+            int totalHunger = 0;
 
             lvShipCrew.Columns.Add("Name",-2, HorizontalAlignment.Center);
             foreach (var ability in Enum.GetValues(typeof(Abilities.AbilityNames))) {
                 lvShipCrew.Columns.Add(ability.ToString(), -2, HorizontalAlignment.Center);
             }
+            lvShipCrew.Columns.Add("Hunger", -2, HorizontalAlignment.Center);
             lvShipCrew.Columns.Add("Price", -2, HorizontalAlignment.Center);
 
-            foreach (var crew in Ship.GetInstance().Crewmembers) {
+            foreach (var crew in Ship.GetInstance().Crew) {
                 ListViewItem placeHolder = new ListViewItem(crew.Name);
                 for (int j = 0; j <= crew.Ability.maxAbilityIndex; j++) {
                     placeHolder.SubItems.Add(crew.Ability.GetAbilities()[j].ToString());
                 }
+                placeHolder.SubItems.Add(crew.HungerUsage.ToString());
+                totalHunger += crew.HungerUsage;
                 placeHolder.SubItems.Add(crew.Cost.ToString());
 
                 lvShipCrew.Items.Add(placeHolder);
             }
 
+            Ship.GetInstance().CrewAbilitiesUpdate();
+
             ListViewItem totalAbilities = new ListViewItem("Total");
             foreach (Abilities.AbilityNames abilityNames in Enum.GetValues(typeof(Abilities.AbilityNames))) {
                 totalAbilities.SubItems.Add(Ship.GetInstance().CrewAbilities[abilityNames].ToString());
             }
+            totalAbilities.SubItems.Add(totalHunger.ToString());
             lvShipCrew.Items.Add(totalAbilities);
 
             lvShipCrew.Columns[0].Width = -2;
+        }
+
+        private void HarborCrewmateUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

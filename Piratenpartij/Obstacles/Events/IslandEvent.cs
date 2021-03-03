@@ -27,20 +27,14 @@ namespace Piratenpartij.Obstacles
 
         public IslandEvent(Random random) : base(EventType.ISLAND)
         {
-            this.random = random;
+            
+        }
 
+        public bool CallIslandEvent()
+        {
             Boolean goodOption = random.Next(0, 2) > 0;
             islandName = islandNames[random.Next(0, 7)];
 
-            if (goodOption) {
-                GoodOption();
-            } else {
-                BadOption();
-            }
-        }
-
-        public void GoodOption()
-        {
             Dictionary<Cargo, int> cargoDict = ship.Cargo;
 
             option = goodOptions[random.Next(0, 2)];
@@ -60,9 +54,8 @@ namespace Piratenpartij.Obstacles
             ship.Cargo[cargo] += goodOptionValue;
         }
 
-        public void BadOption()
-        {
-            option = badOptions[random.Next(0, 2)];
+            } else {
+                option = badOptions[random.Next(0, 2)];
 
             Crewmembers = ship.Crew;
 

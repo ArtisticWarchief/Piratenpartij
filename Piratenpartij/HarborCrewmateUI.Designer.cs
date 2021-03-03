@@ -38,9 +38,10 @@ namespace Piratenpartij
             // btnHire
             // 
             this.btnHire.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHire.Location = new System.Drawing.Point(133, 288);
+            this.btnHire.Location = new System.Drawing.Point(165, 645);
+            this.btnHire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnHire.Name = "btnHire";
-            this.btnHire.Size = new System.Drawing.Size(124, 49);
+            this.btnHire.Size = new System.Drawing.Size(165, 60);
             this.btnHire.TabIndex = 1;
             this.btnHire.Text = "Hire";
             this.btnHire.UseVisualStyleBackColor = true;
@@ -50,18 +51,20 @@ namespace Piratenpartij
             // 
             this.lvHirableCrewmates.GridLines = true;
             this.lvHirableCrewmates.HideSelection = false;
-            this.lvHirableCrewmates.Location = new System.Drawing.Point(12, 70);
+            this.lvHirableCrewmates.Location = new System.Drawing.Point(16, 86);
+            this.lvHirableCrewmates.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvHirableCrewmates.Name = "lvHirableCrewmates";
-            this.lvHirableCrewmates.Size = new System.Drawing.Size(404, 212);
+            this.lvHirableCrewmates.Size = new System.Drawing.Size(463, 533);
             this.lvHirableCrewmates.TabIndex = 3;
             this.lvHirableCrewmates.UseCompatibleStateImageBehavior = false;
             // 
             // lvShipCrew
             // 
             this.lvShipCrew.HideSelection = false;
-            this.lvShipCrew.Location = new System.Drawing.Point(423, 70);
+            this.lvShipCrew.Location = new System.Drawing.Point(488, 86);
+            this.lvShipCrew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvShipCrew.Name = "lvShipCrew";
-            this.lvShipCrew.Size = new System.Drawing.Size(365, 212);
+            this.lvShipCrew.Size = new System.Drawing.Size(465, 533);
             this.lvShipCrew.TabIndex = 4;
             this.lvShipCrew.UseCompatibleStateImageBehavior = false;
             // 
@@ -69,9 +72,10 @@ namespace Piratenpartij
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(128, 42);
+            this.label1.Location = new System.Drawing.Point(144, 52);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 25);
+            this.label1.Size = new System.Drawing.Size(196, 31);
             this.label1.TabIndex = 5;
             this.label1.Text = "Crew For Hire";
             // 
@@ -79,24 +83,27 @@ namespace Piratenpartij
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(543, 42);
+            this.label2.Location = new System.Drawing.Point(616, 52);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 25);
+            this.label2.Size = new System.Drawing.Size(196, 31);
             this.label2.TabIndex = 6;
             this.label2.Text = "Crew onboard";
             // 
             // HarborCrewmateUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(989, 750);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvShipCrew);
             this.Controls.Add(this.lvHirableCrewmates);
             this.Controls.Add(this.btnHire);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HarborCrewmateUI";
             this.Text = "HarborCrewmateUI";
+            this.Load += new System.EventHandler(this.HarborCrewmateUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

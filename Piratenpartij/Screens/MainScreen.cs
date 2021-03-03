@@ -1,124 +1,197 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Media;
-using System.Reflection;
 using System.Windows.Forms;
+using Piratenpartij.Cargos;
 using Piratenpartij.Obstacles;
+using Piratenpartij.Obstacles.Enums;
+using System.Linq;
+using Piratenpartij.Screens;
 
 namespace Piratenpartij
 {
     public partial class MainScreen : Form
     {
-
-        private static Button choiceButtonOne, choiceButtonTwo, choiceButtonThree;
-        private static PictureBox eventPictureBox;
         private static Bitmap[] bitmaps = new Bitmap[4];
 
-        private static Label moneyAmountLabel;
-        private static Label cargoPeugotAmountLabel, cargoMountainAmountLabel, cargoPortofolioAmountLabel;
-        private static Label happinessAmountLabel, crewMemberAmountLabel;
+        private Ships.Ship ship;
 
-        public delegate void ButtonPressEventHandler();
-        public event ButtonPressEventHandler FirstButtonPress, SecondButtonPress, ThirdButtonPress;
+        public delegate void ButtonPress();
+        public event ButtonPress FirstButtonPress, SecondButtonPress, ThirdButtonPress;
+        Event currentEvent;
+        int eventCounter = 0;
+        Trip currentTrip = new Trip();
+        List<Event> events;
 
         public MainScreen()
         {
             InitializeComponent();
 
-            InitializeButtons();
+            ship = Ships.Ship.GetInstance();
+
+
+            FirstButtonPress += FirstButton;
+            SecondButtonPress += SecondButton;
+            ThirdButtonPress += ThirdButton;
+            FirstButtonPress += UpdateScreen;
+            SecondButtonPress += UpdateScreen;
+            ThirdButtonPress += UpdateScreen;
+            
             InitializePictures();
-            InitializeTexts();
 
             LoadScreenFirstTime();
+
+            
+            events = currentTrip.Events;
+            foreach (Event e in events) {
+                Console.WriteLine(e.EventType);
+            }
+            
+            currentEvent = events[eventCounter];
         }
 
         #region initalization
 
-        private void InitializeButtons()
-        {
-            choiceButtonOne = ChoiceOneButton;
-            choiceButtonTwo = ChoiceTwoButton;
-            choiceButtonThree = ChoiceThreeButton;
-        }
-
         private void InitializePictures()
         {
-            eventPictureBox = EventPictureBox;
-
+            bitmaps[0] = Properties.Resources.piraten_plaatje;
             bitmaps[1] = Properties.Resources.Bootje_Cartoon;
+            bitmaps[2] = Properties.Resources.eiland_plaatje;
             bitmaps[3] = Properties.Resources.harbor_cartoon;
         }
 
-        private void InitializeTexts()
-        {
-            moneyAmountLabel = MoneyAmountText;
-            cargoPeugotAmountLabel = CargoPeugotAmountText;
-            cargoMountainAmountLabel = CargoMountainAmountText;
-            cargoPortofolioAmountLabel = CargoPortofolioAmountText;
-            happinessAmountLabel = HappinessAmountText;
-            crewMemberAmountLabel = CrewMemberAmountText;
-        }
         #endregion
 
+        private void UpdateScreen()
+        {
+            Console.WriteLine("Update screen");
+            UpdateAllCargos(ship.Cargo);
+            ChangeMoneyAmountText(ship.Money);
+            ChangeCrewMemberAmountText(ship.Crew.Count);
+            ChangeHappinessText(ship.Fun);
+            ChangeFoodText(ship.Food);
+        }
+
+        private void nextEvent()
+        {
+            eventCounter++;
+            if (eventCounter >= events.Count()) {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show("You have reached the end of the game. Congratulations! We hope you had fun :)", "THE END", buttons, MessageBoxIcon.Warning);
+                this.Close();
+                ship.ShipReset();
+                new StartScreen().Show();
+            }
+            else {
+                currentEvent = events[eventCounter];
+                Console.WriteLine(currentEvent.EventType);
+                if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
+                    ShowNewEvent(currentEvent.EventType, "Trade", "Overtake", "Ignore");
+                    return;
+                }
+                if (currentEvent.EventType == EventType.ISLAND) {
+                    ShowNewEvent(currentEvent.EventType, "Take a chance", "Take a chance", "Take a chance");
+                    return;
+                }
+                if (currentEvent.EventType == EventType.HARBOR) {
+                    return;
+                }
+            }
+            
+        }
+
+        private void FirstButton()
+        {
+            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
+                TradeEvent trade = (TradeEvent)currentEvent;
+                trade.Trade(new MountainHoliday(),20);
+            }
+            if (currentEvent.EventType == EventType.ISLAND) {
+                IslandEvent trade = (IslandEvent)currentEvent;
+                trade.CallIslandEvent();
+            }
+            if (currentEvent.EventType == EventType.HARBOR) {
+                new HarborCrewmateUI().Show();
+            }
+            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            }
+            nextEvent();
+        }
+
+        private void SecondButton()
+        {
+            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
+                TradeEvent trade = (TradeEvent)currentEvent;
+                trade.Overtake();
+            }
+            if (currentEvent.EventType == EventType.ISLAND) {
+                IslandEvent trade = (IslandEvent)currentEvent;
+                trade.CallIslandEvent();
+            }
+            if (currentEvent.EventType == EventType.HARBOR) {
+                new HarborCrewmateUI().Show();
+            }
+            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            }
+            nextEvent();
+        }
+
+        private void ThirdButton()
+        {
+            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
+                TradeEvent trade = (TradeEvent)currentEvent;
+                trade.Ignore();
+            }
+            if (currentEvent.EventType == EventType.ISLAND) {
+                IslandEvent trade = (IslandEvent)currentEvent;
+                trade.CallIslandEvent();
+            }
+            if (currentEvent.EventType == EventType.HARBOR) {
+                new HarborCrewmateUI().Show();
+            }
+            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            }
+            nextEvent();
+        }
         private void LoadScreenFirstTime()
         {
-            ShowNewEvent(EventType.HARBOR, "1", "2", "3");
-            UpdateAllCargos(Ships.Ship.GetInstance().Cargo);
-            ChangeMoneyAmountText(Ships.Ship.GetInstance().Money);
-            ChangeCrewMemberAmountText(Ships.Ship.GetInstance().Crew.Count);
-            ChangeHappinessText(Ships.Ship.GetInstance().Fun);
+            //ShowNewEvent(EventType.HARBOR, "Je eerste keuze", "WOW nog een!", "Wat veel keuzes!");
+            UpdateScreen();
         }
 
-        public static void ShowNewEvent(EventType eventType, string choiceOne, string choiceTwo, string choiceThree)
+        public void ShowNewEvent(EventType eventType, string choiceOne, string choiceTwo, string choiceThree)
         {
-            choiceButtonOne.Text = choiceOne;
-            choiceButtonTwo.Text = choiceTwo;
-            choiceButtonThree.Text = choiceThree;
+            ChoiceOneButton.Text = choiceOne;
+            ChoiceTwoButton.Text = choiceTwo;
+            ChoiceThreeButton.Text = choiceThree;
 
-            eventPictureBox.Image = bitmaps[(int)eventType];
+            EventPictureBox.Image = bitmaps[(int)eventType];
         }
 
-        public static void ChangeCargoAmountText(Cargos.Cargo cargo, int amount)
-        {
-            if (cargo.GetType() == typeof(Cargos.Peugeot208)) cargoPeugotAmountLabel.Text = amount.ToString();
-            else if (cargo.GetType() == typeof(Cargos.MountainHoliday)) cargoMountainAmountLabel.Text = amount.ToString();
-            else if (cargo.GetType() == typeof(Cargos.AMSPortfolio)) cargoPortofolioAmountLabel.Text = amount.ToString();
-        }
-
-        private void MainScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        public static void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
+        public void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
         {
             foreach (KeyValuePair<Cargos.Cargo, int> item in cargos) 
             {
-                ChangeCargoAmountText(item.Key, item.Value);
+                if (item.Key.GetType() == typeof(Cargos.Peugeot208)) CargoPeugotAmountText.Text = item.Value.ToString();
+                else if (item.Key.GetType() == typeof(Cargos.MountainHoliday)) CargoMountainAmountText.Text = item.Value.ToString();
+                else if (item.Key.GetType() == typeof(Cargos.AMSPortfolio)) CargoPortofolioAmountText.Text = item.Value.ToString();
             }
         }
 
-        public static void ChangeCrewMemberAmountText(int amount)
-        {
-            crewMemberAmountLabel.Text = amount.ToString();
-        }
-
-        public static void ChangeMoneyAmountText(int amount)
-        {
-            moneyAmountLabel.Text = amount.ToString();
-        }
-
-        public static void ChangeHappinessText(int amount)
-        {
-            happinessAmountLabel.Text = amount.ToString();
-        }
+        private void ChangeCrewMemberAmountText(int amount) => CrewMemberAmountText.Text = amount.ToString();
+        private void ChangeMoneyAmountText(int amount) => MoneyAmountText.Text = amount.ToString();
+        private void ChangeHappinessText(int amount) => HappinessAmountText.Text = amount.ToString();
+        private void ChangeFoodText(int amount) => FoodAmountText.Text = amount.ToString();
 
         #region ButtonPresses
         private void ChoiceOneButton_Click(object sender, EventArgs e)
         {
             FirstButtonPress?.Invoke();
+        }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void ChoiceTwoButton_Click(object sender, EventArgs e)
