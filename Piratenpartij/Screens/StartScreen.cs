@@ -109,8 +109,15 @@ namespace Piratenpartij.Screens
         }
         private void Start_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new MainScreen().Show();
+            if (Ship.GetInstance().Crew.Count > 0) {
+                this.Hide();
+                new MainScreen().Show();
+            } else {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show("Please choose at least one crewmember to hire. Before starting the game.", "Not enough crewmembers", buttons, MessageBoxIcon.Warning);
+                return;
+            }
+            
         }
 
         private void UpdateScreen()
