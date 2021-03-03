@@ -10,7 +10,13 @@ namespace Piratenpartij.Cargos
     {
         public AMSPortfolio() : base()
         {
+            cargoType = CargoTypes.Portofolio;
 
+            maximumBuyPrice = 300;
+            minimumBuyPrice = 10;
+
+            maximumSellPrice = 200;
+            minimumSellPrice = 5;
         }
     }
 }
