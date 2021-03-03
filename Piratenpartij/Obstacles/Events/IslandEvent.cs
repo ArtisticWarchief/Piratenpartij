@@ -26,6 +26,11 @@ namespace Piratenpartij.Obstacles
         
         public IslandEvent() : base(EventType.ISLAND)
         {
+            
+        }
+
+        public bool CallIslandEvent()
+        {
             Boolean goodOption = random.Next(0, 2) > 0;
             islandName = islandNames[random.Next(0, 7)];
 
@@ -37,16 +42,20 @@ namespace Piratenpartij.Obstacles
                 Cargo cargo;
 
                 if (option == "Peugeot208") {
-                     cargo = cargoDict.Keys.FirstOrDefault(e => e.GetType() == typeof(Peugeot208));
-                } else if(option == "AMSPortfolio") {
+                    cargo = cargoDict.Keys.FirstOrDefault(e => e.GetType() == typeof(Peugeot208));
+                }
+                else if (option == "AMSPortfolio") {
                     cargo = cargoDict.Keys.FirstOrDefault(e => e.GetType() == typeof(AMSPortfolio));
-                } else {
+                }
+                else {
                     cargo = cargoDict.Keys.FirstOrDefault(e => e.GetType() == typeof(MountainHoliday));
                 }
 
                 ship.Cargo[cargo] += goodOptionValue;
 
-            } else {
+                return true;
+            }
+            else {
                 option = badOptions[random.Next(0, 2)];
 
                 Crewmembers = ship.Crew;
@@ -54,6 +63,8 @@ namespace Piratenpartij.Obstacles
                 Crewmember randomCrewmember = Crewmembers[random.Next(0, Crewmembers.Count())];
 
                 ship.Crew.Remove(randomCrewmember);
+
+                return false;
             }
         }
     }
