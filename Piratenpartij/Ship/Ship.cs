@@ -36,6 +36,18 @@ namespace Piratenpartij.Ships
                 return ShipInstance;
             }
         }
+        public void ShipReset()
+        {
+            Crew = new List<Crewmember>();
+            CrewAbilitiesUpdate();
+            int Hunger = TotalHungerUsage();
+            int Happiness = TotalHappinessUsage();
+            Cargo = new Dictionary<Cargo, int> { { new MountainHoliday(), 100 }, { new Peugeot208(), 2 }, { new AMSPortfolio(), 10 } };
+            Food = 100;
+            Fun = 100;
+            Money = 0;
+            Destination = "";
+        }
 
         readonly Random random = new Random();
 
@@ -92,7 +104,7 @@ namespace Piratenpartij.Ships
         private Ship()
         {
             Crew = new List<Crewmember>();
-            //CrewAbilitiesUpdate();
+            CrewAbilitiesUpdate();
             Console.WriteLine("You have the following crew: " + ShowCrew());
             Console.WriteLine("The combined stats of your crew are as follows: " + CrewAbilitiesString());
             int Hunger = TotalHungerUsage();

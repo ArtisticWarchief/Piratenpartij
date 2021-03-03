@@ -79,6 +79,11 @@ namespace Piratenpartij.Screens
 
         private void btnHire_Click(object sender, EventArgs e)
         {
+
+            if (Ship.GetInstance().Crew.Count == 5) {
+                return;
+            }
+
             if (lvHirableCrewmates.SelectedItems == null || lvHirableCrewmates.SelectedItems.Count > 1) {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 System.Windows.Forms.MessageBox.Show("Please choose one crewmember to hire.", "Too many crewmembers", buttons, MessageBoxIcon.Warning);
@@ -91,22 +96,42 @@ namespace Piratenpartij.Screens
                 lvHirableCrewmates.Items.RemoveAt((int)index);
                 newCrewMembers.RemoveAt((int)index);
             }
-
             UpdateShipCrew();
-            if (Ship.GetInstance().Crew.Count == 5) {
-                Hide();
-                new MainScreen().Show();
-            }
+            UpdateScreen();
+
+
         }
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
+            UpdateScreen();
 
         }
         private void Start_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Hide();
             new MainScreen().Show();
         }
+
+        private void UpdateScreen()
+        {
+            UpdateAllCargos(ship.Cargo);
+            ChangeMoneyAmountText(ship.Money);
+            ChangeCrewMemberAmountText(ship.Crew.Count);
+            ChangeHappinessText(ship.Fun);
+        }
+
+        public void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
+        {
+            foreach (KeyValuePair<Cargos.Cargo, int> item in cargos) {
+                if (item.Key.GetType() == typeof(Cargos.Peugeot208)) CargoPeugotAmountText.Text = item.Value.ToString();
+                else if (item.Key.GetType() == typeof(Cargos.MountainHoliday)) CargoMountainAmountText.Text = item.Value.ToString();
+                else if (item.Key.GetType() == typeof(Cargos.AMSPortfolio)) CargoPortofolioAmountText.Text = item.Value.ToString();
+            }
+        }
+
+        private void ChangeCrewMemberAmountText(int amount) => CrewMemberAmountText.Text = amount.ToString();
+        private void ChangeMoneyAmountText(int amount) => MoneyAmountText.Text = amount.ToString();
+        private void ChangeHappinessText(int amount) => HappinessAmountText.Text = amount.ToString();
     }
 }
