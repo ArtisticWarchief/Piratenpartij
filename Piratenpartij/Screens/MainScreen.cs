@@ -36,17 +36,17 @@ namespace Piratenpartij
             FirstButtonPress += UpdateScreen;
             SecondButtonPress += UpdateScreen;
             ThirdButtonPress += UpdateScreen;
-            
+
             InitializePictures();
 
             LoadScreenFirstTime();
 
-            
+
             events = currentTrip.Events;
             foreach (Event e in events) {
                 Console.WriteLine(e.EventType);
             }
-            
+
             currentEvent = events[eventCounter];
         }
 
@@ -97,62 +97,78 @@ namespace Piratenpartij
                     return;
                 }
             }
-            
+
         }
 
         private void FirstButton()
         {
-            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
-                TradeEvent trade = (TradeEvent)currentEvent;
-                trade.Trade(new MountainHoliday(),20);
-            }
-            if (currentEvent.EventType == EventType.ISLAND) {
-                IslandEvent trade = (IslandEvent)currentEvent;
-                trade.CallIslandEvent();
-            }
-            if (currentEvent.EventType == EventType.HARBOR) {
-                new HarborCrewmateUI().Show();
-            }
-            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            switch (currentEvent.EventType) {
+                case EventType.PIRATES_SHIP:
+                    //TODO
+                    break;
+                case EventType.MERCHANT_SHIP:
+                    TradeEvent tradeEvent = (TradeEvent)currentEvent;
+                    tradeEvent.Trade(new MountainHoliday(), 20);
+                    break;
+                case EventType.ISLAND:
+                    IslandEvent islandEvent = (IslandEvent)currentEvent;
+                    islandEvent.CallIslandEvent();
+                    break;
+                case EventType.HARBOR:
+                    new HarborCrewmateUI().Show();
+                    break;
+                default:
+                    break;
             }
             nextEvent();
         }
 
         private void SecondButton()
         {
-            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
-                TradeEvent trade = (TradeEvent)currentEvent;
-                trade.Overtake();
-            }
-            if (currentEvent.EventType == EventType.ISLAND) {
-                IslandEvent trade = (IslandEvent)currentEvent;
-                trade.CallIslandEvent();
-            }
-            if (currentEvent.EventType == EventType.HARBOR) {
-                new HarborCrewmateUI().Show();
-            }
-            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            switch (currentEvent.EventType) {
+                case EventType.PIRATES_SHIP:
+                    //TODO
+                    break;
+                case EventType.MERCHANT_SHIP:
+                    TradeEvent tradeEvent = (TradeEvent)currentEvent;
+                    tradeEvent.Overtake();
+                    break;
+                case EventType.ISLAND:
+                    IslandEvent islandEvent = (IslandEvent)currentEvent;
+                    islandEvent.CallIslandEvent();
+                    break;
+                case EventType.HARBOR:
+                    new HarborCrewmateUI().Show();
+                    break;
+                default:
+                    break;
             }
             nextEvent();
         }
 
         private void ThirdButton()
         {
-            if (currentEvent.EventType == EventType.MERCHANT_SHIP) {
-                TradeEvent trade = (TradeEvent)currentEvent;
-                trade.Ignore();
-            }
-            if (currentEvent.EventType == EventType.ISLAND) {
-                IslandEvent trade = (IslandEvent)currentEvent;
-                trade.CallIslandEvent();
-            }
-            if (currentEvent.EventType == EventType.HARBOR) {
-                new HarborCrewmateUI().Show();
-            }
-            if (currentEvent.EventType == EventType.PIRATES_SHIP) {
+            switch (currentEvent.EventType) {
+                case EventType.PIRATES_SHIP:
+                    //TODO
+                    break;
+                case EventType.MERCHANT_SHIP:
+                    TradeEvent tradeEvent = (TradeEvent)currentEvent;
+                    tradeEvent.Ignore();
+                    break;
+                case EventType.ISLAND:
+                    IslandEvent islandEvent = (IslandEvent)currentEvent;
+                    islandEvent.CallIslandEvent();
+                    break;
+                case EventType.HARBOR:
+                    new HarborCrewmateUI().Show();
+                    break;
+                default:
+                    break;
             }
             nextEvent();
         }
+
         private void LoadScreenFirstTime()
         {
             //ShowNewEvent(EventType.HARBOR, "Je eerste keuze", "WOW nog een!", "Wat veel keuzes!");
@@ -168,13 +184,12 @@ namespace Piratenpartij
             EventPictureBox.Image = bitmaps[(int)eventType];
         }
 
-        public void UpdateAllCargos(Dictionary<Cargos.Cargo, int> cargos)
+        public void UpdateAllCargos(Dictionary<Cargo, int> cargos)
         {
-            foreach (KeyValuePair<Cargos.Cargo, int> item in cargos) 
-            {
-                if (item.Key.GetType() == typeof(Cargos.Peugeot208)) CargoPeugotAmountText.Text = item.Value.ToString();
-                else if (item.Key.GetType() == typeof(Cargos.MountainHoliday)) CargoMountainAmountText.Text = item.Value.ToString();
-                else if (item.Key.GetType() == typeof(Cargos.AMSPortfolio)) CargoPortofolioAmountText.Text = item.Value.ToString();
+            foreach (KeyValuePair<Cargos.Cargo, int> item in cargos) {
+                if (item.Key.GetType() == typeof(Peugeot208)) CargoPeugotAmountText.Text = item.Value.ToString();
+                else if (item.Key.GetType() == typeof(MountainHoliday)) CargoMountainAmountText.Text = item.Value.ToString();
+                else if (item.Key.GetType() == typeof(AMSPortfolio)) CargoPortofolioAmountText.Text = item.Value.ToString();
             }
         }
 
@@ -187,11 +202,6 @@ namespace Piratenpartij
         private void ChoiceOneButton_Click(object sender, EventArgs e)
         {
             FirstButtonPress?.Invoke();
-        }
-
-        private void MainScreen_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void ChoiceTwoButton_Click(object sender, EventArgs e)
