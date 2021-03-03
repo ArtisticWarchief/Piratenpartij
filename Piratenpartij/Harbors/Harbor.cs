@@ -9,84 +9,137 @@ using Piratenpartij.Ships;
 
 namespace Piratenpartij.Harbors
 {
-   public class Harbor
-    {      
-        readonly Random random = new Random();
+    public class Harbor
+    {
+        private Random random = new Random();
 
         public string Name { get; set; }
         public int FoodPrice { get; set; }
+
+        public int FoodAmount { get; set; }
         public List<string> Destinations { get; set; }
         public List<string> Crewmembers { get; set; }
-        public Dictionary<Cargo, int> CargoInStock { get; set; }
+        public Dictionary<Cargo, HarborCargoItem> CargoInStock { get; set; }
         public Ship PlayerShip { get; private set; }
 
         public Harbor()
         {
-            InitializeCargo();
-            InitializeCrewmembers();           
-            FoodPrice = random.Next(1, 10);
             PlayerShip = Ship.GetInstance();
+            CargoInStock = new Dictionary<Cargo, HarborCargoItem>();
+
+            InitializeCargo();
+
+            FoodAmount = random.Next(10, 250);
+            FoodPrice = random.Next(1, 10);
+
+            new HarborScreen(this).Show();
         }
 
-        public void BuyFood(int amount, int price)
+        public bool BuyFood(int amount)
         {
-            if (!PriceCheck(price)) {
-                return;
-            }
+            int price = FoodPrice;
 
-            PlayerShip.Food += amount;
-           
-        }
-
-        public void BuyCargo(Cargo cargo, int amount)
-        {
-            if (!PriceCheck(cargo.Price)) {
-                return;
-            }
-
-            foreach (Cargo cargoOnShip in PlayerShip.Cargo.Keys) {
-                if (cargo.GetType() == cargoOnShip.GetType()) {
-                    PlayerShip.Cargo[cargoOnShip] += amount;
-                    break;
+            if (PriceCheck(price * amount)) {
+                if (FoodAmount - amount >= 0) {
+                    FoodAmount -= amount;
+                    PlayerShip.Money -= price * amount;
+                    PlayerShip.Food += amount;
+                    return true;
                 }
-            }           
-            // dunno how this list gets represented in the UI, assuming its just a list of generic Cargo
-            CargoInStock.FirstOrDefault(e => e.Key == cargo);
-
-            CargoInStock.FirstOrDefault(e => e.Key.GetType() == typeof(Cargo));
+                return false;
+            }
+            return false;
         }
 
-        public void SellCargo(Cargo cargo)
+        public bool BuyCargo(Cargo cargo, int amount)
         {
-            throw new NotImplementedException();
+            if (IsCargoInStock(cargo, amount)) 
+            {
+                int buyPrice = CargoInStock[cargo].buyPrice * amount;
+                if (PriceCheck(buyPrice * amount)) 
+                {
+                    PlayerShip.Cargo[cargo] += amount;
+                    PlayerShip.Money -= buyPrice;
+                    RemoveStock(cargo, amount);
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+
+        public bool SellCargo(Cargo cargo, int amount)
+        {
+            if (PlayerShip.Cargo[cargo] - amount >= 0) {
+                PlayerShip.Cargo[cargo] -= amount;
+                PlayerShip.Money += cargo.GetSellPrice() * amount;
+                GainStock(cargo, amount);
+                return true;
+            }
+            return false;
+        }
+
+        private bool IsCargoInStock(Cargo cargo, int amount) => CargoInStock[cargo].amount - amount >= 0;
+
+        private void RemoveStock(Cargo cargo, int amount)
+        {
+            if (IsCargoInStock(cargo, amount)) {
+                int newAmount = CargoInStock[cargo].amount - amount;
+                CargoInStock[cargo] = new HarborCargoItem(newAmount, CargoInStock[cargo].buyPrice, CargoInStock[cargo].sellPrice);
+            }
+        }
+
+        private void GainStock(Cargo cargo, int amount)
+        {
+            int newAmount = CargoInStock[cargo].amount + amount;
+            CargoInStock[cargo] = new HarborCargoItem(newAmount, CargoInStock[cargo].buyPrice, CargoInStock[cargo].sellPrice);
         }
 
         public void BuyCrewmember(Crewmember crewmember)
         {
-            if (!PriceCheck(crewmember.Cost)){
-                return;
+            if (PriceCheck(crewmember.Cost)) {
+                PlayerShip.Money -= crewmember.Cost;
+                PlayerShip.Crew.Add(crewmember);
             }
-
-            PlayerShip.Money -= crewmember.Cost;
-            PlayerShip.Crew.Add(crewmember);
         }
 
-        private bool PriceCheck(int cost)
+        public HarborCargoItem GetCargoInStockItem(CargoTypes type)
         {
-            if (PlayerShip.Money - cost < 0) {
-                return false;
+            foreach (KeyValuePair<Cargo, HarborCargoItem> kvp in CargoInStock) {
+                if (kvp.Key.cargoType == type) return kvp.Value;
             }
-
-            return true;
+            return new HarborCargoItem();
         }
+
+        private bool PriceCheck(int cost) => (PlayerShip.Money - cost >= 0);
+
         private void InitializeCargo()
         {
-            // take cargo out of a text file or something idk
+            foreach (KeyValuePair<Cargo, int> item in PlayerShip.Cargo) {
+                HarborCargoItem cargoItem = new HarborCargoItem(random.Next(0, 500), item.Key);
+                CargoInStock.Add(item.Key, cargoItem);
+            }
+        }
+    }
+
+    public struct HarborCargoItem
+    {
+        public int amount;
+        public int buyPrice;
+        public int sellPrice;
+
+        public HarborCargoItem(int amount, Cargo cargo)
+        {
+            this.amount = amount;
+            buyPrice = cargo.GetBuyPrice();
+            sellPrice = cargo.GetSellPrice();
         }
 
-        private void InitializeCrewmembers()
+        public HarborCargoItem(int amount, int buyPrice, int sellPrice)
         {
-            // take crew out of a text file or something idk
+            this.amount = amount;
+            this.buyPrice = buyPrice;
+            this.sellPrice = sellPrice;
         }
     }
 }

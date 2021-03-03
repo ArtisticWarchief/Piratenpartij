@@ -9,12 +9,32 @@ namespace Piratenpartij.Cargos
     public abstract class Cargo
     {
         public string Name { get; set; }
-        public int Price { get; set; }
         public int LimitOnShip { get; set; }
 
-        public Cargo()
+        protected int maximumBuyPrice, minimumBuyPrice;
+        protected int maximumSellPrice, minimumSellPrice;
+
+        public CargoTypes cargoType;
+
+        public Cargo() { }
+
+        public int GetSellPrice()
         {
-           
+            Random r = new Random();
+            return r.Next(minimumBuyPrice, maximumBuyPrice);
+        }
+
+        public int GetBuyPrice()
+        {
+            Random r = new Random();
+            return r.Next(minimumSellPrice, maximumSellPrice);
         }
     }
+}
+
+public enum CargoTypes
+{
+    Peugeot208,
+    Mountain,
+    Portofolio
 }
