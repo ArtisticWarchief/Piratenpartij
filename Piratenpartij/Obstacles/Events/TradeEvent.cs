@@ -30,22 +30,23 @@ namespace Piratenpartij.Obstacles
         public void Trade()
         {
             KeyValuePair<Cargo, int> randomCargo = EventCargos[random.Next(0, 3)];
-            foreach (KeyValuePair<Cargo, int> shipCargo in shipCargos) {
-                if (shipCargo.Key.GetType() == randomCargo.Key.GetType()) {
-                    shipCargos[shipCargo.Key] += randomCargo.Value;
+            if (shipCargos.Where(sc => sc.Key.GetType() == randomCargo.Key.GetType()).Any()) {
+                KeyValuePair<Cargo, int> temp = shipCargos.Where(sc => sc.Key.GetType() == randomCargo.Key.GetType()).First();
+                    shipCargos[temp.Key] += randomCargo.Value;
                 }
-            }
             Status = Enums.EventStatus.FINISHED;
         }
 
         public void Overtake()
         {
             foreach (KeyValuePair<Cargo, int> cargo in EventCargos) {
-                foreach (KeyValuePair<Cargo, int> shipCargo in shipCargos) {
-                    if (shipCargo.Key.GetType() == cargo.Key.GetType()) {
-                        shipCargos[shipCargo.Key] += cargo.Value;
+                if (shipCargos.Where(sc => sc.Key.GetType() == cargo.Key.GetType()).Any()) {
+                    KeyValuePair<Cargo, int> temp = shipCargos.Where(sc => sc.Key.GetType() == cargo.Key.GetType()).First();
+                    if (cargo.Key.GetType() == temp.Key.GetType()) {
+                        shipCargos[temp.Key] += cargo.Value;
                     }
                 }
+            
             }
             Status = Enums.EventStatus.FINISHED;
         }
